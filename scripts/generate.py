@@ -14,6 +14,7 @@ VERSIONS = ROOT / "versions.json"
 LOGO = ROOT / "assets" / "egovframe-mark.svg"
 OUTPUT = ROOT / "badges"
 STYLES = ("flat", "flat-square", "plastic", "for-the-badge", "outline")
+LANGUAGES = ("en", "ko")
 VERSION_PATTERN = re.compile(r"[0-9]+(?:\.[0-9]+){1,3}(?:-[A-Za-z0-9.]+)?\Z")
 SVG_NS = "{http://www.w3.org/2000/svg}"
 
@@ -40,21 +41,23 @@ def logo_paths():
     )
 
 
-def render(version, style, paths):
+def render(version, style, paths, lang="en"):
     if style not in STYLES or not VERSION_PATTERN.fullmatch(version):
         raise ValueError("unsupported badge style or version")
+    if lang not in LANGUAGES:
+        raise ValueError(f"unsupported language: {lang!r}")
 
     prominent = style == "for-the-badge"
     outlined = style == "outline"
     glossy = style == "plastic"
     squared = style in ("flat-square", "for-the-badge")
+    is_ko = lang == "ko"
+
     height = 28 if prominent else 22 if outlined else 20
-    label_width = 124 if prominent else 111
+    label_text = "전자정부표준프레임워크" if is_ko else "EGOVFRAME" if prominent else "eGovFrame"
+    label_width = (168 if prominent else 162) if is_ko else (124 if prominent else 111)
     message_width = max(48, (9 if prominent else 8) * len(version) + 18)
     width = label_width + message_width
-    # for-the-badge is deliberately blocky (shields.io renders it with
-    # shape-rendering: crispEdges, i.e. square corners) - it shares that
-    # with flat-square, not with the rounded default.
     radius = 0 if squared else 4
     label_color = "#003764" if prominent else "#ffffff"
     message_color = "#e4032e" if prominent else "#ffffff" if outlined else "#134f8c"
@@ -64,12 +67,17 @@ def render(version, style, paths):
     icon_x = 6
     icon_y = (height - icon_size) / 2
     icon_scale = icon_size / 173.282
-    label_text = "EGOVFRAME" if prominent else "eGovFrame"
-    font_size = 11 if prominent else 12
+    label_font_size = 11 if (prominent or is_ko) else 12
+    version_font_size = 11 if prominent else 12
     baseline = height / 2 + (3.7 if prominent else 4)
-    # shields.io's "plastic" style is a glossy highlight: a white-to-black
-    # translucent gradient laid over the flat colors, clipped to the same
-    # rounded shape. Same gradient stops shields.io itself uses.
+    font_family = (
+        "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', 'Malgun Gothic', Arial, sans-serif"
+        if is_ko
+        else "Arial, Helvetica, sans-serif"
+    )
+    aria_label = f"전자정부표준프레임워크 {escape(version, quote=True)}" if is_ko else f"eGovFrame {escape(version, quote=True)}"
+    title_text = f"전자정부표준프레임워크 {escape(version)} ({style})" if is_ko else f"eGovFrame {escape(version)} ({style})"
+
     gloss = (
         f'<defs><linearGradient id="gloss" x2="0" y2="100%">'
         f'<stop offset="0" stop-color="#fff" stop-opacity=".7"/>'
@@ -79,9 +87,9 @@ def render(version, style, paths):
         f'</linearGradient></defs>\n'
         f'<rect width="{width}" height="{height}" rx="{radius}" fill="url(#gloss)"/>\n'
     ) if glossy else ""
-    # Every badge contains the complete logo; README renderers need no data URI or script.
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="eGovFrame {escape(version, quote=True)}">
-<title>eGovFrame {escape(version)} ({style})</title>
+
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="{aria_label}">
+<title>{title_text}</title>
 <defs><clipPath id="badge-shape"><rect width="{width}" height="{height}" rx="{radius}"/></clipPath></defs>
 <g clip-path="url(#badge-shape)">
 <rect width="{width}" height="{height}" rx="{radius}" fill="{label_color}"/>
@@ -89,8 +97,8 @@ def render(version, style, paths):
 {gloss}</g>
 <rect x="0.5" y="0.5" width="{width - 1}" height="{height - 1}" rx="{radius}" fill="none" stroke="{'#134f8c' if outlined else '#d0d7de' if not prominent else '#003764'}"/>
 <g transform="translate({icon_x} {icon_y:g}) scale({icon_scale:.8f})">{paths}</g>
-<text x="{icon_x + icon_size + 7}" y="{baseline:g}" fill="{text_color}" font-family="Arial, Helvetica, sans-serif" font-size="{font_size}" font-weight="600">{label_text}</text>
-<text x="{label_width + message_width / 2:g}" y="{baseline:g}" fill="{version_color}" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="{font_size}" font-weight="700">{escape(version)}</text>
+<text x="{icon_x + icon_size + 7}" y="{baseline:g}" fill="{text_color}" font-family="{font_family}" font-size="{label_font_size}" font-weight="600">{label_text}</text>
+<text x="{label_width + message_width / 2:g}" y="{baseline:g}" fill="{version_color}" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="{version_font_size}" font-weight="700">{escape(version)}</text>
 </svg>
 '''
 
@@ -101,11 +109,17 @@ def main():
     args = parser.parse_args()
     versions = load_versions()
     paths = logo_paths()
-    expected = {
-        OUTPUT / version / f"{style}.svg": render(version, style, paths)
-        for version in versions for style in STYLES
-    }
-    existing = set(OUTPUT.glob("*/*.svg"))
+
+    expected = {}
+    for version in versions:
+        for style in STYLES:
+            en_svg = render(version, style, paths, lang="en")
+            ko_svg = render(version, style, paths, lang="ko")
+            expected[OUTPUT / version / f"{style}.svg"] = en_svg
+            expected[OUTPUT / version / f"{style}-ko.svg"] = ko_svg
+            expected[OUTPUT / version / "ko" / f"{style}.svg"] = ko_svg
+
+    existing = set(OUTPUT.glob("**/*.svg"))
 
     if args.check:
         mismatches = [p for p, content in expected.items() if not p.exists() or p.read_text(encoding="utf-8") != content]
@@ -119,10 +133,14 @@ def main():
 
     for path in existing - expected.keys():
         path.unlink()
-        try:
-            path.parent.rmdir()
-        except OSError:
-            pass
+        curr = path.parent
+        while curr != OUTPUT and curr != ROOT:
+            try:
+                curr.rmdir()
+            except OSError:
+                break
+            curr = curr.parent
+
     for path, content in expected.items():
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(content, encoding="utf-8")
