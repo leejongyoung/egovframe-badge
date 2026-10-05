@@ -4,21 +4,28 @@
 
 ## 한 줄로 사용
 
-버전과 스타일을 URL 경로에서 선택합니다. 아래 예시는 공식 포털로 연결됩니다.
+버전과 스타일, 언어(영문/한문)를 URL 경로에서 선택합니다. 아래 예시는 공식 포털로 연결됩니다.
 
+**영문 (`eGovFrame`)**
 ```md
 [![eGovFrame 5.0.1](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.1/flat.svg)](https://www.egovframe.go.kr)
 ```
 
-전자정부 표준프레임워크 [실행환경 가이드](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드)에 등재된 1.0부터 5.x까지의 모든 주요 실행환경 버전(`1.0`, `2.0`, `2.5`, `2.6`, `2.7`, `3.0`, `3.1`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `4.0`, `4.1`, `4.2`, `4.3`, `5.0`) 및 세부 릴리스 패치 버전을 제공합니다. 각 버전에서 아래 5가지 스타일을 선택할 수 있습니다 — [shields.io](https://shields.io)의 대표 스타일(`flat`, `flat-square`, `plastic`, `for-the-badge`)을 그대로 지원하고, 자체 `outline` 스타일을 더했습니다. (shields.io의 `social` 스타일은 마우스 호버 효과에 기대는 구조라 정적 `<img>` 임베드에서는 의미가 없어 제외했습니다.)
+**한문 (`전자정부표준프레임워크`)**
+```md
+[![전자정부표준프레임워크 5.0.1](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.1/flat-ko.svg)](https://www.egovframe.go.kr)
+```
+*(한문 배지는 `badges/5.0.1/flat-ko.svg` 및 `badges/5.0.1/ko/flat.svg` 경로를 모두 지원합니다.)*
 
-| 스타일 | 예시 |
-| --- | --- |
-| flat | ![flat](badges/5.0.1/flat.svg) |
-| flat-square | ![flat-square](badges/5.0.1/flat-square.svg) |
-| plastic | ![plastic](badges/5.0.1/plastic.svg) |
-| for-the-badge | ![for-the-badge](badges/5.0.1/for-the-badge.svg) |
-| outline | ![outline](badges/5.0.1/outline.svg) |
+전자정부 표준프레임워크 [실행환경 가이드](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드)에 등재된 1.0부터 5.x까지의 모든 주요 실행환경 버전(`1.0`, `2.0`, `2.5`, `2.6`, `2.7`, `3.0`, `3.1`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `4.0`, `4.1`, `4.2`, `4.3`, `5.0`) 및 세부 릴리스 패치 버전을 제공합니다. 영문(`eGovFrame`)과 한문(`전자정부표준프레임워크`) 각각 아래 5가지 스타일을 선택할 수 있습니다 — [shields.io](https://shields.io)의 대표 스타일(`flat`, `flat-square`, `plastic`, `for-the-badge`)을 그대로 지원하고, 자체 `outline` 스타일을 더했습니다. (shields.io의 `social` 스타일은 마우스 호버 효과에 기대는 구조라 정적 `<img>` 임베드에서는 의미가 없어 제외했습니다.)
+
+| 스타일 | 예시(영문) | 예시(한문) |
+| --- | --- | --- |
+| flat | ![flat](badges/5.0.1/flat.svg) | ![flat (한문)](badges/5.0.1/flat-ko.svg) |
+| flat-square | ![flat-square](badges/5.0.1/flat-square.svg) | ![flat-square (한문)](badges/5.0.1/flat-square-ko.svg) |
+| plastic | ![plastic](badges/5.0.1/plastic.svg) | ![plastic (한문)](badges/5.0.1/plastic-ko.svg) |
+| for-the-badge | ![for-the-badge](badges/5.0.1/for-the-badge.svg) | ![for-the-badge (한문)](badges/5.0.1/for-the-badge-ko.svg) |
+| outline | ![outline](badges/5.0.1/outline.svg) | ![outline (한문)](badges/5.0.1/outline-ko.svg) |
 
 ## 지원 버전
 
