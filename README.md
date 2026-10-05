@@ -7,7 +7,7 @@
 버전과 스타일을 URL 경로에서 선택합니다. 아래 예시는 공식 포털로 연결됩니다.
 
 ```md
-[![eGovFrame 5.0.1](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.1/flat.svg)](https://www.egovframe.go.kr)
+[![eGovFrame 5.0.1](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/5.0.1/flat.svg)](https://www.egovframe.go.kr)
 ```
 
 전자정부 표준프레임워크 [실행환경 가이드](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드)에 등재된 1.0부터 5.x까지의 모든 주요 실행환경 버전(`1.0`, `2.0`, `2.5`, `2.6`, `2.7`, `3.0`, `3.1`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `4.0`, `4.1`, `4.2`, `4.3`, `5.0`) 및 세부 릴리스 패치 버전을 제공합니다. 각 버전에서 아래 5가지 스타일을 선택할 수 있습니다 — [shields.io](https://shields.io)의 대표 스타일(`flat`, `flat-square`, `plastic`, `for-the-badge`)을 그대로 지원하고, 자체 `outline` 스타일을 더했습니다. (shields.io의 `social` 스타일은 마우스 호버 효과에 기대는 구조라 정적 `<img>` 임베드에서는 의미가 없어 제외했습니다.)
