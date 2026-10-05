@@ -119,6 +119,10 @@ def main():
 
     for path in existing - expected.keys():
         path.unlink()
+        try:
+            path.parent.rmdir()
+        except OSError:
+            pass
     for path, content in expected.items():
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(content, encoding="utf-8")
