@@ -13,7 +13,7 @@
 
 **한문 (`전자정부표준프레임워크`)**
 ```md
-[![전자정부표준프레임워크 5.0.1](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.1/flat-ko.svg)](https://www.egovframe.go.kr)
+[![전자정부표준프레임워크 5.0.1](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/5.0.1/flat-ko.svg)](https://www.egovframe.go.kr)
 ```
 *(한문 배지는 `badges/5.0.1/flat-ko.svg` 및 `badges/5.0.1/ko/flat.svg` 경로를 모두 지원합니다.)*
 
