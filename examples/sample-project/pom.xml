@@ -15,7 +15,7 @@
     <properties>
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <org.egovframe.rte.version>5.0.7</org.egovframe.rte.version>
+        <org.egovframe.rte.version>5.0.2</org.egovframe.rte.version>
     </properties>
 
     <parent>

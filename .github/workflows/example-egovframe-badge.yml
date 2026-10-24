@@ -1,31 +1,38 @@
 name: Example eGovFrame badge update
 
-# Example: keep a project's README badge in sync with the eGovFrame version its build files declare.
+# Example: keep README content in sync with the versions a project's build files declare.
 #
-#   1. scripts/detect_version.py scans pom.xml / build.gradle(.kts) / gradle.properties / libs.versions.toml.
-#   2. A declared version gets the version badge; no declared version gets the name-only badge.
-#   3. When the badge changed, the README is committed back to the branch.
+#   1. scripts/detect_version.py scans pom.xml / build.gradle(.kts) / gradle.properties / libs.versions.toml /
+#      gradle-wrapper.properties.
+#   2. The badge block gets the eGovFrame version badge, or the name-only badge when none is declared.
+#   3. The environment block gets a table of the runtime (eGovFrame) and development (Java, Spring Boot, Gradle)
+#      versions that were found, with the file that declares each.
+#   4. When a README changed, it is committed back to the branch.
 #
-# To use it in another project, copy scripts/detect_version.py and this file, point PROJECT_DIR at the
-# project, put the two marker comments in its README, and set --versions/--base-url if you host badges yourself.
-# This repository runs it on examples/sample-project, so the sample README always matches its pom.xml.
+# README markers (each block is optional, at least one is required):
+#   <!-- egovframe-badge:start -->        <!-- egovframe-badge:end -->
+#   <!-- egovframe-environment:start -->  <!-- egovframe-environment:end -->
+#
+# To use it in another project, copy scripts/detect_version.py and this file, set PROJECT_DIRS to the project
+# directories (a single "." is the usual choice), and add the markers to each README. Pass --versions and
+# --base-url when you host the badges yourself.
 
 on:
   push:
     branches: [main, work, egovframework]
     paths:
-      - 'examples/sample-project/**'
+      - 'examples/**'
       - 'scripts/detect_version.py'
       - 'versions.json'
       - '.github/workflows/example-egovframe-badge.yml'
   workflow_dispatch:
     inputs:
       project-dir:
-        description: 'Project directory to scan, relative to the repository root'
-        required: true
-        default: 'examples/sample-project'
+        description: 'Project directory to scan, relative to the repository root (empty: all examples)'
+        required: false
+        default: ''
       language:
-        description: 'Badge language'
+        description: 'Language of the badge and the table'
         required: true
         default: 'en'
         type: choice
@@ -46,41 +53,40 @@ concurrency:
 
 env:
   # Inputs are passed through the environment, never interpolated into the shell script.
-  PROJECT_DIR: ${{ inputs.project-dir || 'examples/sample-project' }}
+  PROJECT_DIRS: ${{ inputs.project-dir || 'examples/sample-project examples/sample-gradle-project examples/sample-project-unversioned' }}
   BADGE_LANGUAGE: ${{ inputs.language || 'en' }}
   BADGE_STYLE: ${{ inputs.style || 'flat' }}
 
 jobs:
-  update-badge:
+  update-readme:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Detect the eGovFrame version and rewrite the README badge
-        id: detect
+      - name: Detect versions and rewrite the README blocks
         run: |
-          python3 scripts/detect_version.py \
-            --project "$PROJECT_DIR" \
-            --readme "$PROJECT_DIR/README.md" \
-            --language "$BADGE_LANGUAGE" \
-            --style "$BADGE_STYLE" \
-            --write \
-            --github-output "$GITHUB_OUTPUT"
+          for dir in $PROJECT_DIRS; do
+            {
+              echo "### $dir"
+              echo '```json'
+            } >> "$GITHUB_STEP_SUMMARY"
+            python3 scripts/detect_version.py \
+              --project "$dir" \
+              --readme "$dir/README.md" \
+              --language "$BADGE_LANGUAGE" \
+              --style "$BADGE_STYLE" \
+              --write | tee -a "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+          done
 
-      - name: Summarize
+      - name: Commit the updated READMEs
         run: |
-          {
-            echo "### eGovFrame badge"
-            echo "- Declared version: \`${{ steps.detect.outputs.version || 'none' }}\` (${{ steps.detect.outputs.source || 'no build file declares one' }})"
-            echo "- Badge used: \`${{ steps.detect.outputs.badge_version || 'name only' }}\`"
-            echo "- README rewritten: \`${{ steps.detect.outputs.changed }}\`"
-          } >> "$GITHUB_STEP_SUMMARY"
-
-      - name: Commit the updated README
-        if: steps.detect.outputs.changed == 'true'
-        run: |
+          if git diff --quiet; then
+            echo "READMEs already up to date"
+            exit 0
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "$PROJECT_DIR/README.md"
-          git commit -m "docs: update eGovFrame badge from build files"
+          for dir in $PROJECT_DIRS; do git add -- "$dir/README.md"; done
+          git commit -m "docs: update eGovFrame badge and environment table from build files"
           git push origin "HEAD:${GITHUB_REF_NAME}"
