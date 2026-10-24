@@ -181,6 +181,17 @@ class DocumentationTests(unittest.TestCase):
             shapes[lang] = headings
         self.assertEqual(len({tuple(shape) for shape in shapes.values()}), 1, "every language has the same headings")
 
+    def test_detection_table_source_column_is_identifiers_only_so_no_language_leaks(self):
+        for lang in LANGS:
+            text = (ROOT / f"docs/README.{lang}.md").read_text(encoding="utf-8")
+            rows = [line for line in text.split("\n") if line.startswith("| ") and ("<br>" in line or "distributionUrl" in line)]
+            with self.subTest(lang=lang):
+                self.assertEqual(len(rows), 4)  # runtime, Java, Spring Boot, Gradle
+                for row in rows:
+                    source_column = row.split("|")[3]
+                    leftovers = re.findall(r"[A-Za-z]{2,}", CODE_SPAN.sub("", source_column.replace("<br>", " ")))
+                    self.assertEqual(leftovers, [], "prose in a column that is shared by every language")
+
     def test_documentation_names_every_file_and_key_the_detector_reads(self):
         needed = {name.removesuffix(".kts") for name in dv.BUILD_FILES}
         needed |= set(dv.MAVEN_JAVA_PROPERTIES) | {dv.SPRING_BOOT_PARENT[1], "org.springframework.boot", "sourceCompatibility",
