@@ -105,13 +105,13 @@ Botones de insignia independientes para cambiar de idioma en `README` multiling�
 
 Todas las versiones principales del [Guía del entorno de ejecución del Marco Estándar de Gobierno Electrónico](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드) — de 1.0 a 5.x (53 versiones en total) — con cinco estilos cada una: `flat`, `flat-square`, `plastic`, `for-the-badge` y el estilo personalizado `outline` (el estilo `social` de shields.io se excluye porque depende de efectos hover).
 
-| Estilo | Ejemplo (Inglés) | Ejemplo (Español) | Botones de idioma |
+| Estilo | Ejemplo (Inglés) | Ejemplo (Español) | Botón de idioma |
 | --- | --- | --- | --- |
-| flat | ![flat](../badges/5.0.1/flat.svg) | ![flat (Español)](../badges/5.0.1/flat-es.svg) | ![English](../badges/lang/en/flat.svg) ![한국어](../badges/lang/ko/flat.svg) ![Español](../badges/lang/es/flat.svg) ![Tiếng Việt](../badges/lang/vi/flat.svg) ![العربية](../badges/lang/ar/flat.svg) ![Français](../badges/lang/fr/flat.svg) |
-| flat-square | ![flat-square](../badges/5.0.1/flat-square.svg) | ![flat-square (Español)](../badges/5.0.1/flat-square-es.svg) | ![English](../badges/lang/en/flat-square.svg) ![한국어](../badges/lang/ko/flat-square.svg) ![Español](../badges/lang/es/flat-square.svg) ![Tiếng Việt](../badges/lang/vi/flat-square.svg) ![العربية](../badges/lang/ar/flat-square.svg) ![Français](../badges/lang/fr/flat-square.svg) |
-| plastic | ![plastic](../badges/5.0.1/plastic.svg) | ![plastic (Español)](../badges/5.0.1/plastic-es.svg) | ![English](../badges/lang/en/plastic.svg) ![한국어](../badges/lang/ko/plastic.svg) ![Español](../badges/lang/es/plastic.svg) ![Tiếng Việt](../badges/lang/vi/plastic.svg) ![العربية](../badges/lang/ar/plastic.svg) ![Français](../badges/lang/fr/plastic.svg) |
-| for-the-badge | ![for-the-badge](../badges/5.0.1/for-the-badge.svg) | ![for-the-badge (Español)](../badges/5.0.1/for-the-badge-es.svg) | ![English](../badges/lang/en/for-the-badge.svg) ![한국어](../badges/lang/ko/for-the-badge.svg) ![Español](../badges/lang/es/for-the-badge.svg) ![Tiếng Việt](../badges/lang/vi/for-the-badge.svg) ![العربية](../badges/lang/ar/for-the-badge.svg) ![Français](../badges/lang/fr/for-the-badge.svg) |
-| outline | ![outline](../badges/5.0.1/outline.svg) | ![outline (Español)](../badges/5.0.1/outline-es.svg) | ![English](../badges/lang/en/outline.svg) ![한국어](../badges/lang/ko/outline.svg) ![Español](../badges/lang/es/outline.svg) ![Tiếng Việt](../badges/lang/vi/outline.svg) ![العربية](../badges/lang/ar/outline.svg) ![Français](../badges/lang/fr/outline.svg) |
+| flat | ![flat](../badges/5.0.1/flat.svg) | ![flat (Español)](../badges/5.0.1/flat-es.svg) | ![Español](../badges/lang/es/flat.svg) |
+| flat-square | ![flat-square](../badges/5.0.1/flat-square.svg) | ![flat-square (Español)](../badges/5.0.1/flat-square-es.svg) | ![Español](../badges/lang/es/flat-square.svg) |
+| plastic | ![plastic](../badges/5.0.1/plastic.svg) | ![plastic (Español)](../badges/5.0.1/plastic-es.svg) | ![Español](../badges/lang/es/plastic.svg) |
+| for-the-badge | ![for-the-badge](../badges/5.0.1/for-the-badge.svg) | ![for-the-badge (Español)](../badges/5.0.1/for-the-badge-es.svg) | ![Español](../badges/lang/es/for-the-badge.svg) |
+| outline | ![outline](../badges/5.0.1/outline.svg) | ![outline (Español)](../badges/5.0.1/outline-es.svg) | ![Español](../badges/lang/es/outline.svg) |
 
 ## Versiones soportadas
 

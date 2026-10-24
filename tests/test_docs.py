@@ -155,7 +155,7 @@ class DocumentationTests(unittest.TestCase):
                 self.assertEqual("eGovFrame" in prose(text).replace("eGovFramework", ""), lang == "en")
                 self.assertEqual("전자정부표준프레임워크" in text, lang == "ko")
 
-    def test_style_table_shows_every_language_button_in_every_style(self):
+    def test_style_table_shows_one_language_button_matching_the_document_language(self):
         for lang in LANGS:
             lines = (ROOT / f"docs/README.{lang}.md").read_text(encoding="utf-8").split("\n")
             rows = [line for line in lines if line.startswith("| ") and "badges/5.0.1/" in line]
@@ -164,10 +164,7 @@ class DocumentationTests(unittest.TestCase):
                 for row in rows:
                     style = row.split("|")[1].strip()
                     buttons = re.findall(r"!\[([^\]]*)\]\(\.\./badges/lang/(\w+)/([\w-]+)\.svg\)", row)
-                    self.assertEqual([code for _, code, _ in buttons], list(generate.LANGUAGES), style)
-                    self.assertEqual({s for _, _, s in buttons}, {style})
-                    self.assertEqual([name for name, _, _ in buttons],
-                                     [generate.LANGUAGE_BUTTONS[code][1] for code in generate.LANGUAGES])
+                    self.assertEqual(buttons, [(generate.LANGUAGE_BUTTONS[lang][1], lang, style)], style)
 
     def test_every_language_documents_version_detection_with_the_same_structure(self):
         shapes = {}
