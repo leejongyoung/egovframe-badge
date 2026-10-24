@@ -1,0 +1,39 @@
+name: Sync default-language documentation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/config.yml'
+      - 'docs/README.*.md'
+      - 'docs/contributing/CONTRIBUTING.*.md'
+      - 'docs/security/SECURITY.*.md'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install PyYAML
+        run: python3 -m pip install PyYAML==6.0.3
+      - name: Sync documentation entrypoints
+        run: uv run scripts/sync_readme.py --github-output ${{ github.output }}
+      - name: Commit and push if changed
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md .github/CONTRIBUTING.md .github/SECURITY.md
+          git commit -m "docs: sync default-language entrypoints"
+          git push

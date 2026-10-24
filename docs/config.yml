@@ -1,0 +1,72 @@
+# eGovFrame Badge Documentation Configuration
+# Language of the generated root and .github/ documentation entrypoints.
+# Supported: en, ko, es, vi, ar, fr
+default_language: en
+
+# Localized README sources. The root README.md is generated from default_language
+# by scripts/sync_readme.py; never edit it by hand.
+languages:
+  en: docs/README.en.md
+  ko: docs/README.ko.md
+  es: docs/README.es.md
+  vi: docs/README.vi.md
+  ar: docs/README.ar.md
+  fr: docs/README.fr.md
+
+# Localized code-signing guideline sources.
+code_signing_guideline:
+  en: docs/code-signing-guideline/code-signing-guideline.en.md
+  ko: docs/code-signing-guideline/code-signing-guideline.ko.md
+  es: docs/code-signing-guideline/code-signing-guideline.es.md
+  vi: docs/code-signing-guideline/code-signing-guideline.vi.md
+  ar: docs/code-signing-guideline/code-signing-guideline.ar.md
+  fr: docs/code-signing-guideline/code-signing-guideline.fr.md
+
+# GitHub-discoverable community entrypoints are generated into .github/ from
+# default_language. Localized sources remain in docs/ for language buttons.
+contributing:
+  en: docs/contributing/CONTRIBUTING.en.md
+  ko: docs/contributing/CONTRIBUTING.ko.md
+  es: docs/contributing/CONTRIBUTING.es.md
+  vi: docs/contributing/CONTRIBUTING.vi.md
+  ar: docs/contributing/CONTRIBUTING.ar.md
+  fr: docs/contributing/CONTRIBUTING.fr.md
+
+security:
+  en: docs/security/SECURITY.en.md
+  ko: docs/security/SECURITY.ko.md
+  es: docs/security/SECURITY.es.md
+  vi: docs/security/SECURITY.vi.md
+  ar: docs/security/SECURITY.ar.md
+  fr: docs/security/SECURITY.fr.md
+
+# Language selector badge configuration. Each language has a flat and outline
+# style badge in badges/lang/<lang>/ for use in multilingual README navigation.
+language_badges:
+  en:
+    flat: "badges/lang/en/flat.svg"
+    outline: "badges/lang/en/outline.svg"
+  ko:
+    flat: "badges/lang/ko/flat.svg"
+    outline: "badges/lang/ko/outline.svg"
+  es:
+    flat: "badges/lang/es/flat.svg"
+    outline: "badges/lang/es/outline.svg"
+  vi:
+    flat: "badges/lang/vi/flat.svg"
+    outline: "badges/lang/vi/outline.svg"
+  ar:
+    flat: "badges/lang/ar/flat.svg"
+    outline: "badges/lang/ar/outline.svg"
+  fr:
+    flat: "badges/lang/fr/flat.svg"
+    outline: "badges/lang/fr/outline.svg"
+  mn:
+    flat: "badges/lang/mn/flat.svg"
+    outline: "badges/lang/mn/outline.svg"
+  bg:
+    flat: "badges/lang/bg/flat.svg"
+    outline: "badges/lang/bg/outline.svg"
+  ne:
+    flat: "badges/lang/ne/flat.svg"
+    outline: "badges/lang/ne/outline.svg"
