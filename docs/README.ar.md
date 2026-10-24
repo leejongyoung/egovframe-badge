@@ -46,7 +46,7 @@
 
 | البيئة | المكوّن | مُعلَن في |
 | --- | --- | --- |
-| بيئة التشغيل | الإطار القياسي للحكومة الإلكترونية | `pom.xml`: `org.egovframe.rte.version`, `egovframework.rte.version`, `<parent>` and `<dependency>` of `org.egovframe.boot`, `org.egovframe.web`, `org.egovframe.rte`<br>`build.gradle(.kts)`: `egovframeBootParentVersion`-style variables, `org.egovframe.*` coordinates<br>`settings.gradle(.kts)`, `gradle.properties`, `libs.versions.toml` |
+| بيئة التشغيل | الإطار القياسي للحكومة الإلكترونية | `pom.xml`: `org.egovframe.rte.version`, `egovframework.rte.version`, `<parent>` · `<dependency>`: `org.egovframe.boot`, `org.egovframe.web`, `org.egovframe.rte`<br>`build.gradle(.kts)`: `egovframeBootParentVersion`, `org.egovframe.*:artifact:version`<br>`settings.gradle(.kts)`, `gradle.properties`, `libs.versions.toml` |
 | بيئة التطوير | Java | `pom.xml`: `java.version`, `maven.compiler.release`, `maven.compiler.source`, `maven.compiler.target`<br>`build.gradle(.kts)`: `sourceCompatibility`, `JavaLanguageVersion.of(17)` |
 | بيئة التطوير | Spring Boot | `pom.xml`: `<parent>` `spring-boot-starter-parent`<br>`build.gradle(.kts)`: `id 'org.springframework.boot' version '3.5.6'` |
 | بيئة التطوير | Gradle | `gradle/wrapper/gradle-wrapper.properties`: `distributionUrl` (`gradle-8.5-bin.zip`) |
