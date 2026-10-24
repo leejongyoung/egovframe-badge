@@ -376,7 +376,7 @@ class ContractWithGeneratorTests(unittest.TestCase):
         expected = {
             "sample-project": ("5.0.2", ["Java"]),
             "sample-gradle-project": ("5.0.0", ["Java", "Spring Boot", "Gradle"]),
-            "sample-project-unversioned": (None, []),
+            "sample-project-unversioned": (None, ["Java", "Spring Boot"]),
         }
         for name, (version, development_components) in expected.items():
             project = ROOT / "examples" / name
