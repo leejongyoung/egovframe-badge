@@ -35,6 +35,16 @@ class BadgeGenerationTests(unittest.TestCase):
                         self.assertNotIn("http://", svg.replace('xmlns="http://www.w3.org/2000/svg"', ""))
                         self.assertNotIn("<script", svg)
 
+        for lang, (code_label, native_name, *_rest) in generate.LANGUAGE_BUTTONS.items():
+            for style in generate.STYLES:
+                with self.subTest(lang_button=lang, style=style):
+                    svg = generate.render_language_button(lang, style)
+                    root = ET.fromstring(svg)
+                    self.assertEqual(root.attrib["role"], "img")
+                    self.assertIn(native_name, root.attrib["aria-label"])
+                    self.assertIn(code_label, root.attrib["aria-label"])
+                    self.assertNotIn("<script", svg)
+
     def test_rejects_invalid_paths_and_styles(self):
         for version in ("../5.0", "5/0", "<script>"):
             with self.assertRaises(ValueError):
@@ -43,6 +53,10 @@ class BadgeGenerationTests(unittest.TestCase):
             generate.render("5.0.1", "unknown", "")
         with self.assertRaises(ValueError):
             generate.render("5.0.1", "flat", "", lang="invalid")
+        with self.assertRaises(ValueError):
+            generate.render_language_button("invalid", "flat")
+        with self.assertRaises(ValueError):
+            generate.render_language_button("en", "unknown")
 
     def test_supports_runtime_versions_from_1_to_5(self):
         versions = set(generate.load_versions())

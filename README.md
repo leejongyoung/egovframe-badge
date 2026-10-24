@@ -4,19 +4,39 @@
 
 ## 한 줄로 사용
 
-버전과 스타일, 언어(영문/한문)를 URL 경로에서 선택합니다. 아래 예시는 공식 포털로 연결됩니다.
+버전과 스타일, 언어(`en`, `ko`, `es`, `vi`, `ar`, `fr`)를 URL 경로에서 선택합니다. 아래 예시는 공식 포털로 연결됩니다.
 
 **영문 (`eGovFrame`)**
 ```md
-[![eGovFrame 5.0.1](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.1/flat.svg)](https://www.egovframe.go.kr)
+[![eGovFrame 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat.svg)](https://www.egovframe.go.kr)
 ```
 
-**한문 (`전자정부표준프레임워크`)**
+**국문 (`전자정부표준프레임워크`)**
 ```md
-[![전자정부표준프레임워크 5.0.1](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.1/flat-ko.svg)](https://www.egovframe.go.kr)
+[![전자정부표준프레임워크 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-ko.svg)](https://www.egovframe.go.kr)
 ```
-*(한문 배지는 `badges/5.0.1/flat-ko.svg` 및 `badges/5.0.1/ko/flat.svg` 경로를 모두 지원합니다.)*
 
+**다국어 버전 배지 (`es` 스페인어 · `vi` 베트남어 · `ar` 아랍어 · `fr` 프랑스어)**
+```md
+[![Marco Estándar eGovFrame 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-es.svg)](https://www.egovframe.go.kr)
+[![Khung chuẩn eGovFrame 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-vi.svg)](https://www.egovframe.go.kr)
+[![إطار eGovFrame القياسي 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-ar.svg)](https://www.egovframe.go.kr)
+[![Cadre standard eGovFrame 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-fr.svg)](https://www.egovframe.go.kr)
+```
+*(모든 다국어 배지는 `badges/5.0.2/flat-<lang>.svg` 및 `badges/5.0.2/<lang>/flat.svg` 경로를 모두 지원합니다.)*
+
+## 다국어 문서 전환 배지 버튼 (`badges/lang/`)
+
+다국어 `README` 상단에서 언어를 선택·전환할 때 공통으로 쓸 수 있는 독립 배지 버튼입니다 (`en`, `ko`, `es`, `vi`, `ar`, `fr`, `mn`, `bg`, `ne`). 현재 보고 있는 언어는 `flat.svg`, 다른 언어는 `outline.svg`(또는 전체 `flat.svg`)로 조합할 수 있습니다.
+
+```md
+[![English](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/en/flat.svg)](README.md)
+[![한국어](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ko/outline.svg)](README.ko.md)
+[![Español](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/es/outline.svg)](docs/README.es.md)
+[![Tiếng Việt](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/vi/outline.svg)](docs/README.vi.md)
+[![العربية](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ar/outline.svg)](docs/README.ar.md)
+[![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/outline.svg)](docs/README.fr.md)
+```
 전자정부 표준프레임워크 [실행환경 가이드](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드)에 등재된 1.0부터 5.x까지의 모든 주요 실행환경 버전(`1.0`, `2.0`, `2.5`, `2.6`, `2.7`, `3.0`, `3.1`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `4.0`, `4.1`, `4.2`, `4.3`, `5.0`) 및 세부 릴리스 패치 버전을 제공합니다. 영문(`eGovFrame`)과 한문(`전자정부표준프레임워크`) 각각 아래 5가지 스타일을 선택할 수 있습니다 — [shields.io](https://shields.io)의 대표 스타일(`flat`, `flat-square`, `plastic`, `for-the-badge`)을 그대로 지원하고, 자체 `outline` 스타일을 더했습니다. (shields.io의 `social` 스타일은 마우스 호버 효과에 기대는 구조라 정적 `<img>` 임베드에서는 의미가 없어 제외했습니다.)
 
 | 스타일 | 예시(영문) | 예시(한문) |
