@@ -81,3 +81,4 @@ Logo extracted from the existing eGovFramework README badge. Logo and eGovFrame 
 ## License
 
 Code (generation script, tests, workflows) is [MIT licensed](docs/LICENSE). Logo asset (`assets/egovframe-mark.svg`) and logos embedded in generated badges are **not** covered by this license and belong to their original owners as noted above.
+
