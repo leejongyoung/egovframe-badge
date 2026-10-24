@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="114" height="28" viewBox="0 0 114 28" role="img" aria-label="Language: English (EN)">
+<title>English (EN, for-the-badge)</title>
+<defs><clipPath id="badge-shape"><rect width="114" height="28" rx="0"/></clipPath></defs>
+<g clip-path="url(#badge-shape)">
+<rect width="114" height="28" rx="0" fill="#003764"/>
+<path d="M46 0h68v28h-68z" fill="#e4032e"/>
+</g>
+<rect x="0.5" y="0.5" width="113" height="27" rx="0" fill="none" stroke="#003764"/>
+<g fill="none" stroke="#ffffff" stroke-width="1.2"><circle cx="11" cy="14" r="6"/><ellipse cx="11" cy="14" rx="2.88" ry="6"/><line x1="5" y1="14" x2="17" y2="14"/></g>
+<text x="21" y="17.7" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700">EN</text>
+<text x="80" y="17.7" fill="#ffffff" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="600">English</text>
+</svg>

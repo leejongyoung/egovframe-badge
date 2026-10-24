@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="28" viewBox="0 0 128 28" role="img" aria-label="Language: Tiếng Việt (VI)">
+<title>Tiếng Việt (VI, for-the-badge)</title>
+<defs><clipPath id="badge-shape"><rect width="128" height="28" rx="0"/></clipPath></defs>
+<g clip-path="url(#badge-shape)">
+<rect width="128" height="28" rx="0" fill="#003764"/>
+<path d="M46 0h82v28h-82z" fill="#e4032e"/>
+</g>
+<rect x="0.5" y="0.5" width="127" height="27" rx="0" fill="none" stroke="#003764"/>
+<g fill="none" stroke="#ffffff" stroke-width="1.2"><circle cx="11" cy="14" r="6"/><ellipse cx="11" cy="14" rx="2.88" ry="6"/><line x1="5" y1="14" x2="17" y2="14"/></g>
+<text x="21" y="17.7" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700">VI</text>
+<text x="87" y="17.7" fill="#ffffff" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Arial, sans-serif" font-size="11" font-weight="600">Tiếng Việt</text>
+</svg>
