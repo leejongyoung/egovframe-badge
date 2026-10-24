@@ -1,7 +1,7 @@
 # eGovFrame badge
 
 <!-- latest-badge:start -->
-[![eGovFrame 5.0.7](badges/5.0.7/flat.svg)](https://www.egovframe.go.kr/)
+[![eGovFrame](badges/unversioned/flat.svg)](https://www.egovframe.go.kr/)
 [![CI](https://github.com/leejongyoung/egovframe-badge/actions/workflows/verify.yml/badge.svg)](https://github.com/leejongyoung/egovframe-badge/actions/workflows/verify.yml)
 [![Generate badges](https://github.com/leejongyoung/egovframe-badge/actions/workflows/generate-badges.yml/badge.svg)](https://github.com/leejongyoung/egovframe-badge/actions/workflows/generate-badges.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -15,48 +15,6 @@
 [![Français](badges/lang/fr/outline.svg)](docs/README.fr.md)
 
 A **single SVG badge** for every project using the eGovFrame (electronic Government Framework). Instead of hard-coding logos in each repository, reference one centrally-maintained badge with a raw URL. Static SVG — no JavaScript, no deployment server, no long Base64 URLs.
-
-## Automatic version detection
-
-Projects that declare their eGovFrame version in build files can keep their badge in sync automatically.
-
-### How it works
-
-The badge between `<!-- egovframe-badge:start -->` and `<!-- egovframe-badge:end -->` in a README is rewritten by `scripts/detect_version.py`:
-
-- The project's Maven `pom.xml`, Gradle build scripts, `gradle.properties`, and version catalogs (`libs.versions.toml`) are scanned.
-- Supported sources: `<parent>` version, `org.egovframe.rte.version` / `egovframework.rte.version` properties, direct dependency coordinates, Gradle `ext`/`val`/`var` assignments, `gradle.properties`, version catalogs (`libs.versions.toml`), and literal dependency versions.
-- If a version is found and it has a published badge, the version badge is used. If the project declares no eGovFrame version, the name-only badge is used. If a declared version has no badge, the name-only badge is used with a warning.
-
-### Setup
-
-Add the badge markers to your README and run the detector (CI or local):
-
-```md
-<!-- egovframe-badge:start -->
-[![eGovFrame](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/unversioned/flat.svg)](https://www.egovframe.go.kr/)
-<!-- egovframe-badge:end -->
-```
-
-```bash
-# Detect and update in one command
-python3 scripts/detect_version.py \
-  --project . \
-  --readme README.md \
-  --language en \
-  --style flat \
-  --write
-```
-
-The script scans `pom.xml`, `build.gradle`, `build.gradle.kts`, `gradle.properties`, `settings.gradle(.kts)`, and `libs.versions.toml` for eGovFrame version declarations. See [example workflow](.github/workflows/example-egovframe-badge.yml) for a CI integration.
-
-### Versionless badge
-
-Projects that do not declare an eGovFrame version receive the name-only badge (`unversioned/`), which has no version number.
-
-### Unsupported versions
-
-If a declared version has no badge yet (not in `versions.json`), the name-only badge is used with a warning. Add the version to `versions.json` and regenerate to get a version badge.
 
 ## One-line usage
 
@@ -78,40 +36,55 @@ Pick the version, style, and language (`en`, `ko`, `es`, `vi`, `ar`, `fr`) from 
 
 ## Automatic version detection
 
-Projects that declare their eGovFrame version in build files can keep their badge in sync automatically.
+A README can show the versions its project's build files declare. `scripts/detect_version.py` finds them and rewrites the marked README blocks, and a workflow can run it on every push.
 
-### How it works
+### Where the versions are found
 
-The badge between `<!-- egovframe-badge:start -->` and `<!-- egovframe-badge:end -->` in a README is rewritten by `scripts/detect_version.py`:
+| Environment | Component | Declared in |
+| --- | --- | --- |
+| Runtime environment | eGovFrame | `pom.xml`: `org.egovframe.rte.version`, `egovframework.rte.version`, `<parent>` and `<dependency>` of `org.egovframe.boot`, `org.egovframe.web`, `org.egovframe.rte`<br>`build.gradle(.kts)`: `egovframeBootParentVersion`-style variables, `org.egovframe.*` coordinates<br>`settings.gradle(.kts)`, `gradle.properties`, `libs.versions.toml` |
+| Development environment | Java | `pom.xml`: `java.version`, `maven.compiler.release`, `maven.compiler.source`, `maven.compiler.target`<br>`build.gradle(.kts)`: `sourceCompatibility`, `JavaLanguageVersion.of(17)` |
+| Development environment | Spring Boot | `pom.xml`: `<parent>` `spring-boot-starter-parent`<br>`build.gradle(.kts)`: `id 'org.springframework.boot' version '3.5.6'` |
+| Development environment | Gradle | `gradle/wrapper/gradle-wrapper.properties`: `distributionUrl` (`gradle-8.5-bin.zip`) |
 
-- The project's Maven `pom.xml`, Gradle build scripts, `gradle.properties`, and version catalogs (`libs.versions.toml`) are scanned.
-- Supported sources: `<parent>` version, `org.egovframe.rte.version` / `egovframework.rte.version` properties, direct dependency coordinates, Gradle `ext`/`val`/`var` assignments, `gradle.properties`, version catalogs (`libs.versions.toml`), and literal dependency versions.
-- If a version is found and it has a published badge, the version badge is used. If the project declares no eGovFrame version, the name-only badge is used. If a declared version has no badge, the name-only badge is used with a warning.
+- The highest version wins when several modules declare one.
+- Comments are ignored, and build output and dependency folders (`target`, `build`, `node_modules`, ...) are skipped.
+- Only what the project declares itself is shown: eGovFrame 4.x/5.x parents bring their own Spring Boot and Java, which are not listed unless the build file states them.
+- A project that declares no eGovFrame version gets the name-only badge; a declared version without a published badge (not in `versions.json`) gets the name-only badge and a warning.
 
-### Setup
+### README markers
 
-Add the badge markers to your README and run the detector (CI or local):
+Put the markers where the content belongs. Each block is optional, but at least one is required: the first becomes the badge (the version badge, or the name-only badge when no version is declared), the second becomes a table of the detected versions with the file that declares each one.
 
 ```md
 <!-- egovframe-badge:start -->
 [![eGovFrame](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/unversioned/flat.svg)](https://www.egovframe.go.kr/)
 <!-- egovframe-badge:end -->
+
+<!-- egovframe-environment:start -->
+<!-- egovframe-environment:end -->
 ```
+
+Result for `examples/sample-gradle-project`:
+
+| Category | Component | Version | Source |
+| --- | --- | --- | --- |
+| Runtime environment | eGovFrame | 5.0.0 | `build.gradle` |
+| Development environment | Java | 17 | `build.gradle` |
+| Development environment | Spring Boot | 3.5.6 | `build.gradle` |
+| Development environment | Gradle | 8.5 | `gradle/wrapper/gradle-wrapper.properties` |
+
+### Run it
+
+Run it locally (add `--check` to fail instead of writing, for a CI that only verifies):
 
 ```bash
-# Detect and update in one command
-python3 scripts/detect_version.py   --project .   --readme README.md   --language en   --style flat   --write
+python3 scripts/detect_version.py --project . --readme README.md --language en --style flat --write
 ```
 
-The script scans `pom.xml`, `build.gradle`, `build.gradle.kts`, `gradle.properties`, `settings.gradle(.kts)`, and `libs.versions.toml` for eGovFrame version declarations. See [example workflow](.github/workflows/example-egovframe-badge.yml) for a CI integration.
+### Run it in CI
 
-### Versionless badge
-
-Projects that do not declare an eGovFrame version receive the name-only badge (`unversioned/`), which has no version number.
-
-### Unsupported versions
-
-If a declared version has no badge yet (not in `versions.json`), the name-only badge is used with a warning. Add the version to `versions.json` and regenerate to get a version badge.
+[`.github/workflows/example-egovframe-badge.yml`](.github/workflows/example-egovframe-badge.yml) is a working example: on every push that touches the projects it runs the script and commits the rewritten READMEs back to the branch. It runs on `examples/sample-project` (Maven), `examples/sample-gradle-project` (Gradle: Java, Spring Boot, Gradle) and `examples/sample-project-unversioned` (no declaration). Copy `scripts/detect_version.py` and the workflow into your own project, set `PROJECT_DIRS` to `.` and add the markers. For custom steps, `--github-output` writes `version`, `badge_version`, `source`, `java`, `spring_boot`, `gradle` and `changed` to `$GITHUB_OUTPUT`.
 
 ## Language selector badge buttons (`badges/lang/`)
 
@@ -128,13 +101,13 @@ Standalone badge buttons for multilingual `README` language switching (`en`, `ko
 
 All major runtime versions from the [eGovFrame Runtime Guide](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드) — 1.0 through 5.x (53 versions total) — with five styles each: `flat`, `flat-square`, `plastic`, `for-the-badge`, and the custom `outline` style (shields.io `social` style excluded as it relies on hover effects).
 
-| Style | Example |
-| --- | --- |
-| flat | ![flat](badges/5.0.1/flat.svg) |
-| flat-square | ![flat-square](badges/5.0.1/flat-square.svg) |
-| plastic | ![plastic](badges/5.0.1/plastic.svg) |
-| for-the-badge | ![for-the-badge](badges/5.0.1/for-the-badge.svg) |
-| outline | ![outline](badges/5.0.1/outline.svg) |
+| Style | Example | Language buttons |
+| --- | --- | --- |
+| flat | ![flat](badges/5.0.1/flat.svg) | ![English](badges/lang/en/flat.svg) ![한국어](badges/lang/ko/flat.svg) ![Español](badges/lang/es/flat.svg) ![Tiếng Việt](badges/lang/vi/flat.svg) ![العربية](badges/lang/ar/flat.svg) ![Français](badges/lang/fr/flat.svg) |
+| flat-square | ![flat-square](badges/5.0.1/flat-square.svg) | ![English](badges/lang/en/flat-square.svg) ![한국어](badges/lang/ko/flat-square.svg) ![Español](badges/lang/es/flat-square.svg) ![Tiếng Việt](badges/lang/vi/flat-square.svg) ![العربية](badges/lang/ar/flat-square.svg) ![Français](badges/lang/fr/flat-square.svg) |
+| plastic | ![plastic](badges/5.0.1/plastic.svg) | ![English](badges/lang/en/plastic.svg) ![한국어](badges/lang/ko/plastic.svg) ![Español](badges/lang/es/plastic.svg) ![Tiếng Việt](badges/lang/vi/plastic.svg) ![العربية](badges/lang/ar/plastic.svg) ![Français](badges/lang/fr/plastic.svg) |
+| for-the-badge | ![for-the-badge](badges/5.0.1/for-the-badge.svg) | ![English](badges/lang/en/for-the-badge.svg) ![한국어](badges/lang/ko/for-the-badge.svg) ![Español](badges/lang/es/for-the-badge.svg) ![Tiếng Việt](badges/lang/vi/for-the-badge.svg) ![العربية](badges/lang/ar/for-the-badge.svg) ![Français](badges/lang/fr/for-the-badge.svg) |
+| outline | ![outline](badges/5.0.1/outline.svg) | ![English](badges/lang/en/outline.svg) ![한국어](badges/lang/ko/outline.svg) ![Español](badges/lang/es/outline.svg) ![Tiếng Việt](badges/lang/vi/outline.svg) ![العربية](badges/lang/ar/outline.svg) ![Français](badges/lang/fr/outline.svg) |
 
 ## Supported versions
 
@@ -148,7 +121,7 @@ All 53 versions from the eGovFrame Runtime Guide:
 
 ## Adding versions and generating badges
 
-Choose the version matching your framework. This badge does **not** auto-detect your project version. To add a new version, edit `versions.json` and run the generator:
+To add a new version, edit `versions.json` and run the generator (a project's own version is detected by the script described above):
 
 ```sh
 python3 scripts/generate.py
@@ -156,13 +129,6 @@ python3 -m unittest discover -s tests -v
 python3 scripts/generate.py --check
 ```
 
-To keep a project's badge in sync with its declared eGovFrame version automatically, add the badge markers to your README and integrate `scripts/detect_version.py` into your CI:
-
-```sh
-python3 scripts/detect_version.py --project . --readme README.md --language en --style flat --write
-```
-
-The script can also be used in CI via the [example workflow](.github/workflows/example-egovframe-badge.yml), which rewrites the badge block on every push that changes build files.
 ## Design
 - SVGs are committed and served via GitHub raw URLs. README renderers load them directly; no deployment server required.
 - Single logo source at `assets/egovframe-mark.svg`. All generated badges embed the logo — no external image dependencies.

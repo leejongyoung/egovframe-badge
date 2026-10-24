@@ -1,7 +1,7 @@
 # 전자정부표준프레임워크 배지
 
 <!-- latest-badge:start -->
-[![전자정부표준프레임워크 5.0.7](../badges/5.0.7/flat-ko.svg)](https://www.egovframe.go.kr/)
+[![전자정부표준프레임워크](../badges/unversioned/flat-ko.svg)](https://www.egovframe.go.kr/)
 [![CI](https://github.com/leejongyoung/egovframe-badge/actions/workflows/verify.yml/badge.svg)](https://github.com/leejongyoung/egovframe-badge/actions/workflows/verify.yml)
 [![Generate badges](https://github.com/leejongyoung/egovframe-badge/actions/workflows/generate-badges.yml/badge.svg)](https://github.com/leejongyoung/egovframe-badge/actions/workflows/generate-badges.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](../LICENSE)
@@ -39,6 +39,58 @@
 ```
 *(모든 다국어 배지는 `badges/5.0.2/flat-<lang>.svg` 및 `badges/5.0.2/<lang>/flat.svg` 경로를 모두 지원합니다.)*
 
+## 자동 버전 감지
+
+README에 프로젝트 빌드 파일이 선언한 버전을 보여 줄 수 있습니다. `scripts/detect_version.py`가 버전을 찾아 표식이 있는 README 블록을 다시 쓰고, 워크플로가 푸시할 때마다 이를 실행할 수 있습니다.
+
+### 버전을 찾는 위치
+
+| 환경 | 구성 요소 | 선언 위치 |
+| --- | --- | --- |
+| 실행환경 | 전자정부표준프레임워크 | `pom.xml`: `org.egovframe.rte.version`, `egovframework.rte.version`, `<parent>` and `<dependency>` of `org.egovframe.boot`, `org.egovframe.web`, `org.egovframe.rte`<br>`build.gradle(.kts)`: `egovframeBootParentVersion`-style variables, `org.egovframe.*` coordinates<br>`settings.gradle(.kts)`, `gradle.properties`, `libs.versions.toml` |
+| 개발환경 | Java | `pom.xml`: `java.version`, `maven.compiler.release`, `maven.compiler.source`, `maven.compiler.target`<br>`build.gradle(.kts)`: `sourceCompatibility`, `JavaLanguageVersion.of(17)` |
+| 개발환경 | Spring Boot | `pom.xml`: `<parent>` `spring-boot-starter-parent`<br>`build.gradle(.kts)`: `id 'org.springframework.boot' version '3.5.6'` |
+| 개발환경 | Gradle | `gradle/wrapper/gradle-wrapper.properties`: `distributionUrl` (`gradle-8.5-bin.zip`) |
+
+- 여러 모듈이 선언하면 가장 높은 버전을 씁니다.
+- 주석은 무시하고, 빌드 산출물·의존성 폴더(`target`, `build`, `node_modules` 등)는 건너뜁니다.
+- 프로젝트가 직접 선언한 값만 표시합니다. 4.x/5.x 부모는 자체 Spring Boot와 Java를 가져오므로, 빌드 파일에 적혀 있지 않으면 표에 나오지 않습니다.
+- 버전을 선언하지 않은 프로젝트는 이름만 있는 배지를, 선언했지만 배지가 없는 버전(`versions.json`에 없음)은 경고와 함께 이름만 있는 배지를 씁니다.
+
+### README 표식
+
+내용이 들어갈 자리에 표식을 둡니다. 두 블록 모두 선택 사항이지만 최소 하나는 있어야 합니다. 첫 번째는 배지(버전을 선언했으면 버전 배지, 선언하지 않았으면 이름만 있는 배지)가 되고, 두 번째는 감지한 버전과 이를 선언한 파일을 담은 표가 됩니다.
+
+```md
+<!-- egovframe-badge:start -->
+[![전자정부표준프레임워크](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/unversioned/flat-ko.svg)](https://www.egovframe.go.kr/)
+<!-- egovframe-badge:end -->
+
+<!-- egovframe-environment:start -->
+<!-- egovframe-environment:end -->
+```
+
+`examples/sample-gradle-project`의 결과:
+
+| 구분 | 구성 요소 | 버전 | 출처 |
+| --- | --- | --- | --- |
+| 실행환경 | 전자정부표준프레임워크 | 5.0.0 | `build.gradle` |
+| 개발환경 | Java | 17 | `build.gradle` |
+| 개발환경 | Spring Boot | 3.5.6 | `build.gradle` |
+| 개발환경 | Gradle | 8.5 | `gradle/wrapper/gradle-wrapper.properties` |
+
+### 실행
+
+로컬에서 실행합니다(파일을 쓰지 않고 실패만 시키려면 `--check`를 추가하세요. 검증만 하는 CI에 적합합니다):
+
+```bash
+python3 scripts/detect_version.py --project . --readme README.md --language ko --style flat --write
+```
+
+### CI에서 실행
+
+[`.github/workflows/example-egovframe-badge.yml`](../.github/workflows/example-egovframe-badge.yml)은 동작하는 예시입니다. 프로젝트를 건드리는 푸시마다 스크립트를 실행하고 다시 쓴 README를 브랜치에 커밋합니다. `examples/sample-project`(Maven), `examples/sample-gradle-project`(Gradle: Java, Spring Boot, Gradle), `examples/sample-project-unversioned`(선언 없음)에서 실행됩니다. `scripts/detect_version.py`와 워크플로를 자신의 프로젝트에 복사하고 `PROJECT_DIRS`를 `.`로 바꾼 뒤 표식을 추가하세요. 직접 단계를 만들 때는 `--github-output`이 `version`, `badge_version`, `source`, `java`, `spring_boot`, `gradle`, `changed`를 `$GITHUB_OUTPUT`에 기록합니다.
+
 ## 다국어 문서 전환 배지 버튼 (`badges/lang/`)
 
 다국어 `README` 상단에서 언어를 선택·전환할 때 공통으로 쓸 수 있는 독립 배지 버튼입니다 (`en`, `ko`, `es`, `vi`, `ar`, `fr`, `mn`, `bg`, `ne`). 현재 보고 있는 언어는 `flat.svg`, 다른 언어는 `outline.svg`(또는 전체 `flat.svg`)로 조합할 수 있습니다.
@@ -54,17 +106,17 @@
 
 전자정부표준프레임워크 [실행환경 가이드](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드)에 등재된 1.0부터 5.x까지의 모든 주요 실행환경 버전(`1.0`, `2.0`, `2.5`, `2.6`, `2.7`, `3.0`, `3.1`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `4.0`, `4.1`, `4.2`, `4.3`, `5.0`) 및 세부 릴리스 패치 버전을 제공합니다. 영문(`eGovFrame`)과 국문(`전자정부표준프레임워크`) 각각 아래 5가지 스타일을 선택할 수 있습니다 — [shields.io](https://shields.io)의 대표 스타일(`flat`, `flat-square`, `plastic`, `for-the-badge`)을 그대로 지원하고, 자체 `outline` 스타일을 더했습니다. (shields.io의 `social` 스타일은 마우스 호버 효과에 기대는 구조라 정적 `<img>` 임베드에서는 의미가 없어 제외했습니다.)
 
-| 스타일 | 예시(영문) | 예시(한국어) |
-| --- | --- | --- |
-| flat | ![flat](../badges/5.0.1/flat.svg) | ![flat (한국어)](../badges/5.0.1/flat-ko.svg) |
-| flat-square | ![flat-square](../badges/5.0.1/flat-square.svg) | ![flat-square (한국어)](../badges/5.0.1/flat-square-ko.svg) |
-| plastic | ![plastic](../badges/5.0.1/plastic.svg) | ![plastic (한국어)](../badges/5.0.1/plastic-ko.svg) |
-| for-the-badge | ![for-the-badge](../badges/5.0.1/for-the-badge.svg) | ![for-the-badge (한국어)](../badges/5.0.1/for-the-badge-ko.svg) |
-| outline | ![outline](../badges/5.0.1/outline.svg) | ![outline (한국어)](../badges/5.0.1/outline-ko.svg) |
+| 스타일 | 예시(영문) | 예시(한국어) | 언어 버튼 |
+| --- | --- | --- | --- |
+| flat | ![flat](../badges/5.0.1/flat.svg) | ![flat (한국어)](../badges/5.0.1/flat-ko.svg) | ![English](../badges/lang/en/flat.svg) ![한국어](../badges/lang/ko/flat.svg) ![Español](../badges/lang/es/flat.svg) ![Tiếng Việt](../badges/lang/vi/flat.svg) ![العربية](../badges/lang/ar/flat.svg) ![Français](../badges/lang/fr/flat.svg) |
+| flat-square | ![flat-square](../badges/5.0.1/flat-square.svg) | ![flat-square (한국어)](../badges/5.0.1/flat-square-ko.svg) | ![English](../badges/lang/en/flat-square.svg) ![한국어](../badges/lang/ko/flat-square.svg) ![Español](../badges/lang/es/flat-square.svg) ![Tiếng Việt](../badges/lang/vi/flat-square.svg) ![العربية](../badges/lang/ar/flat-square.svg) ![Français](../badges/lang/fr/flat-square.svg) |
+| plastic | ![plastic](../badges/5.0.1/plastic.svg) | ![plastic (한국어)](../badges/5.0.1/plastic-ko.svg) | ![English](../badges/lang/en/plastic.svg) ![한국어](../badges/lang/ko/plastic.svg) ![Español](../badges/lang/es/plastic.svg) ![Tiếng Việt](../badges/lang/vi/plastic.svg) ![العربية](../badges/lang/ar/plastic.svg) ![Français](../badges/lang/fr/plastic.svg) |
+| for-the-badge | ![for-the-badge](../badges/5.0.1/for-the-badge.svg) | ![for-the-badge (한국어)](../badges/5.0.1/for-the-badge-ko.svg) | ![English](../badges/lang/en/for-the-badge.svg) ![한국어](../badges/lang/ko/for-the-badge.svg) ![Español](../badges/lang/es/for-the-badge.svg) ![Tiếng Việt](../badges/lang/vi/for-the-badge.svg) ![العربية](../badges/lang/ar/for-the-badge.svg) ![Français](../badges/lang/fr/for-the-badge.svg) |
+| outline | ![outline](../badges/5.0.1/outline.svg) | ![outline (한국어)](../badges/5.0.1/outline-ko.svg) | ![English](../badges/lang/en/outline.svg) ![한국어](../badges/lang/ko/outline.svg) ![Español](../badges/lang/es/outline.svg) ![Tiếng Việt](../badges/lang/vi/outline.svg) ![العربية](../badges/lang/ar/outline.svg) ![Français](../badges/lang/fr/outline.svg) |
 
 ## 지원 버전
 
-전자정부표준프레임워크 [실행환경 가이드](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드)에 등재된 1.0부터 5.x까지 총 52개 버전(주요 실행환경 및 패치 릴리스)을 지원합니다.
+전자정부표준프레임워크 [실행환경 가이드](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드)에 등재된 1.0부터 5.x까지 총 53개 버전(주요 실행환경 및 패치 릴리스)을 지원합니다.
 
 - **5.x**: `5.0`, `5.0.0`, `5.0.1`, `5.0.2`, `5.0.3`, `5.0.4`, `5.0.5`, `5.0.6`, `5.0.7`
 - **4.x**: `4.3`, `4.3.0`, `4.3.1`, `4.3.2`, `4.2`, `4.2.0`, `4.2.1`, `4.2.2`, `4.1`, `4.1.0`, `4.1.1`, `4.1.2`, `4.0`, `4.0.0`, `4.0.1`
@@ -74,7 +126,7 @@
 
 ## 버전 추가 및 배지 생성
 
-버전은 실제 사용하는 프레임워크 버전에 맞춰 고릅니다. 이 배지는 프로젝트의 버전을 자동 감지하지 않습니다. 새 버전이 필요하면 `versions.json`에 추가하고 생성 스크립트를 실행해 SVG를 생성하고 커밋합니다.
+새 버전이 필요하면 `versions.json`에 추가하고 생성 스크립트를 실행해 SVG를 생성하고 커밋합니다. 프로젝트 자신의 버전은 위에서 설명한 스크립트가 감지합니다.
 
 ```sh
 python3 scripts/generate.py

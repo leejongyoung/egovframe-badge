@@ -211,7 +211,144 @@ class ReadmeTests(unittest.TestCase):
             output = Path(directory) / "github-output"
             run("--project", directory, "--readme", Path(directory) / "README.md", "--write", "--github-output", output)
             lines = dict(line.split("=", 1) for line in output.read_text(encoding="utf-8").splitlines())
-        self.assertEqual(lines, {"found": "true", "version": "5.0.1", "badge_version": "5.0.1", "source": "pom.xml", "changed": "true"})
+        self.assertEqual(lines, {"found": "true", "version": "5.0.1", "badge_version": "5.0.1", "source": "pom.xml",
+                                 "java": "", "spring_boot": "", "gradle": "", "changed": "true"})
+
+
+# Excerpts of real files: egovframe-template-simple-backend (main, 4.0.x) and egovframe-msa-edu (main).
+MAVEN_JAVA_17 = "<project><properties><java.version>17</java.version></properties>" + BOOT_PARENT.split("<version>1.0.0</version>")[1].replace("</project>", "") + "</project>"
+MAVEN_SPRING_BOOT_PARENT = """<project><parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.4.5</version>
+</parent></project>"""
+MSA_BUILD_GRADLE = """plugins {
+    id 'org.springframework.boot' version '3.5.6'
+}
+sourceCompatibility = '17'
+targetCompatibility = '17'
+ext {
+    set('egovframeBootParentVersion', '5.0.0')
+}"""
+MSA_TOOLCHAIN = "java { toolchain { languageVersion = JavaLanguageVersion.of(17) } }"
+GRADLE_WRAPPER_PROPERTIES = """distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+distributionUrl=https\\://services.gradle.org/distributions/gradle-8.5-bin.zip
+"""
+
+
+def development(files):
+    with make_project(files) as directory:
+        return {component: sorted({c["version"] for c in found}) for component, found in dv.detect_development(directory).items()}
+
+
+class DevelopmentEnvironmentTests(unittest.TestCase):
+    def test_declarations_found_in_real_projects(self):
+        cases = {
+            "maven java.version": ({"pom.xml": MAVEN_JAVA_17}, {"Java": ["17"], "Spring Boot": [], "Gradle": []}),
+            "maven spring boot parent": ({"pom.xml": MAVEN_SPRING_BOOT_PARENT}, {"Java": [], "Spring Boot": ["2.4.5"], "Gradle": []}),
+            "gradle plugin and source compatibility": ({"build.gradle": MSA_BUILD_GRADLE}, {"Java": ["17"], "Spring Boot": ["3.5.6"], "Gradle": []}),
+            "gradle java toolchain": ({"build.gradle": MSA_TOOLCHAIN}, {"Java": ["17"], "Spring Boot": [], "Gradle": []}),
+            "gradle wrapper": ({"gradle/wrapper/gradle-wrapper.properties": GRADLE_WRAPPER_PROPERTIES}, {"Java": [], "Spring Boot": [], "Gradle": ["8.5"]}),
+            "kotlin plugin syntax": ({"build.gradle.kts": 'plugins { id("org.springframework.boot") version "3.2.0" }'}, {"Java": [], "Spring Boot": ["3.2.0"], "Gradle": []}),
+            "legacy java 1.8 and enum notation": ({"pom.xml": "<project><properties><maven.compiler.source>1.8</maven.compiler.source></properties></project>",
+                                                   "build.gradle": "sourceCompatibility = JavaVersion.VERSION_1_8"}, {"Java": ["1.8"], "Spring Boot": [], "Gradle": []}),
+        }
+        for name, (files, expected) in cases.items():
+            with self.subTest(name):
+                self.assertEqual(development(files), expected)
+
+    def test_only_what_the_project_declares_itself_is_reported(self):
+        # eGovFrame 4.x/5.x parents bring Spring Boot and Java with them; the build file does not state them.
+        self.assertEqual(development({"pom.xml": BOOT_PARENT}), {"Java": [], "Spring Boot": [], "Gradle": []})
+        self.assertEqual(development({"pom.xml": PROPERTY_4X}), {"Java": [], "Spring Boot": [], "Gradle": []})
+
+    def test_commented_out_and_unrelated_declarations_are_ignored(self):
+        files = {"build.gradle": "// sourceCompatibility = '8'\n/* id 'org.springframework.boot' version '1.5.0' */\nsourceCompatibility = '17'\n",
+                 "pom.xml": "<project><properties><!-- <java.version>8</java.version> --></properties></project>"}
+        self.assertEqual(development(files), {"Java": ["17"], "Spring Boot": [], "Gradle": []})
+
+    def test_the_highest_version_is_chosen_and_legacy_numbers_compare_as_their_minor_part(self):
+        rows = dv.environment_rows(None, {"Java": [{"version": "1.8", "source": "a"}, {"version": "11", "source": "b"}, {"version": "9", "source": "c"}],
+                                          "Spring Boot": [], "Gradle": []})
+        self.assertEqual([(r["component"], r["version"], r["source"]) for r in rows], [("Java", "11", "b")])
+        rows = dv.environment_rows(None, {"Java": [{"version": "1.8", "source": "a"}, {"version": "7", "source": "b"}], "Spring Boot": [], "Gradle": []})
+        self.assertEqual(rows[0]["version"], "1.8")
+
+
+ENVIRONMENT_README = """# Project
+
+<!-- egovframe-badge:start -->
+old badge
+<!-- egovframe-badge:end -->
+
+<!-- egovframe-environment:start -->
+old table
+<!-- egovframe-environment:end -->
+"""
+
+
+class EnvironmentTableTests(unittest.TestCase):
+    def sync(self, files, language="en", readme=ENVIRONMENT_README, *flags):
+        with make_project({**files, "README.md": readme}) as directory:
+            target = Path(directory) / "README.md"
+            status, out, _ = run("--project", directory, "--readme", target, "--language", language, "--write", *flags)
+            return status, json.loads(out), target.read_text(encoding="utf-8")
+
+    def test_table_lists_runtime_then_development_with_the_declaring_file(self):
+        files = {"build.gradle": MSA_BUILD_GRADLE, "gradle/wrapper/gradle-wrapper.properties": GRADLE_WRAPPER_PROPERTIES}
+        status, result, text = self.sync(files)
+        self.assertEqual(status, 0)
+        self.assertIn(
+            "<!-- egovframe-environment:start -->\n"
+            "| Category | Component | Version | Source |\n| --- | --- | --- | --- |\n"
+            "| Runtime environment | eGovFrame | 5.0.0 | `build.gradle` |\n"
+            "| Development environment | Java | 17 | `build.gradle` |\n"
+            "| Development environment | Spring Boot | 3.5.6 | `build.gradle` |\n"
+            "| Development environment | Gradle | 8.5 | `gradle/wrapper/gradle-wrapper.properties` |\n"
+            "<!-- egovframe-environment:end -->", text)
+        self.assertEqual(result["readme"]["blocks"], [dv.START, dv.ENV_START])
+        self.assertIn("/5.0.0/flat.svg", text)
+
+    def test_rows_without_a_declaration_are_left_out_and_a_project_with_none_says_so(self):
+        _, _, text = self.sync({"pom.xml": BOOT_PARENT})
+        self.assertIn("| Runtime environment | eGovFrame | 5.0.1 | `pom.xml` |", text)
+        self.assertNotIn("Development environment", text)
+        _, result, text = self.sync({"package.json": "{}"})
+        self.assertEqual(result["environment"], [])
+        self.assertIn("<!-- egovframe-environment:start -->\nNo build file declares a eGovFrame version.\n<!-- egovframe-environment:end -->", text)
+
+    def test_table_is_localized_and_the_korean_name_appears_only_in_korean(self):
+        for language in dv.LABELS:
+            _, _, text = self.sync({"build.gradle": MSA_BUILD_GRADLE}, language)
+            table = text.split(dv.ENV_START)[1].split(dv.ENV_END)[0]
+            with self.subTest(language):
+                self.assertIn(dv.TABLE_TEXT[language]["runtime"], table)
+                self.assertIn(dv.TABLE_TEXT[language]["development"], table)
+                self.assertIn(f"| {dv.LABELS[language]} | 5.0.0 |", table)
+                self.assertEqual("전자정부표준프레임워크" in table, language == "ko")
+                self.assertEqual("eGovFrame" in table, language == "en")
+
+    def test_every_language_has_every_table_word(self):
+        for language, text in dv.TABLE_TEXT.items():
+            self.assertEqual(set(text), set(dv.TABLE_TEXT["en"]), language)
+            self.assertIn("{name}", text["none"])
+
+    def test_either_marker_pair_alone_is_enough_and_untouched_blocks_stay(self):
+        only_table = "# P\n\n<!-- egovframe-environment:start -->\nx\n<!-- egovframe-environment:end -->\nkeep\n"
+        _, result, text = self.sync({"pom.xml": BOOT_PARENT}, readme=only_table)
+        self.assertEqual(result["readme"]["blocks"], [dv.ENV_START])
+        self.assertTrue(text.startswith("# P\n") and text.endswith("-->\nkeep\n"))
+        only_badge = "# P\n\n<!-- egovframe-badge:start -->\nx\n<!-- egovframe-badge:end -->\n"
+        _, result, text = self.sync({"pom.xml": BOOT_PARENT}, readme=only_badge)
+        self.assertEqual(result["readme"]["blocks"], [dv.START])
+        self.assertNotIn("Runtime environment", text)
+
+    def test_second_run_changes_nothing(self):
+        with make_project({"pom.xml": BOOT_PARENT, "README.md": ENVIRONMENT_README}) as directory:
+            args = ("--project", directory, "--readme", Path(directory) / "README.md", "--write")
+            self.assertTrue(json.loads(run(*args)[1])["readme"]["changed"])
+            self.assertFalse(json.loads(run(*args)[1])["readme"]["changed"])
 
 
 class ContractWithGeneratorTests(unittest.TestCase):
@@ -235,23 +372,33 @@ class ContractWithGeneratorTests(unittest.TestCase):
         self.assertEqual(status, 0)
         self.assertTrue(json.loads(out)["badge_version"])
 
-    def test_example_projects_are_valid_xml_and_their_readmes_match_the_detection(self):
-        for name, expect_version in (("sample-project", True), ("sample-project-unversioned", False)):
+    def test_example_projects_are_valid_and_their_readmes_match_the_detection(self):
+        expected = {
+            "sample-project": ("5.0.2", ["Java"]),
+            "sample-gradle-project": ("5.0.0", ["Java", "Spring Boot", "Gradle"]),
+            "sample-project-unversioned": (None, ["Java", "Spring Boot"]),
+        }
+        for name, (version, development_components) in expected.items():
             project = ROOT / "examples" / name
             with self.subTest(project=name):
-                ET.parse(project / "pom.xml")  # real Maven rejects malformed XML; the regex scanner would not
+                if (project / "pom.xml").exists():
+                    ET.parse(project / "pom.xml")  # real Maven rejects malformed XML; the regex scanner would not
                 status, out, _ = run("--project", project, "--readme", project / "README.md", "--check")
                 result = json.loads(out)
-                self.assertEqual(result["found"], expect_version)
-                self.assertEqual((status, result["readme"]["changed"]), (0, False), "README badge is stale")
+                self.assertEqual(result["version"], version)
+                self.assertEqual([r["component"] for r in result["environment"] if r["category"] == "development"], development_components)
+                self.assertEqual((status, result["readme"]["changed"]), (0, False), "README is stale")
+                self.assertEqual(result["readme"]["blocks"], [dv.START, dv.ENV_START])
 
-    def test_example_workflow_commits_the_rewritten_readme_and_uses_a_real_output_file(self):
+    def test_example_workflow_commits_the_rewritten_readmes_for_every_example(self):
         workflow = (ROOT / ".github/workflows/example-egovframe-badge.yml").read_text(encoding="utf-8")
-        self.assertIn('--github-output "$GITHUB_OUTPUT"', workflow)
         self.assertNotIn("github.output", workflow)  # not a GitHub Actions context
+        self.assertIn("--write", workflow)
         self.assertRegex(workflow, r"git commit")
         self.assertRegex(workflow, r'git push origin "HEAD:\$\{GITHUB_REF_NAME\}"')
-
+        for sample in ("sample-project", "sample-gradle-project", "sample-project-unversioned"):
+            self.assertIn(f"examples/{sample}", workflow)
+            self.assertTrue((ROOT / "examples" / sample / "README.md").is_file(), sample)
     def test_no_scratch_files_are_committed(self):
         tracked = {path.name for path in ROOT.iterdir() if path.is_file()}
         self.assertEqual({name for name in tracked if name.startswith(("fix_", "tmp"))}, set())
