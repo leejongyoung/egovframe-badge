@@ -1,11 +1,11 @@
 # eGovFrame 배지
 
-[![English](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/en/outline.svg)](README.en.md)
-[![한국어](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/ko/flat.svg)](README.ko.md)
-[![Español](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/es/outline.svg)](README.es.md)
-[![Tiếng Việt](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/vi/outline.svg)](README.vi.md)
-[![العربية](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/ar/outline.svg)](README.ar.md)
-[![Français](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/fr/outline.svg)](README.fr.md)
+[![English](../badges/lang/en/outline.svg)](README.en.md)
+[![한국어](../badges/lang/ko/flat.svg)](README.ko.md)
+[![Español](../badges/lang/es/outline.svg)](README.es.md)
+[![Tiếng Việt](../badges/lang/vi/outline.svg)](README.vi.md)
+[![العربية](../badges/lang/ar/outline.svg)](README.ar.md)
+[![Français](../badges/lang/fr/outline.svg)](README.fr.md)
 
 전자정부 표준프레임워크(eGovFrame)를 사용하는 **모든 프로젝트**가 README에 가져다 쓸 수 있는 SVG 배지입니다. 저장소마다 로고를 각자 하드코딩하는 대신, 한 곳에서 관리하는 배지를 raw URL 한 줄로 참조합니다. 정적 SVG라서 JavaScript, 별도 배포 서버, 긴 Base64 URL이 필요하지 않습니다.
 

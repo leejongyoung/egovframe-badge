@@ -1,11 +1,11 @@
 # شارة eGovFrame
 
-[![English](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/en/outline.svg)](README.en.md)
-[![한국어](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/ko/outline.svg)](README.ko.md)
-[![Español](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/es/outline.svg)](README.es.md)
-[![Tiếng Việt](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/vi/outline.svg)](README.vi.md)
-[![العربية](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/ar/flat.svg)](README.ar.md)
-[![Français](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/fr/outline.svg)](README.fr.md)
+[![English](../badges/lang/en/outline.svg)](README.en.md)
+[![한국어](../badges/lang/ko/outline.svg)](README.ko.md)
+[![Español](../badges/lang/es/outline.svg)](README.es.md)
+[![Tiếng Việt](../badges/lang/vi/outline.svg)](README.vi.md)
+[![العربية](../badges/lang/ar/flat.svg)](README.ar.md)
+[![Français](../badges/lang/fr/outline.svg)](README.fr.md)
 
 **شارة SVG واحدة** لكل مشروع يستخدم eGovFrame (إطار الحكومة الإلكترونية). بدلاً من تضمين الشعارات يدويًا في كل مستودع، يتم الرجوع إلى شارة تتم صيانتها مركزيًا عبر عنوان URL خام. صيغة SVG ثابتة — لا حاجة لـ JavaScript، ولا لخادم نشر، ولا لعناوين URL Base64 طويلة.
 

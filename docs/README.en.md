@@ -1,11 +1,11 @@
 # eGovFrame badge
 
-[![English](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/en/flat.svg)](README.en.md)
-[![한국어](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/ko/outline.svg)](README.ko.md)
-[![Español](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/es/outline.svg)](README.es.md)
-[![Tiếng Việt](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/vi/outline.svg)](README.vi.md)
-[![العربية](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/ar/outline.svg)](README.ar.md)
-[![Français](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/fr/outline.svg)](README.fr.md)
+[![English](../badges/lang/en/flat.svg)](README.en.md)
+[![한국어](../badges/lang/ko/outline.svg)](README.ko.md)
+[![Español](../badges/lang/es/outline.svg)](README.es.md)
+[![Tiếng Việt](../badges/lang/vi/outline.svg)](README.vi.md)
+[![العربية](../badges/lang/ar/outline.svg)](README.ar.md)
+[![Français](../badges/lang/fr/outline.svg)](README.fr.md)
 
 A **single SVG badge** for every project using the eGovFrame (electronic Government Framework). Instead of hard-coding logos in each repository, reference one centrally-maintained badge with a raw URL. Static SVG — no JavaScript, no deployment server, no long Base64 URLs.
 

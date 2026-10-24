@@ -1,11 +1,11 @@
 # Security Policy
 
-[![English](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/en/flat.svg)](/docs/security/SECURITY.en.md)
-[![한국어](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/ko/outline.svg)](/docs/security/SECURITY.ko.md)
-[![Español](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/es/outline.svg)](/docs/security/SECURITY.es.md)
-[![Tiếng Việt](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/vi/outline.svg)](/docs/security/SECURITY.vi.md)
-[![العربية](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/ar/outline.svg)](/docs/security/SECURITY.ar.md)
-[![Français](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/fr/outline.svg)](/docs/security/SECURITY.fr.md)
+[![English](/badges/lang/en/flat.svg)](/docs/security/SECURITY.en.md)
+[![한국어](/badges/lang/ko/outline.svg)](/docs/security/SECURITY.ko.md)
+[![Español](/badges/lang/es/outline.svg)](/docs/security/SECURITY.es.md)
+[![Tiếng Việt](/badges/lang/vi/outline.svg)](/docs/security/SECURITY.vi.md)
+[![العربية](/badges/lang/ar/outline.svg)](/docs/security/SECURITY.ar.md)
+[![Français](/badges/lang/fr/outline.svg)](/docs/security/SECURITY.fr.md)
 
 ## Reporting a vulnerability
 

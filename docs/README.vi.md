@@ -1,11 +1,11 @@
 # Huy hiệu eGovFrame
 
-[![English](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/en/outline.svg)](README.en.md)
-[![한국어](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/ko/outline.svg)](README.ko.md)
-[![Español](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/es/outline.svg)](README.es.md)
-[![Tiếng Việt](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/vi/flat.svg)](README.vi.md)
-[![العربية](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/ar/outline.svg)](README.ar.md)
-[![Français](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/fr/outline.svg)](README.fr.md)
+[![English](../badges/lang/en/outline.svg)](README.en.md)
+[![한국어](../badges/lang/ko/outline.svg)](README.ko.md)
+[![Español](../badges/lang/es/outline.svg)](README.es.md)
+[![Tiếng Việt](../badges/lang/vi/flat.svg)](README.vi.md)
+[![العربية](../badges/lang/ar/outline.svg)](README.ar.md)
+[![Français](../badges/lang/fr/outline.svg)](README.fr.md)
 
 Một **huy hiệu SVG đơn lẻ** cho mọi dự án sử dụng eGovFrame (khung điện tử chính phủ). Thay vì nhúng logo vào từng kho, hãy tham chiếu một huy hiệu được quản lý tập trung với một URL raw. SVG tĩnh — không cần JavaScript, không cần máy chủ triển khai, không cần URL Base64 dài.
 

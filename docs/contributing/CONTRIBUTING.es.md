@@ -1,11 +1,11 @@
 # Guía de contribución a eGovFrame Badge
 
-[![English](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/en/outline.svg)](CONTRIBUTING.en.md)
-[![한국어](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/ko/outline.svg)](CONTRIBUTING.ko.md)
-[![Español](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/es/flat.svg)](CONTRIBUTING.es.md)
-[![Tiếng Việt](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/vi/outline.svg)](CONTRIBUTING.vi.md)
-[![العربية](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/ar/outline.svg)](CONTRIBUTING.ar.md)
-[![Français](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/fr/outline.svg)](CONTRIBUTING.fr.md)
+[![English](../../badges/lang/en/outline.svg)](CONTRIBUTING.en.md)
+[![한국어](../../badges/lang/ko/outline.svg)](CONTRIBUTING.ko.md)
+[![Español](../../badges/lang/es/flat.svg)](CONTRIBUTING.es.md)
+[![Tiếng Việt](../../badges/lang/vi/outline.svg)](CONTRIBUTING.vi.md)
+[![العربية](../../badges/lang/ar/outline.svg)](CONTRIBUTING.ar.md)
+[![Français](../../badges/lang/fr/outline.svg)](CONTRIBUTING.fr.md)
 
 ## Antes de abrir un pull request
 
