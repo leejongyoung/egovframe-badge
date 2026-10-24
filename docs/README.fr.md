@@ -1,7 +1,7 @@
 # Badge du Cadre standard de l'administration électronique
 
 <!-- latest-badge:start -->
-[![Cadre standard de l'administration électronique 5.0.6](../badges/5.0.6/flat-fr.svg)](https://www.egovframe.go.kr/)
+[![Cadre standard de l'administration électronique 5.0.7](../badges/5.0.7/flat-fr.svg)](https://www.egovframe.go.kr/)
 [![CI](https://github.com/leejongyoung/egovframe-badge/actions/workflows/verify.yml/badge.svg)](https://github.com/leejongyoung/egovframe-badge/actions/workflows/verify.yml)
 [![Generate badges](https://github.com/leejongyoung/egovframe-badge/actions/workflows/generate-badges.yml/badge.svg)](https://github.com/leejongyoung/egovframe-badge/actions/workflows/generate-badges.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](../LICENSE)
@@ -51,7 +51,7 @@ Boutons de badge autonomes pour le changement de langue dans les `README` multil
 [![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/outline.svg)](docs/README.fr.md)
 ```
 
-Toutes les versions principales du [Guide de l'environnement d'exécution du Cadre standard de l'administration électronique](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드) — de 1.0 à 5.x (52 versions au total) — avec cinq styles chacun : `flat`, `flat-square`, `plastic`, `for-the-badge` et le style personnalisé `outline` (le style `social` de shields.io est exclu car il dépend des effets hover).
+Toutes les versions principales du [Guide de l'environnement d'exécution du Cadre standard de l'administration électronique](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드) — de 1.0 à 5.x (53 versions total) — avec cinq styles chacun : `flat`, `flat-square`, `plastic`, `for-the-badge` et le style personnalisé `outline` (le style `social` de shields.io est exclu car il dépend des effets hover).
 
 | Style | Exemple (Anglais) | Exemple (Français) |
 | --- | --- | --- |
@@ -63,7 +63,7 @@ Toutes les versions principales du [Guide de l'environnement d'exécution du Cad
 
 ## Versions supportées
 
-Toutes les 52 versions du guide de l'environnement d'exécution du Cadre standard de l'administration électronique :
+Toutes les 53 versions du guide de l'environnement d'exécution du Cadre standard de l'administration électronique :
 
 - **5.x** : `5.0`, `5.0.0`, `5.0.1`, `5.0.2`, `5.0.3`, `5.0.4`, `5.0.5`, `5.0.6`
 - **4.x** : `4.3`, `4.3.0`, `4.3.1`, `4.3.2`, `4.2`, `4.2.0`, `4.2.1`, `4.2.2`, `4.1`, `4.1.0`, `4.1.1`, `4.1.2`, `4.0`, `4.0.0`, `4.0.1`

@@ -1,7 +1,7 @@
 # شارة الإطار القياسي للحكومة الإلكترونية
 
 <!-- latest-badge:start -->
-[![الإطار القياسي للحكومة الإلكترونية 5.0.6](../badges/5.0.6/flat-ar.svg)](https://www.egovframe.go.kr/)
+[![الإطار القياسي للحكومة الإلكترونية 5.0.7](../badges/5.0.7/flat-ar.svg)](https://www.egovframe.go.kr/)
 [![CI](https://github.com/leejongyoung/egovframe-badge/actions/workflows/verify.yml/badge.svg)](https://github.com/leejongyoung/egovframe-badge/actions/workflows/verify.yml)
 [![Generate badges](https://github.com/leejongyoung/egovframe-badge/actions/workflows/generate-badges.yml/badge.svg)](https://github.com/leejongyoung/egovframe-badge/actions/workflows/generate-badges.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](../LICENSE)
@@ -51,7 +51,7 @@
 [![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/outline.svg)](docs/README.fr.md)
 ```
 
-جميع إصدارات وقت التشغيل الرئيسية من [دليل بيئة التشغيل للإطار القياسي للحكومة الإلكترونية](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드) — من 1.0 إلى 5.x (إجمالي 52 إصدار) — مع خمسة أنماط لكل منها: `flat`، `flat-square`، `plastic`، `for-the-badge`، والأسلوب المخصص `outline` (تم استبعاد أسلوب `social` من shields.io لأنه يعتمد على تأثيرات hover).
+جميع إصدارات وقت التشغيل الرئيسية من [دليل بيئة التشغيل للإطار القياسي للحكومة الإلكترونية](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드) — من 1.0 إلى 5.x (53 versions total) — مع خمسة أنماط لكل منها: `flat`، `flat-square`، `plastic`، `for-the-badge`، والأسلوب المخصص `outline` (تم استبعاد أسلوب `social` من shields.io لأنه يعتمد على تأثيرات hover).
 
 | الأسلوب | مثال (الإنجليزية) | مثال (العربية) |
 | --- | --- | --- |
@@ -65,7 +65,7 @@
 
 جميع إصدارات دليل بيئة التشغيل للإطار القياسي للحكومة الإلكترونية الـ 52:
 
-- **5.x**: `5.0`، `5.0.0`، `5.0.1`، `5.0.2`، `5.0.3`، `5.0.4`، `5.0.5`، `5.0.6`
+- **5.x**: `5.0`, `5.0.0`, `5.0.1`, `5.0.2`, `5.0.3`, `5.0.4`, `5.0.5`, `5.0.6`, `5.0.7`
 - **4.x**: `4.3`، `4.3.0`، `4.3.1`، `4.3.2`، `4.2`، `4.2.0`، `4.2.1`، `4.2.2`، `4.1`، `4.1.0`، `4.1.1`، `4.1.2`، `4.0`، `4.0.0`، `4.0.1`
 - **3.x**: `3.10`، `3.10.0`، `3.10.1`، `3.10.2`، `3.9`، `3.9.0`، `3.8`، `3.8.0`، `3.7`، `3.7.0`، `3.6`، `3.6.0`، `3.5`، `3.5.0`، `3.5.1`، `3.1`، `3.1.0`، `3.0`، `3.0.0`
 - **2.x**: `2.7`، `2.7.0`، `2.6`، `2.6.0`، `2.5`، `2.5.0`، `2.0`، `2.0.0`

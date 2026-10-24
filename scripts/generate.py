@@ -17,12 +17,16 @@ STYLES = ("flat", "flat-square", "plastic", "for-the-badge", "outline")
 LANGUAGES = ("en", "ko", "es", "vi", "ar", "fr")
 VERSION_PATTERN = re.compile(r"[0-9]+(?:\.[0-9]+){1,3}(?:-[A-Za-z0-9.]+)?\Z")
 SVG_NS = "{http://www.w3.org/2000/svg}"
+# Directory of the name-only badges used when a project declares no eGovFrame version.
+UNVERSIONED = "unversioned"
 
 # Version-badge label metadata per language: (normal_label, prominent_label, normal_width, prominent_width, font_family)
 # Only English keeps the brand name "eGovFrame"; every other language uses its own translation of
 # "전자정부표준프레임워크" (Electronic Government Standard Framework), and the Korean name appears only in "ko".
-# Widths = icon area (29 normal / 33 prominent) + label text measured in Chromium at 11px/600 + 6% font
-# variance + 12/14 right padding, so longer translated names do not overflow the label area.
+# Widths = icon area (29 normal / 33 prominent) + natural text width + right padding (12 / 14). The natural width
+# was measured in Chromium at 11px/600 with the first installed font of each stack (Geeza Pro for Arabic).
+# Viewers fall back to different fonts whose widths differ by up to 40% (Arabic: Arial 124px, Geeza Pro 158px,
+# Tahoma 180px), so languages in FITTED_LANGUAGES pin the text to the label area with textLength.
 VERSION_LABELS = {
     "en": (
         "eGovFrame",
@@ -41,32 +45,35 @@ VERSION_LABELS = {
     "es": (
         "Marco Estándar de Gobierno Electrónico",
         "MARCO ESTÁNDAR DE GOBIERNO ELECTRÓNICO",
-        275,
-        332,
+        262,
+        316,
         "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Arial, sans-serif",
     ),
     "vi": (
         "Khung chuẩn Chính phủ điện tử",
         "KHUNG CHUẨN CHÍNH PHỦ ĐIỆN TỬ",
-        223,
-        261,
+        213,
+        249,
         "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Arial, sans-serif",
     ),
     "ar": (
         "الإطار القياسي للحكومة الإلكترونية",
         "الإطار القياسي للحكومة الإلكترونية",
-        172,
-        178,
-        "'Noto Sans Arabic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif",
+        198,
+        204,
+        "'Geeza Pro', 'Noto Sans Arabic', 'Segoe UI', Tahoma, Arial, sans-serif",
     ),
     "fr": (
         "Cadre standard de l'administration électronique",
         "CADRE STANDARD DE L'ADMINISTRATION ÉLECTRONIQUE",
-        319,
-        387,
+        303,
+        368,
         "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Arial, sans-serif",
     ),
 }
+
+# Labels whose rendered width depends on the viewer's fallback font. ko is left out: CJK fonts share one width per glyph.
+FITTED_LANGUAGES = frozenset({"es", "vi", "ar", "fr"})
 
 # Standalone language-selector badge buttons: code -> (code_label, native_name, name_width, prominent_name_width, font_family)
 LANGUAGE_BUTTONS = {
@@ -118,12 +125,18 @@ def _gloss_markup(width, height, radius, glossy):
     )
 
 
+def badge_directory(version):
+    return UNVERSIONED if version is None else version
+
+
 def render(version, style, paths, lang="en"):
-    if style not in STYLES or not VERSION_PATTERN.fullmatch(version):
+    """Render one badge. `version=None` renders the name-only badge for projects that declare no version."""
+    if style not in STYLES or (version is not None and not VERSION_PATTERN.fullmatch(version)):
         raise ValueError("unsupported badge style or version")
     if lang not in VERSION_LABELS:
         raise ValueError(f"unsupported language: {lang!r}")
 
+    versioned = version is not None
     prominent = style == "for-the-badge"
     outlined = style == "outline"
     glossy = style == "plastic"
@@ -133,7 +146,7 @@ def render(version, style, paths, lang="en"):
     height = 28 if prominent else 22 if outlined else 20
     label_text = prominent_label if prominent else normal_label
     label_width = prominent_w if prominent else normal_w
-    message_width = max(48, (9 if prominent else 8) * len(version) + 18)
+    message_width = max(48, (9 if prominent else 8) * len(version) + 18) if versioned else 0
     width = label_width + message_width
     radius = 0 if squared else 4
     label_color = "#003764" if prominent else "#ffffff"
@@ -147,24 +160,37 @@ def render(version, style, paths, lang="en"):
     label_font_size = 11 if (prominent or lang != "en") else 12
     version_font_size = 11 if prominent else 12
     baseline = height / 2 + (3.7 if prominent else 4)
+    text_x = icon_x + icon_size + 7
+    fit = ""
+    if lang in FITTED_LANGUAGES:
+        text_length = label_width - text_x - (14 if prominent else 12)
+        fit = f' textLength="{text_length}" lengthAdjust="spacingAndGlyphs"'
 
-    aria_label = f"{escape(normal_label, quote=True)} {escape(version, quote=True)}"
-    title_text = f"{escape(normal_label)} {escape(version)} ({style})"
+    aria_label = escape(normal_label, quote=True) + (f" {escape(version, quote=True)}" if versioned else "")
+    title_text = escape(normal_label) + (f" {escape(version)}" if versioned else "") + f" ({style})"
     gloss = _gloss_markup(width, height, radius, glossy)
     stroke = "#134f8c" if outlined else "#d0d7de" if not prominent else "#003764"
+    message_markup = (
+        f'<path d="M{label_width} 0h{message_width}v{height}h-{message_width}z" fill="{message_color}"/>\n'
+        if versioned
+        else ""
+    )
+    version_markup = (
+        f'<text x="{label_width + message_width / 2:g}" y="{baseline:g}" fill="{version_color}" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="{version_font_size}" font-weight="700">{escape(version)}</text>\n'
+        if versioned
+        else ""
+    )
 
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-label="{aria_label}">
 <title>{title_text}</title>
 <defs><clipPath id="badge-shape"><rect width="{width}" height="{height}" rx="{radius}"/></clipPath></defs>
 <g clip-path="url(#badge-shape)">
 <rect width="{width}" height="{height}" rx="{radius}" fill="{label_color}"/>
-<path d="M{label_width} 0h{message_width}v{height}h-{message_width}z" fill="{message_color}"/>
-{gloss}</g>
+{message_markup}{gloss}</g>
 <rect x="0.5" y="0.5" width="{width - 1}" height="{height - 1}" rx="{radius}" fill="none" stroke="{stroke}"/>
 <g transform="translate({icon_x} {icon_y:g}) scale({icon_scale:.8f})">{paths}</g>
-<text x="{icon_x + icon_size + 7}" y="{baseline:g}" fill="{text_color}" font-family="{font_family}" font-size="{label_font_size}" font-weight="600">{escape(label_text)}</text>
-<text x="{label_width + message_width / 2:g}" y="{baseline:g}" fill="{version_color}" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="{version_font_size}" font-weight="700">{escape(version)}</text>
-</svg>
+<text x="{text_x}" y="{baseline:g}" fill="{text_color}" font-family="{font_family}" font-size="{label_font_size}" font-weight="600"{fit}>{escape(label_text)}</text>
+{version_markup}</svg>
 '''
 
 
@@ -232,15 +258,16 @@ def main():
     paths = logo_paths()
 
     expected = {}
-    for version in versions:
+    for version in (*versions, None):
+        directory = OUTPUT / badge_directory(version)
         for style in STYLES:
             for lang in LANGUAGES:
                 svg = render(version, style, paths, lang=lang)
                 if lang == "en":
-                    expected[OUTPUT / version / f"{style}.svg"] = svg
+                    expected[directory / f"{style}.svg"] = svg
                 else:
-                    expected[OUTPUT / version / f"{style}-{lang}.svg"] = svg
-                    expected[OUTPUT / version / lang / f"{style}.svg"] = svg
+                    expected[directory / f"{style}-{lang}.svg"] = svg
+                    expected[directory / lang / f"{style}.svg"] = svg
 
     for lang in LANGUAGE_BUTTONS:
         for style in STYLES:
