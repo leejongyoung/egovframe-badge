@@ -107,11 +107,11 @@ Tất cả các phiên bản chính từ [Hướng dẫn môi trường thực t
 
 | Kiểu dáng | Ví dụ (Tiếng Anh) | Ví dụ (Tiếng Việt) | Nút ngôn ngữ |
 | --- | --- | --- | --- |
-| flat | ![flat](../badges/5.0.1/flat.svg) | ![flat (Tiếng Việt)](../badges/5.0.1/flat-vi.svg) | ![English](../badges/lang/en/flat.svg) ![한국어](../badges/lang/ko/flat.svg) ![Español](../badges/lang/es/flat.svg) ![Tiếng Việt](../badges/lang/vi/flat.svg) ![العربية](../badges/lang/ar/flat.svg) ![Français](../badges/lang/fr/flat.svg) |
-| flat-square | ![flat-square](../badges/5.0.1/flat-square.svg) | ![flat-square (Tiếng Việt)](../badges/5.0.1/flat-square-vi.svg) | ![English](../badges/lang/en/flat-square.svg) ![한국어](../badges/lang/ko/flat-square.svg) ![Español](../badges/lang/es/flat-square.svg) ![Tiếng Việt](../badges/lang/vi/flat-square.svg) ![العربية](../badges/lang/ar/flat-square.svg) ![Français](../badges/lang/fr/flat-square.svg) |
-| plastic | ![plastic](../badges/5.0.1/plastic.svg) | ![plastic (Tiếng Việt)](../badges/5.0.1/plastic-vi.svg) | ![English](../badges/lang/en/plastic.svg) ![한국어](../badges/lang/ko/plastic.svg) ![Español](../badges/lang/es/plastic.svg) ![Tiếng Việt](../badges/lang/vi/plastic.svg) ![العربية](../badges/lang/ar/plastic.svg) ![Français](../badges/lang/fr/plastic.svg) |
-| for-the-badge | ![for-the-badge](../badges/5.0.1/for-the-badge.svg) | ![for-the-badge (Tiếng Việt)](../badges/5.0.1/for-the-badge-vi.svg) | ![English](../badges/lang/en/for-the-badge.svg) ![한국어](../badges/lang/ko/for-the-badge.svg) ![Español](../badges/lang/es/for-the-badge.svg) ![Tiếng Việt](../badges/lang/vi/for-the-badge.svg) ![العربية](../badges/lang/ar/for-the-badge.svg) ![Français](../badges/lang/fr/for-the-badge.svg) |
-| outline | ![outline](../badges/5.0.1/outline.svg) | ![outline (Tiếng Việt)](../badges/5.0.1/outline-vi.svg) | ![English](../badges/lang/en/outline.svg) ![한국어](../badges/lang/ko/outline.svg) ![Español](../badges/lang/es/outline.svg) ![Tiếng Việt](../badges/lang/vi/outline.svg) ![العربية](../badges/lang/ar/outline.svg) ![Français](../badges/lang/fr/outline.svg) |
+| flat | ![flat](../badges/5.0.1/flat.svg) | ![flat (Tiếng Việt)](../badges/5.0.1/flat-vi.svg) | ![Tiếng Việt](../badges/lang/vi/flat.svg) |
+| flat-square | ![flat-square](../badges/5.0.1/flat-square.svg) | ![flat-square (Tiếng Việt)](../badges/5.0.1/flat-square-vi.svg) | ![Tiếng Việt](../badges/lang/vi/flat-square.svg) |
+| plastic | ![plastic](../badges/5.0.1/plastic.svg) | ![plastic (Tiếng Việt)](../badges/5.0.1/plastic-vi.svg) | ![Tiếng Việt](../badges/lang/vi/plastic.svg) |
+| for-the-badge | ![for-the-badge](../badges/5.0.1/for-the-badge.svg) | ![for-the-badge (Tiếng Việt)](../badges/5.0.1/for-the-badge-vi.svg) | ![Tiếng Việt](../badges/lang/vi/for-the-badge.svg) |
+| outline | ![outline](../badges/5.0.1/outline.svg) | ![outline (Tiếng Việt)](../badges/5.0.1/outline-vi.svg) | ![Tiếng Việt](../badges/lang/vi/outline.svg) |
 
 ## Các phiên bản được hỗ trợ
 
