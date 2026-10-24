@@ -1,7 +1,7 @@
-# Badge eGovFrame
+# Badge du Cadre standard de l'administration électronique
 
 <!-- latest-badge:start -->
-[![Cadre standard eGovFrame 5.0.6](../badges/5.0.6/flat-fr.svg)](https://www.egovframe.go.kr/)
+[![Cadre standard de l'administration électronique 5.0.6](../badges/5.0.6/flat-fr.svg)](https://www.egovframe.go.kr/)
 [![CI](https://github.com/leejongyoung/egovframe-badge/actions/workflows/verify.yml/badge.svg)](https://github.com/leejongyoung/egovframe-badge/actions/workflows/verify.yml)
 [![Generate badges](https://github.com/leejongyoung/egovframe-badge/actions/workflows/generate-badges.yml/badge.svg)](https://github.com/leejongyoung/egovframe-badge/actions/workflows/generate-badges.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](../LICENSE)
@@ -14,28 +14,27 @@
 [![العربية](../badges/lang/ar/outline.svg)](README.ar.md)
 [![Français](../badges/lang/fr/flat.svg)](README.fr.md)
 
-Un **seul badge SVG** pour chaque projet utilisant eGovFrame (cadre électronique gouvernemental). Au lieu d'incrustation les logos dans chaque dépôt, référencez un badge maintenu centralement via une URL raw. SVG statique — pas de JavaScript, pas de serveur de déploiement, pas d'URLs Base64 longues.
+Un **seul badge SVG** pour chaque projet utilisant le Cadre standard de l'administration électronique. Au lieu d'incruster les logos dans chaque dépôt, référencez un badge maintenu centralement via une URL raw. SVG statique — pas de JavaScript, pas de serveur de déploiement, pas d'URLs Base64 longues.
 
 ## Utilisation en une ligne
 
 Choisissez la version, le style et la langue (`en`, `ko`, `es`, `vi`, `ar`, `fr`) depuis le chemin de l'URL. Les exemples ci-dessous renvoient au portail officiel.
 
-**Anglais (`eGovFrame`)**
+**Anglais**
 ```md
 [![eGovFrame 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat.svg)](https://www.egovframe.go.kr)
 ```
 
-**Coréen (`전자정부표준프레임워크`)**
+**Français**
 ```md
-[![전자정부표준프레임워크 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-ko.svg)](https://www.egovframe.go.kr)
+[![Cadre standard de l'administration électronique 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-fr.svg)](https://www.egovframe.go.kr)
 ```
 
-**Badges de version multilingues (`es` Espagnol · `vi` Vietnamien · `ar` Arabe · `fr` Français)**
+**Badges de version multilingues (`es` espagnol · `vi` vietnamien · `ar` arabe)**
 ```md
-[![Marco Estándar eGovFrame 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-es.svg)](https://www.egovframe.go.kr)
-[![Khung chuẩn eGovFrame 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-vi.svg)](https://www.egovframe.go.kr)
-[![إطار eGovFrame القياسي 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-ar.svg)](https://www.egovframe.go.kr)
-[![Cadre standard eGovFrame 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-fr.svg)](https://www.egovframe.go.kr)
+[![Marco Estándar de Gobierno Electrónico 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-es.svg)](https://www.egovframe.go.kr)
+[![Khung chuẩn Chính phủ điện tử 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-vi.svg)](https://www.egovframe.go.kr)
+[![الإطار القياسي للحكومة الإلكترونية 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-ar.svg)](https://www.egovframe.go.kr)
 ```
 *(Tous les badges multilingues supportent à la fois les chemins `badges/5.0.2/flat-<lang>.svg` et `badges/5.0.2/<lang>/flat.svg`.)*
 
@@ -52,19 +51,19 @@ Boutons de badge autonomes pour le changement de langue dans les `README` multil
 [![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/outline.svg)](docs/README.fr.md)
 ```
 
-Toutes les versions principales du [eGovFrame Runtime Guide](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드) — de 1.0 à 5.x (52 versions au total) — avec cinq styles chacun : `flat`, `flat-square`, `plastic`, `for-the-badge` et le style personnalisé `outline` (le style `social` de shields.io est exclu car il dépend des effets hover).
+Toutes les versions principales du [Guide de l'environnement d'exécution du Cadre standard de l'administration électronique](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드) — de 1.0 à 5.x (52 versions au total) — avec cinq styles chacun : `flat`, `flat-square`, `plastic`, `for-the-badge` et le style personnalisé `outline` (le style `social` de shields.io est exclu car il dépend des effets hover).
 
-| Style | Exemple (Anglais) | Exemple (Coréen) |
+| Style | Exemple (Anglais) | Exemple (Français) |
 | --- | --- | --- |
-| flat | ![flat](../badges/5.0.1/flat.svg) | ![flat (Coréen)](../badges/5.0.1/flat-ko.svg) |
-| flat-square | ![flat-square](../badges/5.0.1/flat-square.svg) | ![flat-square (Coréen)](../badges/5.0.1/flat-square-ko.svg) |
-| plastic | ![plastic](../badges/5.0.1/plastic.svg) | ![plastic (Coréen)](../badges/5.0.1/plastic-ko.svg) |
-| for-the-badge | ![for-the-badge](../badges/5.0.1/for-the-badge.svg) | ![for-the-badge (Coréen)](../badges/5.0.1/for-the-badge-ko.svg) |
-| outline | ![outline](../badges/5.0.1/outline.svg) | ![outline (Coréen)](../badges/5.0.1/outline-ko.svg) |
+| flat | ![flat](../badges/5.0.1/flat.svg) | ![flat (Français)](../badges/5.0.1/flat-fr.svg) |
+| flat-square | ![flat-square](../badges/5.0.1/flat-square.svg) | ![flat-square (Français)](../badges/5.0.1/flat-square-fr.svg) |
+| plastic | ![plastic](../badges/5.0.1/plastic.svg) | ![plastic (Français)](../badges/5.0.1/plastic-fr.svg) |
+| for-the-badge | ![for-the-badge](../badges/5.0.1/for-the-badge.svg) | ![for-the-badge (Français)](../badges/5.0.1/for-the-badge-fr.svg) |
+| outline | ![outline](../badges/5.0.1/outline.svg) | ![outline (Français)](../badges/5.0.1/outline-fr.svg) |
 
 ## Versions supportées
 
-Toutes les 52 versions du guide d'exécution eGovFrame :
+Toutes les 52 versions du guide de l'environnement d'exécution du Cadre standard de l'administration électronique :
 
 - **5.x** : `5.0`, `5.0.0`, `5.0.1`, `5.0.2`, `5.0.3`, `5.0.4`, `5.0.5`, `5.0.6`
 - **4.x** : `4.3`, `4.3.0`, `4.3.1`, `4.3.2`, `4.2`, `4.2.0`, `4.2.1`, `4.2.2`, `4.1`, `4.1.0`, `4.1.1`, `4.1.2`, `4.0`, `4.0.0`, `4.0.1`
@@ -90,7 +89,7 @@ python3 scripts/generate.py --check
 - `scripts/generate.py --check` et CI vérifient que la sortie générée correspond à la source. Les changements de style s'appliquent de façon cohérente sur toutes les versions.
 - Le style `plastic` utilise les mêmes arrêts de gradient glossy que shields.io. `for-the-badge` utilise des coins carrés (`rx="0"`) comme shields.io.
 
-Logo extrait du badge README existant d'eGovFramework. Les droits du logo et du nom eGovFrame appartiennent à leurs propriétaires respectifs.
+Logo extrait du badge README existant d'eGovFramework. Les droits du logo et du nom du Cadre standard de l'administration électronique appartiennent à leurs propriétaires respectifs.
 
 ## Licence
 

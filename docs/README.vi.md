@@ -1,7 +1,7 @@
-# Huy hiệu eGovFrame
+# Huy hiệu Khung chuẩn Chính phủ điện tử
 
 <!-- latest-badge:start -->
-[![Khung chuẩn eGovFrame 5.0.6](../badges/5.0.6/flat-vi.svg)](https://www.egovframe.go.kr/)
+[![Khung chuẩn Chính phủ điện tử 5.0.6](../badges/5.0.6/flat-vi.svg)](https://www.egovframe.go.kr/)
 [![CI](https://github.com/leejongyoung/egovframe-badge/actions/workflows/verify.yml/badge.svg)](https://github.com/leejongyoung/egovframe-badge/actions/workflows/verify.yml)
 [![Generate badges](https://github.com/leejongyoung/egovframe-badge/actions/workflows/generate-badges.yml/badge.svg)](https://github.com/leejongyoung/egovframe-badge/actions/workflows/generate-badges.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](../LICENSE)
@@ -14,28 +14,27 @@
 [![العربية](../badges/lang/ar/outline.svg)](README.ar.md)
 [![Français](../badges/lang/fr/outline.svg)](README.fr.md)
 
-Một **huy hiệu SVG đơn lẻ** cho mọi dự án sử dụng eGovFrame (khung điện tử chính phủ). Thay vì nhúng logo vào từng kho, hãy tham chiếu một huy hiệu được quản lý tập trung với một URL raw. SVG tĩnh — không cần JavaScript, không cần máy chủ triển khai, không cần URL Base64 dài.
+Một **huy hiệu SVG đơn lẻ** cho mọi dự án sử dụng Khung chuẩn Chính phủ điện tử. Thay vì nhúng logo vào từng kho, hãy tham chiếu một huy hiệu được quản lý tập trung với một URL raw. SVG tĩnh — không cần JavaScript, không cần máy chủ triển khai, không cần URL Base64 dài.
 
 ## Sử dụng trong một dòng
 
 Chọn phiên bản, kiểu dáng và ngôn ngữ (`en`, `ko`, `es`, `vi`, `ar`, `fr`) từ đường dẫn URL. Các ví dụ dưới đây liên kết đến cổng chính thức.
 
-**Tiếng Anh (`eGovFrame`)**
+**Tiếng Anh**
 ```md
 [![eGovFrame 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat.svg)](https://www.egovframe.go.kr)
 ```
 
-**Tiếng Hàn (`전자정부표준프레임워크`)**
+**Tiếng Việt**
 ```md
-[![전자정부표준프레임워크 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-ko.svg)](https://www.egovframe.go.kr)
+[![Khung chuẩn Chính phủ điện tử 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-vi.svg)](https://www.egovframe.go.kr)
 ```
 
-**Huy hiệu phiên bản đa ngôn ngữ (`es` Tây Ban Nha · `vi` Việt Nam · `ar` Ả Rập · `fr` Pháp)**
+**Huy hiệu phiên bản đa ngôn ngữ (`es` tiếng Tây Ban Nha · `ar` tiếng Ả Rập · `fr` tiếng Pháp)**
 ```md
-[![Marco Estándar eGovFrame 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-es.svg)](https://www.egovframe.go.kr)
-[![Khung chuẩn eGovFrame 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-vi.svg)](https://www.egovframe.go.kr)
-[![إطار eGovFrame القياسي 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-ar.svg)](https://www.egovframe.go.kr)
-[![Cadre standard eGovFrame 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-fr.svg)](https://www.egovframe.go.kr)
+[![Marco Estándar de Gobierno Electrónico 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-es.svg)](https://www.egovframe.go.kr)
+[![الإطار القياسي للحكومة الإلكترونية 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-ar.svg)](https://www.egovframe.go.kr)
+[![Cadre standard de l'administration électronique 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-fr.svg)](https://www.egovframe.go.kr)
 ```
 *(Tất cả huy hiệu đa ngôn ngữ đều hỗ trợ cả hai đường dẫn `badges/5.0.2/flat-<lang>.svg` và `badges/5.0.2/<lang>/flat.svg`.)*
 
@@ -52,19 +51,19 @@ Các nút huy hiệu độc lập để chuyển đổi ngôn ngữ trong `READM
 [![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/outline.svg)](docs/README.fr.md)
 ```
 
-Tất cả các phiên bản chính từ [eGovFrame Runtime Guide](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드) — từ 1.0 đến 5.x (tổng cộng 52 phiên bản) — với năm kiểu dáng mỗi loại: `flat`, `flat-square`, `plastic`, `for-the-badge` và kiểu tùy chỉnh `outline` (kiểu `social` của shields.io bị loại vì phụ thuộc vào hiệu ứng hover).
+Tất cả các phiên bản chính từ [Hướng dẫn môi trường thực thi của Khung chuẩn Chính phủ điện tử](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드) — từ 1.0 đến 5.x (tổng cộng 52 phiên bản) — với năm kiểu dáng mỗi loại: `flat`, `flat-square`, `plastic`, `for-the-badge` và kiểu tùy chỉnh `outline` (kiểu `social` của shields.io bị loại vì phụ thuộc vào hiệu ứng hover).
 
-| Kiểu dáng | Ví dụ (Tiếng Anh) | Ví dụ (Tiếng Hàn) |
+| Kiểu dáng | Ví dụ (Tiếng Anh) | Ví dụ (Tiếng Việt) |
 | --- | --- | --- |
-| flat | ![flat](../badges/5.0.1/flat.svg) | ![flat (Tiếng Hàn)](../badges/5.0.1/flat-ko.svg) |
-| flat-square | ![flat-square](../badges/5.0.1/flat-square.svg) | ![flat-square (Tiếng Hàn)](../badges/5.0.1/flat-square-ko.svg) |
-| plastic | ![plastic](../badges/5.0.1/plastic.svg) | ![plastic (Tiếng Hàn)](../badges/5.0.1/plastic-ko.svg) |
-| for-the-badge | ![for-the-badge](../badges/5.0.1/for-the-badge.svg) | ![for-the-badge (Tiếng Hàn)](../badges/5.0.1/for-the-badge-ko.svg) |
-| outline | ![outline](../badges/5.0.1/outline.svg) | ![outline (Tiếng Hàn)](../badges/5.0.1/outline-ko.svg) |
+| flat | ![flat](../badges/5.0.1/flat.svg) | ![flat (Tiếng Việt)](../badges/5.0.1/flat-vi.svg) |
+| flat-square | ![flat-square](../badges/5.0.1/flat-square.svg) | ![flat-square (Tiếng Việt)](../badges/5.0.1/flat-square-vi.svg) |
+| plastic | ![plastic](../badges/5.0.1/plastic.svg) | ![plastic (Tiếng Việt)](../badges/5.0.1/plastic-vi.svg) |
+| for-the-badge | ![for-the-badge](../badges/5.0.1/for-the-badge.svg) | ![for-the-badge (Tiếng Việt)](../badges/5.0.1/for-the-badge-vi.svg) |
+| outline | ![outline](../badges/5.0.1/outline.svg) | ![outline (Tiếng Việt)](../badges/5.0.1/outline-vi.svg) |
 
 ## Các phiên bản được hỗ trợ
 
-Tất cả 52 phiên bản từ Hướng dẫn Thời gian Chạy eGovFrame:
+Tất cả 52 phiên bản từ Hướng dẫn môi trường thực thi của Khung chuẩn Chính phủ điện tử:
 
 - **5.x**: `5.0`, `5.0.0`, `5.0.1`, `5.0.2`, `5.0.3`, `5.0.4`, `5.0.5`, `5.0.6`
 - **4.x**: `4.3`, `4.3.0`, `4.3.1`, `4.3.2`, `4.2`, `4.2.0`, `4.2.1`, `4.2.2`, `4.1`, `4.1.0`, `4.1.1`, `4.1.2`, `4.0`, `4.0.0`, `4.0.1`
@@ -90,7 +89,7 @@ python3 scripts/generate.py --check
 - `scripts/generate.py --check` và CI kiểm tra đầu ra tạo ra khớp với nguồn. Thay đổi kiểu dáng áp dụng nhất quán cho tất cả các phiên bản.
 - Kiểu `plastic` sử dụng các dừng gradient gloss giống như shields.io. `for-the-badge` sử dụng góc vuông (`rx="0"`) giống như shields.io.
 
-Logo được trích xuất từ huy hiệu README hiện có của eGovFramework. Quyền logo và tên eGovFrame thuộc về chủ sở hữu tương ứng.
+Logo được trích xuất từ huy hiệu README hiện có của eGovFramework. Quyền logo và tên Khung chuẩn Chính phủ điện tử thuộc về chủ sở hữu tương ứng.
 
 ## Giấy phép
 

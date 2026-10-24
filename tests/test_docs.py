@@ -50,6 +50,17 @@ def local_targets(text):
             yield target
 
 
+def prose(text):
+    """Text outside code fences and inline code, where the framework name is written for readers."""
+    lines, in_fence = [], False
+    for line in text.split("\n"):
+        if FENCE.match(line):
+            in_fence = not in_fence
+        elif not in_fence:
+            lines.append(CODE_SPAN.sub("", line))
+    return "\n".join(lines)
+
+
 def source_files():
     return [ROOT / pattern.format(lang=lang) for pattern in SOURCES.values() for lang in LANGS]
 
@@ -135,6 +146,15 @@ class DocumentationTests(unittest.TestCase):
                 )
         self.assertTrue((ROOT / "LICENSE").read_text(encoding="utf-8").startswith("MIT License"))
 
+    def test_framework_name_is_localized_and_korean_name_stays_in_korean_documents(self):
+        for path in source_files():
+            lang = path.name.split(".")[-2]
+            text = path.read_text(encoding="utf-8")
+            with self.subTest(file=path.relative_to(ROOT).as_posix()):
+                # "eGovFramework" is the GitHub organization, not the framework name.
+                self.assertEqual("eGovFrame" in prose(text).replace("eGovFramework", ""), lang == "en")
+                self.assertEqual("전자정부표준프레임워크" in text, lang == "ko")
+
     def test_default_language_selects_every_entrypoint(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -147,7 +167,7 @@ class DocumentationTests(unittest.TestCase):
             self.assertEqual(sorted(sr.sync(root)), sorted(sr.ENTRIES.values()))
             self.assertEqual(sr.sync(root), [])
             readme = (root / "README.md").read_text(encoding="utf-8")
-            self.assertTrue(readme.startswith("# eGovFrame 배지"))
+            self.assertTrue(readme.startswith("# 전자정부표준프레임워크 배지"))
             self.assertIn("![flat](badges/5.0.1/flat.svg)", readme)
             self.assertIn("](docs/README.en.md)", readme)
             self.assertIn(f"](badges/{latest_version()}/flat-ko.svg)", readme)

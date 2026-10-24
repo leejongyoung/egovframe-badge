@@ -34,7 +34,7 @@ Trong phạm vi:
 
 Ngoài phạm vi, báo cáo cho chủ sở hữu:
 
-- Framework eGovFrame và máy chủ tải xuống → dự án eGovFrame, <https://www.egovframe.go.kr/> và [eGovFramework](https://github.com/eGovFramework).
+- Khung chuẩn Chính phủ điện tử và máy chủ tải xuống → dự án Khung chuẩn Chính phủ điện tử, <https://www.egovframe.go.kr/> và [eGovFramework](https://github.com/eGovFramework).
 - GitHub bản thân → <https://github.com/github/github/security/policy>.
 - shields.io → <https://github.com/badges/shields/security/policy>.
 

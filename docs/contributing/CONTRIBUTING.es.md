@@ -1,4 +1,4 @@
-# Guía de contribución a eGovFrame Badge
+# Guía de contribución a la insignia del Marco Estándar de Gobierno Electrónico
 
 [![English](../../badges/lang/en/outline.svg)](CONTRIBUTING.en.md)
 [![한국어](../../badges/lang/ko/outline.svg)](CONTRIBUTING.ko.md)

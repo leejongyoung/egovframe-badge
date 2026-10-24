@@ -34,7 +34,7 @@ En alcance:
 
 Fuera de alcance, notifique al propietario:
 
-- El framework eGovFrame y su servidor de descarga → el proyecto eGovFrame, <https://www.egovframe.go.kr/> y [eGovFramework](https://github.com/eGovFramework).
+- El Marco Estándar de Gobierno Electrónico y su servidor de descarga → el proyecto del Marco Estándar de Gobierno Electrónico, <https://www.egovframe.go.kr/> y [eGovFramework](https://github.com/eGovFramework).
 - GitHub mismo → <https://github.com/github/github/security/policy>.
 - shields.io → <https://github.com/badges/shields/security/policy>.
 
