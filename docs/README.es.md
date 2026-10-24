@@ -1,5 +1,12 @@
 # Insignia eGovFrame
 
+<!-- latest-badge:start -->
+[![Marco Estándar eGovFrame 5.0.6](../badges/5.0.6/flat-es.svg)](https://www.egovframe.go.kr/)
+[![CI](https://github.com/leejongyoung/egovframe-badge/actions/workflows/verify.yml/badge.svg)](https://github.com/leejongyoung/egovframe-badge/actions/workflows/verify.yml)
+[![Generate badges](https://github.com/leejongyoung/egovframe-badge/actions/workflows/generate-badges.yml/badge.svg)](https://github.com/leejongyoung/egovframe-badge/actions/workflows/generate-badges.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](../LICENSE)
+<!-- latest-badge:end -->
+
 [![English](../badges/lang/en/outline.svg)](README.en.md)
 [![한국어](../badges/lang/ko/outline.svg)](README.ko.md)
 [![Español](../badges/lang/es/flat.svg)](README.es.md)
