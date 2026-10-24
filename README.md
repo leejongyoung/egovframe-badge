@@ -34,7 +34,7 @@ Add the badge markers to your README and run the detector (CI or local):
 
 ```md
 <!-- egovframe-badge:start -->
-[![eGovFrame](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/unversioned/flat.svg)](https://www.egovframe.go.kr/)
+[![eGovFrame](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/unversioned/flat.svg)](https://www.egovframe.go.kr/)
 <!-- egovframe-badge:end -->
 ```
 
@@ -94,7 +94,7 @@ Add the badge markers to your README and run the detector (CI or local):
 
 ```md
 <!-- egovframe-badge:start -->
-[![eGovFrame](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/unversioned/flat.svg)](https://www.egovframe.go.kr/)
+[![eGovFrame](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/unversioned/flat.svg)](https://www.egovframe.go.kr/)
 <!-- egovframe-badge:end -->
 ```
 

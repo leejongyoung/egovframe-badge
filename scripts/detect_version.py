@@ -23,7 +23,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RAW_BASE = "https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges"
+RAW_BASE = "https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges"
 PORTAL = "https://www.egovframe.go.kr/"
 STYLES = ("flat", "flat-square", "plastic", "for-the-badge", "outline")
 UNVERSIONED = "unversioned"
