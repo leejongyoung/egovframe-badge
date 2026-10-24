@@ -1,0 +1,58 @@
+name: Example eGovFrame badge update
+
+# This workflow demonstrates automatic badge version updates.
+# Consumer projects can copy this file and adjust the paths/inputs as needed.
+# The detect_version script runs from this repository at the pinned ref below.
+
+on:
+  push:
+    branches: [main, work, egovframework]
+    paths:
+      - 'examples/sample-project/**'
+  workflow_dispatch:
+    inputs:
+      project-dir:
+        description: 'Directory containing the project to scan (relative to workspace root)'
+        required: true
+        default: 'examples/sample-project'
+      language:
+        description: 'Badge language'
+        required: true
+        default: 'en'
+        type: choice
+        options: [en, ko, es, vi, ar, fr]
+      style:
+        description: 'Badge style'
+        required: true
+        default: 'flat'
+        type: choice
+        options: [flat, flat-square, plastic, for-the-badge, outline]
+
+permissions:
+  contents: write
+
+jobs:
+  update-badge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this repo (badge source and scripts)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect eGovFrame version
+        id: detect
+        run: |
+          python3 scripts/detect_version.py \
+            --project "${{ github.event.inputs.project-dir || 'examples/sample-project' }}" \
+            --readme "${{ github.event.inputs.project-dir || 'examples/sample-project' }}/README.md" \
+            --language "${{ github.event.inputs.language || 'en' }}" \
+            --style "${{ github.event.inputs.style || 'flat' }}" \
+            --write \
+            --github-output ${{ github.output }}
+      - name: Log result
+        run: |
+          echo "Detected version: ${{ steps.detect.outputs.version }}"
+          echo "Badge version: ${{ steps.detect.outputs.badge_version }}"
+          echo "Source: ${{ steps.detect.outputs.source }}"
+          echo "Changed: ${{ steps.detect.outputs.changed }}"

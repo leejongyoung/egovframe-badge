@@ -52,6 +52,37 @@ class BadgeGenerationTests(unittest.TestCase):
                     self.assertEqual("egovframe" in svg.lower(), lang == "en")
                     self.assertEqual("전자정부표준프레임워크" in svg, lang == "ko")
 
+    def test_unversioned_badges_show_only_the_name_without_a_version_area(self):
+        paths = generate.logo_paths()
+        for lang in generate.LANGUAGES:
+            label, prominent_label, label_width, prominent_width, _font = generate.VERSION_LABELS[lang]
+            for style in generate.STYLES:
+                svg = generate.render(None, style, paths, lang=lang)
+                root = ET.fromstring(svg)
+                prominent = style == "for-the-badge"
+                with self.subTest(lang=lang, style=style):
+                    self.assertEqual(root.attrib["aria-label"], label)
+                    self.assertEqual(int(root.attrib["width"]), prominent_width if prominent else label_width)
+                    self.assertEqual(len(root.findall(".//{http://www.w3.org/2000/svg}text")), 1)
+                    self.assertEqual(len(root.findall(".//{http://www.w3.org/2000/svg}g[@clip-path]/{http://www.w3.org/2000/svg}path")), 0)
+                    self.assertNotRegex(root.attrib["aria-label"], r"\d")
+                    self.assertEqual(root.find("{http://www.w3.org/2000/svg}title").text, f"{label} ({style})")
+
+    def test_fitted_languages_pin_label_text_to_the_label_area_so_no_font_can_overflow(self):
+        paths = generate.logo_paths()
+        for lang in generate.LANGUAGES:
+            _label, _prominent_label, normal_width, prominent_width, _font = generate.VERSION_LABELS[lang]
+            for style in generate.STYLES:
+                for version in ("5.0.7", None):
+                    svg = generate.render(version, style, paths, lang=lang)
+                    prominent = style == "for-the-badge"
+                    expected = (prominent_width - 33 - 14) if prominent else (normal_width - 29 - 12)
+                    with self.subTest(lang=lang, style=style, version=version):
+                        if lang in generate.FITTED_LANGUAGES:
+                            self.assertIn(f'textLength="{expected}" lengthAdjust="spacingAndGlyphs"', svg)
+                        else:
+                            self.assertNotIn("textLength", svg)
+
     def test_rejects_invalid_paths_and_styles(self):
         for version in ("../5.0", "5/0", "<script>"):
             with self.assertRaises(ValueError):
@@ -72,7 +103,7 @@ class BadgeGenerationTests(unittest.TestCase):
             "2.0", "2.0.0", "2.5", "2.6", "2.7",
             "3.0", "3.0.0", "3.1", "3.5", "3.5.1", "3.6", "3.7", "3.8", "3.9", "3.10",
             "4.0", "4.0.0", "4.1", "4.2", "4.3",
-            "5.0", "5.0.0", "5.0.1",
+            "5.0", "5.0.0", "5.0.1", "5.0.7",
         )
         for v in expected_milestones:
             with self.subTest(version=v):
