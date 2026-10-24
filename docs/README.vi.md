@@ -1,7 +1,7 @@
 # Huy hiệu Khung chuẩn Chính phủ điện tử
 
 <!-- latest-badge:start -->
-[![Khung chuẩn Chính phủ điện tử 5.0.6](../badges/5.0.6/flat-vi.svg)](https://www.egovframe.go.kr/)
+[![Khung chuẩn Chính phủ điện tử 5.0.7](../badges/5.0.7/flat-vi.svg)](https://www.egovframe.go.kr/)
 [![CI](https://github.com/leejongyoung/egovframe-badge/actions/workflows/verify.yml/badge.svg)](https://github.com/leejongyoung/egovframe-badge/actions/workflows/verify.yml)
 [![Generate badges](https://github.com/leejongyoung/egovframe-badge/actions/workflows/generate-badges.yml/badge.svg)](https://github.com/leejongyoung/egovframe-badge/actions/workflows/generate-badges.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](../LICENSE)
@@ -51,7 +51,7 @@ Các nút huy hiệu độc lập để chuyển đổi ngôn ngữ trong `READM
 [![Français](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/fr/outline.svg)](docs/README.fr.md)
 ```
 
-Tất cả các phiên bản chính từ [Hướng dẫn môi trường thực thi của Khung chuẩn Chính phủ điện tử](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드) — từ 1.0 đến 5.x (tổng cộng 52 phiên bản) — với năm kiểu dáng mỗi loại: `flat`, `flat-square`, `plastic`, `for-the-badge` và kiểu tùy chỉnh `outline` (kiểu `social` của shields.io bị loại vì phụ thuộc vào hiệu ứng hover).
+Tất cả các phiên bản chính từ [Hướng dẫn môi trường thực thi của Khung chuẩn Chính phủ điện tử](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드) — từ 1.0 đến 5.x (53 versions total) — với năm kiểu dáng mỗi loại: `flat`, `flat-square`, `plastic`, `for-the-badge` và kiểu tùy chỉnh `outline` (kiểu `social` của shields.io bị loại vì phụ thuộc vào hiệu ứng hover).
 
 | Kiểu dáng | Ví dụ (Tiếng Anh) | Ví dụ (Tiếng Việt) |
 | --- | --- | --- |
@@ -63,9 +63,9 @@ Tất cả các phiên bản chính từ [Hướng dẫn môi trường thực t
 
 ## Các phiên bản được hỗ trợ
 
-Tất cả 52 phiên bản từ Hướng dẫn môi trường thực thi của Khung chuẩn Chính phủ điện tử:
+Tất cả 53 phiên bản từ Hướng dẫn môi trường thực thi của Khung chuẩn Chính phủ điện tử:
 
-- **5.x**: `5.0`, `5.0.0`, `5.0.1`, `5.0.2`, `5.0.3`, `5.0.4`, `5.0.5`, `5.0.6`
+- **5.x**: `5.0`, `5.0.0`, `5.0.1`, `5.0.2`, `5.0.3`, `5.0.4`, `5.0.5`, `5.0.6`, `5.0.7`
 - **4.x**: `4.3`, `4.3.0`, `4.3.1`, `4.3.2`, `4.2`, `4.2.0`, `4.2.1`, `4.2.2`, `4.1`, `4.1.0`, `4.1.1`, `4.1.2`, `4.0`, `4.0.0`, `4.0.1`
 - **3.x**: `3.10`, `3.10.0`, `3.10.1`, `3.10.2`, `3.9`, `3.9.0`, `3.8`, `3.8.0`, `3.7`, `3.7.0`, `3.6`, `3.6.0`, `3.5`, `3.5.0`, `3.5.1`, `3.1`, `3.1.0`, `3.0`, `3.0.0`
 - **2.x**: `2.7`, `2.7.0`, `2.6`, `2.6.0`, `2.5`, `2.5.0`, `2.0`, `2.0.0`
