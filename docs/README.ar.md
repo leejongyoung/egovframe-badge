@@ -1,7 +1,7 @@
-# شارة eGovFrame
+# شارة الإطار القياسي للحكومة الإلكترونية
 
 <!-- latest-badge:start -->
-[![إطار eGovFrame القياسي 5.0.6](../badges/5.0.6/flat-ar.svg)](https://www.egovframe.go.kr/)
+[![الإطار القياسي للحكومة الإلكترونية 5.0.6](../badges/5.0.6/flat-ar.svg)](https://www.egovframe.go.kr/)
 [![CI](https://github.com/leejongyoung/egovframe-badge/actions/workflows/verify.yml/badge.svg)](https://github.com/leejongyoung/egovframe-badge/actions/workflows/verify.yml)
 [![Generate badges](https://github.com/leejongyoung/egovframe-badge/actions/workflows/generate-badges.yml/badge.svg)](https://github.com/leejongyoung/egovframe-badge/actions/workflows/generate-badges.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](../LICENSE)
@@ -14,28 +14,27 @@
 [![العربية](../badges/lang/ar/flat.svg)](README.ar.md)
 [![Français](../badges/lang/fr/outline.svg)](README.fr.md)
 
-**شارة SVG واحدة** لكل مشروع يستخدم eGovFrame (إطار الحكومة الإلكترونية). بدلاً من تضمين الشعارات يدويًا في كل مستودع، يتم الرجوع إلى شارة تتم صيانتها مركزيًا عبر عنوان URL خام. صيغة SVG ثابتة — لا حاجة لـ JavaScript، ولا لخادم نشر، ولا لعناوين URL Base64 طويلة.
+**شارة SVG واحدة** لكل مشروع يستخدم الإطار القياسي للحكومة الإلكترونية. بدلاً من تضمين الشعارات يدويًا في كل مستودع، يتم الرجوع إلى شارة تتم صيانتها مركزيًا عبر عنوان URL خام. صيغة SVG ثابتة — لا حاجة لـ JavaScript، ولا لخادم نشر، ولا لعناوين URL Base64 طويلة.
 
 ## الاستخدام في سطر واحد
 
 اختر الإصدار والأسلوب واللغة (`en`، `ko`، `es`، `vi`، `ar`، `fr`) من مسار URL. الأمثلة أدناه ترتبط بالبوابة الرسمية.
 
-**الإنجليزية (`eGovFrame`)**
+**الإنجليزية**
 ```md
 [![eGovFrame 5.0.2](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/5.0.2/flat.svg)](https://www.egovframe.go.kr)
 ```
 
-**الكورية (`전자정부표준프레임워크`)**
+**العربية**
 ```md
-[![전자정부표준프레임워크 5.0.2](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/5.0.2/flat-ko.svg)](https://www.egovframe.go.kr)
+[![الإطار القياسي للحكومة الإلكترونية 5.0.2](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/5.0.2/flat-ar.svg)](https://www.egovframe.go.kr)
 ```
 
-**شارات الإصدارات متعددة اللغات (`es` إسبانية · `vi` فيتنامية · `ar` عربية · `fr` فرنسية)**
+**شارات الإصدارات متعددة اللغات (`es` الإسبانية · `vi` الفيتنامية · `fr` الفرنسية)**
 ```md
-[![Marco Estándar eGovFrame 5.0.2](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/5.0.2/flat-es.svg)](https://www.egovframe.go.kr)
-[![Khung chuẩn eGovFrame 5.0.2](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/5.0.2/flat-vi.svg)](https://www.egovframe.go.kr)
-[![إطار eGovFrame القياسي 5.0.2](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/5.0.2/flat-ar.svg)](https://www.egovframe.go.kr)
-[![Cadre standard eGovFrame 5.0.2](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/5.0.2/flat-fr.svg)](https://www.egovframe.go.kr)
+[![Marco Estándar de Gobierno Electrónico 5.0.2](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/5.0.2/flat-es.svg)](https://www.egovframe.go.kr)
+[![Khung chuẩn Chính phủ điện tử 5.0.2](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/5.0.2/flat-vi.svg)](https://www.egovframe.go.kr)
+[![Cadre standard de l'administration électronique 5.0.2](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/5.0.2/flat-fr.svg)](https://www.egovframe.go.kr)
 ```
 *(جميع الشارات متعددة اللغات تدعم كلاً من مسارات `badges/5.0.2/flat-<lang>.svg` و `badges/5.0.2/<lang>/flat.svg`.)*
 
@@ -52,19 +51,19 @@
 [![Français](https://raw.githubusercontent.com/egovframework/egovframe-badge/main/badges/lang/fr/outline.svg)](docs/README.fr.md)
 ```
 
-جميع إصدارات وقت التشغيل الرئيسية من [دليل وقت تشغيل eGovFrame](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드) — من 1.0 إلى 5.x (إجمالي 52 إصدار) — مع خمسة أنماط لكل منها: `flat`، `flat-square`، `plastic`، `for-the-badge`، والأسلوب المخصص `outline` (تم استبعاد أسلوب `social` من shields.io لأنه يعتمد على تأثيرات hover).
+جميع إصدارات وقت التشغيل الرئيسية من [دليل بيئة التشغيل للإطار القياسي للحكومة الإلكترونية](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드) — من 1.0 إلى 5.x (إجمالي 52 إصدار) — مع خمسة أنماط لكل منها: `flat`، `flat-square`، `plastic`، `for-the-badge`، والأسلوب المخصص `outline` (تم استبعاد أسلوب `social` من shields.io لأنه يعتمد على تأثيرات hover).
 
-| الأسلوب | مثال (الإنجليزية) | مثال (الكورية) |
+| الأسلوب | مثال (الإنجليزية) | مثال (العربية) |
 | --- | --- | --- |
-| flat | ![flat](../badges/5.0.1/flat.svg) | ![flat (الكورية)](../badges/5.0.1/flat-ko.svg) |
-| flat-square | ![flat-square](../badges/5.0.1/flat-square.svg) | ![flat-square (الكورية)](../badges/5.0.1/flat-square-ko.svg) |
-| plastic | ![plastic](../badges/5.0.1/plastic.svg) | ![plastic (الكورية)](../badges/5.0.1/plastic-ko.svg) |
-| for-the-badge | ![for-the-badge](../badges/5.0.1/for-the-badge.svg) | ![for-the-badge (الكورية)](../badges/5.0.1/for-the-badge-ko.svg) |
-| outline | ![outline](../badges/5.0.1/outline.svg) | ![outline (الكورية)](../badges/5.0.1/outline-ko.svg) |
+| flat | ![flat](../badges/5.0.1/flat.svg) | ![flat (العربية)](../badges/5.0.1/flat-ar.svg) |
+| flat-square | ![flat-square](../badges/5.0.1/flat-square.svg) | ![flat-square (العربية)](../badges/5.0.1/flat-square-ar.svg) |
+| plastic | ![plastic](../badges/5.0.1/plastic.svg) | ![plastic (العربية)](../badges/5.0.1/plastic-ar.svg) |
+| for-the-badge | ![for-the-badge](../badges/5.0.1/for-the-badge.svg) | ![for-the-badge (العربية)](../badges/5.0.1/for-the-badge-ar.svg) |
+| outline | ![outline](../badges/5.0.1/outline.svg) | ![outline (العربية)](../badges/5.0.1/outline-ar.svg) |
 
 ## الإصدارات المدعومة
 
-جميع إصدارات دليل وقت تشغيل eGovFrame الـ 52:
+جميع إصدارات دليل بيئة التشغيل للإطار القياسي للحكومة الإلكترونية الـ 52:
 
 - **5.x**: `5.0`، `5.0.0`، `5.0.1`، `5.0.2`، `5.0.3`، `5.0.4`، `5.0.5`، `5.0.6`
 - **4.x**: `4.3`، `4.3.0`، `4.3.1`، `4.3.2`، `4.2`، `4.2.0`، `4.2.1`، `4.2.2`، `4.1`، `4.1.0`، `4.1.1`، `4.1.2`، `4.0`، `4.0.0`، `4.0.1`
@@ -90,7 +89,7 @@ python3 scripts/generate.py --check
 - `scripts/generate.py --check` و CI يتحققان من أن المخرجات المولّدة تطابق المصدر. يتم تطبيق تغييرات الأسلوب بشكل متسق عبر جميع الإصدارات.
 - أسلوب `plastic` يستخدم نفس نقاط توقف التدرج اللامع مثل shields.io. `for-the-badge` يستخدم زوايا حادة (`rx="0"`) مثل shields.io.
 
-تم استخراج الشعار من شارة README الحالية لـ eGovFramework. حقوق الشعار واسم eGovFrame تعود لأصحابها المعنيين.
+تم استخراج الشعار من شارة README الحالية لـ eGovFramework. حقوق الشعار واسم الإطار القياسي للحكومة الإلكترونية تعود لأصحابها المعنيين.
 
 ## الترخيص
 

@@ -1,4 +1,4 @@
-# دليل المساهمة في eGovFrame Badge
+# دليل المساهمة في شارة الإطار القياسي للحكومة الإلكترونية
 
 [![English](../../badges/lang/en/outline.svg)](CONTRIBUTING.en.md)
 [![한국어](../../badges/lang/ko/outline.svg)](CONTRIBUTING.ko.md)

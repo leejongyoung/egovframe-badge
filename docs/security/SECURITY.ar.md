@@ -34,7 +34,7 @@
 
 خارج النطاق، يُرجى الإبلاغ للمالك:
 
-- إطار عمل eGovFrame وخادم التحميل الخاص به → مشروع eGovFrame، <https://www.egovframe.go.kr/> و [eGovFramework](https://github.com/eGovFramework).
+- الإطار القياسي للحكومة الإلكترونية وخادم التحميل الخاص به → مشروع الإطار القياسي للحكومة الإلكترونية، <https://www.egovframe.go.kr/> و [eGovFramework](https://github.com/eGovFramework).
 - GitHub نفسه → <https://github.com/github/github/security/policy>.
 - shields.io → <https://github.com/badges/shields/security/policy>.
 

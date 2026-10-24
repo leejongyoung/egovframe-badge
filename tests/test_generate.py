@@ -19,11 +19,9 @@ class BadgeGenerationTests(unittest.TestCase):
                         svg = generate.render(version, style, paths, lang=lang)
                         root = ET.fromstring(svg)
                         self.assertEqual(root.attrib["role"], "img")
-                        self.assertIn(version, root.attrib["aria-label"])
-                        if lang == "ko":
-                            self.assertIn("전자정부표준프레임워크", root.attrib["aria-label"])
-                        else:
-                            self.assertIn("eGovFrame", root.attrib["aria-label"])
+                        self.assertEqual(
+                            root.attrib["aria-label"], f"{generate.VERSION_LABELS[lang][0]} {version}"
+                        )
                         # Scope to the icon group specifically (it's the only <g> with a
                         # transform attribute) - the badge background shape also contains
                         # a <path> inside its own <g>, which a bare ".//g/path" would also
@@ -44,6 +42,15 @@ class BadgeGenerationTests(unittest.TestCase):
                     self.assertIn(native_name, root.attrib["aria-label"])
                     self.assertIn(code_label, root.attrib["aria-label"])
                     self.assertNotIn("<script", svg)
+
+    def test_framework_name_is_localized_and_korean_name_stays_in_korean(self):
+        paths = generate.logo_paths()
+        for lang in generate.LANGUAGES:
+            for style in generate.STYLES:
+                svg = generate.render("5.0.6", style, paths, lang=lang)
+                with self.subTest(lang=lang, style=style):
+                    self.assertEqual("egovframe" in svg.lower(), lang == "en")
+                    self.assertEqual("전자정부표준프레임워크" in svg, lang == "ko")
 
     def test_rejects_invalid_paths_and_styles(self):
         for version in ("../5.0", "5/0", "<script>"):

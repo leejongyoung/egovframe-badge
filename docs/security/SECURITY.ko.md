@@ -34,7 +34,7 @@ GitHub의 비공개 취약점 신고를 사용하세요:
 
 범위 밖, 소유자에게 신고:
 
-- eGovFrame 프레임워크와 다운로드 서버 → eGovFrame 프로젝트, <https://www.egovframe.go.kr/> 및 [eGovFramework](https://github.com/eGovFramework).
+- 전자정부표준프레임워크와 다운로드 서버 → 전자정부표준프레임워크 프로젝트, <https://www.egovframe.go.kr/> 및 [eGovFramework](https://github.com/eGovFramework).
 - GitHub 자체 → <https://github.com/github/github/security/policy>.
 - shields.io → <https://github.com/badges/shields/security/policy>.
 

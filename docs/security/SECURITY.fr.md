@@ -34,7 +34,7 @@ Dans le périmètre :
 
 Hors périmètre, signalez au propriétaire :
 
-- Le framework eGovFrame et son serveur de téléchargement → le projet eGovFrame, <https://www.egovframe.go.kr/> et [eGovFramework](https://github.com/eGovFramework).
+- Le Cadre standard de l'administration électronique et son serveur de téléchargement → le projet du Cadre standard de l'administration électronique, <https://www.egovframe.go.kr/> et [eGovFramework](https://github.com/eGovFramework).
 - GitHub lui-même → <https://github.com/github/github/security/policy>.
 - shields.io → <https://github.com/badges/shields/security/policy>.
 
