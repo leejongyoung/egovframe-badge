@@ -1,16 +1,16 @@
 # Contribuer à eGovFrame Badge
 
-[![English](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/en/outline.svg)](../../README.md)
-[![한국어](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ko/outline.svg)](../README.ko.md)
-[![Español](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/es/outline.svg)](../README.es.md)
-[![Tiếng Việt](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/vi/outline.svg)](../README.vi.md)
-[![العربية](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ar/outline.svg)](../README.ar.md)
-[![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/flat.svg)](../README.fr.md)
+[![English](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/en/outline.svg)](CONTRIBUTING.en.md)
+[![한국어](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ko/outline.svg)](CONTRIBUTING.ko.md)
+[![Español](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/es/outline.svg)](CONTRIBUTING.es.md)
+[![Tiếng Việt](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/vi/outline.svg)](CONTRIBUTING.vi.md)
+[![العربية](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ar/outline.svg)](CONTRIBUTING.ar.md)
+[![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/flat.svg)](CONTRIBUTING.fr.md)
 
 ## Avant d'ouvrir une pull request
 
 ```bash
-python3 -m pip install -r requirements.txt
+python3 -m pip install PyYAML==6.0.3
 python3 -m unittest discover -s tests -v   # tests des scripts
 ```
 
@@ -19,6 +19,7 @@ Le CI exécute les tests et vérifie la cohérence de la génération des badges
 - Les messages de commit suivent le style existant : `feat(badges): add 5.1.0 badges`, `fix(generate): ...`, `docs(readme): ...`, `ci: ...`.
 - Ne modifiez pas les fichiers SVG générés directement. Les nouvelles versions proviennent de `scripts/generate.py` (le workflow `generate-badges`) ; pour revérifier les badges existants, exécutez `python3 scripts/generate.py --check`.
 - Un ensemble de badges par version : l'ajout de `5.1.0` génère les 5 styles × 6 langues.
+- Les points d'entrée de la documentation sont générés : modifiez les sources de `docs/`, puis exécutez `python3 scripts/sync_readme.py` pour actualiser `README.md` et les points d'entrée de `.github/`. Les boutons de langue doivent pointer vers les sources localisées dans `docs/`, anglais compris.
 
 ## GitHub Actions et facturation
 
@@ -26,4 +27,4 @@ Le CI exécute les tests et vérifie la cohérence de la génération des badges
 
 ## Sécurité
 
-Ne signalez pas de vulnérabilités dans les issues ; suivez la procédure dans [SECURITY.md](../security/SECURITY.md).
+Ne signalez pas de vulnérabilités dans les issues ; suivez la procédure dans [SECURITY.fr.md](../security/SECURITY.fr.md).

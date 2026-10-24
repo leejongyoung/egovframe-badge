@@ -1,11 +1,11 @@
 # Chính sách bảo mật
 
-[![English](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/en/outline.svg)](../../README.md)
-[![한국어](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ko/outline.svg)](../README.ko.md)
-[![Español](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/es/outline.svg)](../README.es.md)
-[![Tiếng Việt](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/vi/flat.svg)](../README.vi.md)
-[![العربية](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ar/outline.svg)](../README.ar.md)
-[![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/outline.svg)](../README.fr.md)
+[![English](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/en/outline.svg)](SECURITY.en.md)
+[![한국어](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ko/outline.svg)](SECURITY.ko.md)
+[![Español](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/es/outline.svg)](SECURITY.es.md)
+[![Tiếng Việt](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/vi/flat.svg)](SECURITY.vi.md)
+[![العربية](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ar/outline.svg)](SECURITY.ar.md)
+[![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/outline.svg)](SECURITY.fr.md)
 
 ## Báo cáo lỗ hổng
 
@@ -15,7 +15,7 @@ Hãy sử dụng báo cáo lỗ hổng riêng tư của GitHub:
 
 ➡ <https://github.com/leejongyoung/egovframe-badge/security/advisories/new>
 
-Nếu báo cáo lỗ hổng riêng tư không được bật trên kho, hãy báo qua email thay vì mở issue công khai.
+Nếu báo cáo lỗ hổng riêng tư không được bật trên kho, hãy liên hệ riêng với người bảo trì qua thông tin liên hệ trên hồ sơ GitHub của chủ sở hữu kho thay vì mở issue công khai.
 
 Vui lòng bao gồm:
 
@@ -29,8 +29,8 @@ Các báo cáo được xử lý riêng cho đến khi có bản sửa lỗi; gh
 
 Trong phạm vi:
 
-- Badge SVGs trong [`badges/`](../badges/): nội dung tạo, logo nhúng, siêu dữ liệu phiên bản
-- Tự động hóa: [`.github/workflows/`](../.github/workflows/) và [`scripts/`](../scripts/). Badge mới được tạo bởi workflow `generate-badges`; cách làm cho bước đó tạo ra đầu ra sai, rò rỉ token, hoặc chạy đầu vào không tin cậy được coi là lỗ hổng.
+- Badge SVGs trong [`badges/`](../../badges/): nội dung tạo, logo nhúng, siêu dữ liệu phiên bản
+- Tự động hóa: [`.github/workflows/`](../../.github/workflows/) và [`scripts/`](../../scripts/). Badge mới được tạo bởi workflow `generate-badges`; cách làm cho bước đó tạo ra đầu ra sai, rò rỉ token, hoặc chạy đầu vào không tin cậy được coi là lỗ hổng.
 
 Ngoài phạm vi, báo cáo cho chủ sở hữu:
 
@@ -44,8 +44,8 @@ Chỉ những gì ở `badges/` trên nhánh mặc định được duy trì: t�
 
 ## Xác minh badge tự thân
 
-Mỗi badge là SVG độc lập với logo nhúng. Để tạo lại và xác minh phiên bản so với nguồn từ CI:
+Mỗi badge là SVG độc lập với logo nhúng. Để kiểm tra mọi badge đã commit khớp với đầu ra của trình tạo:
 
 ```bash
-gh workflow run generate-badges.yml -R leejongyoung/egovframe-badge -f version=5.0.2
+python3 scripts/generate.py --check
 ```

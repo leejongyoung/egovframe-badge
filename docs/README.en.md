@@ -1,5 +1,12 @@
 # eGovFrame badge
 
+[![English](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/en/flat.svg)](README.en.md)
+[![한국어](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ko/outline.svg)](README.ko.md)
+[![Español](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/es/outline.svg)](README.es.md)
+[![Tiếng Việt](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/vi/outline.svg)](README.vi.md)
+[![العربية](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ar/outline.svg)](README.ar.md)
+[![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/outline.svg)](README.fr.md)
+
 A **single SVG badge** for every project using the eGovFrame (electronic Government Framework). Instead of hard-coding logos in each repository, reference one centrally-maintained badge with a raw URL. Static SVG — no JavaScript, no deployment server, no long Base64 URLs.
 
 ## One-line usage
@@ -42,11 +49,11 @@ All major runtime versions from the [eGovFrame Runtime Guide](https://www.egovfr
 
 | Style | Example (English) | Example (Korean) |
 | --- | --- | --- |
-| flat | ![flat](badges/5.0.1/flat.svg) | ![flat (Korean)](badges/5.0.1/flat-ko.svg) |
-| flat-square | ![flat-square](badges/5.0.1/flat-square.svg) | ![flat-square (Korean)](badges/5.0.1/flat-square-ko.svg) |
-| plastic | ![plastic](badges/5.0.1/plastic.svg) | ![plastic (Korean)](badges/5.0.1/plastic-ko.svg) |
-| for-the-badge | ![for-the-badge](badges/5.0.1/for-the-badge.svg) | ![for-the-badge (Korean)](badges/5.0.1/for-the-badge-ko.svg) |
-| outline | ![outline](badges/5.0.1/outline.svg) | ![outline (Korean)](badges/5.0.1/outline-ko.svg) |
+| flat | ![flat](../badges/5.0.1/flat.svg) | ![flat (Korean)](../badges/5.0.1/flat-ko.svg) |
+| flat-square | ![flat-square](../badges/5.0.1/flat-square.svg) | ![flat-square (Korean)](../badges/5.0.1/flat-square-ko.svg) |
+| plastic | ![plastic](../badges/5.0.1/plastic.svg) | ![plastic (Korean)](../badges/5.0.1/plastic-ko.svg) |
+| for-the-badge | ![for-the-badge](../badges/5.0.1/for-the-badge.svg) | ![for-the-badge (Korean)](../badges/5.0.1/for-the-badge-ko.svg) |
+| outline | ![outline](../badges/5.0.1/outline.svg) | ![outline (Korean)](../badges/5.0.1/outline-ko.svg) |
 
 ## Supported versions
 
@@ -80,5 +87,5 @@ Logo extracted from the existing eGovFramework README badge. Logo and eGovFrame 
 
 ## License
 
-Code (generation script, tests, workflows) is [MIT licensed](LICENSE). Logo asset (`assets/egovframe-mark.svg`) and logos embedded in generated badges are **not** covered by this license and belong to their original owners as noted above.
+Code (generation script, tests, workflows) is [MIT licensed](../LICENSE). Logo asset (`assets/egovframe-mark.svg`) and logos embedded in generated badges are **not** covered by this license and belong to their original owners as noted above.
 

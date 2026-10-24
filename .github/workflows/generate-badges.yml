@@ -1,51 +1,41 @@
 name: Generate badges
 
+# Regenerates every badge from versions.json, the generator and the logo, and commits
+# the result. scripts/generate.py has no per-version option; it always writes all badges.
 on:
   push:
-    branches: [main, work]
+    branches: [main, work, egovframework]
     paths:
       - 'versions.json'
       - 'scripts/generate.py'
       - 'assets/egovframe-mark.svg'
   workflow_dispatch:
-    inputs:
-      version:
-        description: 'Version to generate (e.g., 5.1.0). Leave empty to regenerate all.'
-        required: false
-        type: string
 
 permissions:
   contents: write
+
+concurrency:
+  group: generate-badges-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      - name: Generate badges
-        run: |
-          if [ -n "${{ github.event.inputs.version }}" ]; then
-            python3 scripts/generate.py --version "${{ github.event.inputs.version }}"
-          else
-            python3 scripts/generate.py
-          fi
-      - name: Verify generated badges match source
-        run: python3 scripts/generate.py --check
+          python-version: '3.12'
+      - run: python3 scripts/generate.py
+      - run: python3 scripts/generate.py --check
       - name: Commit and push if changed
         run: |
-          if ! git diff --quiet; then
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add badges/
-            git commit -m "badges: regenerate from source"
-            git push
-          else
-            echo "No changes to badges"
+          if [ -z "$(git status --porcelain badges)" ]; then
+            echo "Badges already up to date"
+            exit 0
           fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add badges
+          git commit -m "badges: regenerate from source"
+          git push origin "HEAD:${GITHUB_REF_NAME}"

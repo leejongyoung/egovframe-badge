@@ -1,5 +1,12 @@
 # eGovFrame 배지
 
+[![English](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/en/outline.svg)](README.en.md)
+[![한국어](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ko/flat.svg)](README.ko.md)
+[![Español](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/es/outline.svg)](README.es.md)
+[![Tiếng Việt](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/vi/outline.svg)](README.vi.md)
+[![العربية](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ar/outline.svg)](README.ar.md)
+[![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/outline.svg)](README.fr.md)
+
 전자정부 표준프레임워크(eGovFrame)를 사용하는 **모든 프로젝트**가 README에 가져다 쓸 수 있는 SVG 배지입니다. 저장소마다 로고를 각자 하드코딩하는 대신, 한 곳에서 관리하는 배지를 raw URL 한 줄로 참조합니다. 정적 SVG라서 JavaScript, 별도 배포 서버, 긴 Base64 URL이 필요하지 않습니다.
 
 ## 한 줄로 사용
@@ -42,11 +49,11 @@
 
 | 스타일 | 예시(영문) | 예시(한문) |
 | --- | --- | --- |
-| flat | ![flat](badges/5.0.1/flat.svg) | ![flat (한문)](badges/5.0.1/flat-ko.svg) |
-| flat-square | ![flat-square](badges/5.0.1/flat-square.svg) | ![flat-square (한문)](badges/5.0.1/flat-square-ko.svg) |
-| plastic | ![plastic](badges/5.0.1/plastic.svg) | ![plastic (한문)](badges/5.0.1/plastic-ko.svg) |
-| for-the-badge | ![for-the-badge](badges/5.0.1/for-the-badge.svg) | ![for-the-badge (한문)](badges/5.0.1/for-the-badge-ko.svg) |
-| outline | ![outline](badges/5.0.1/outline.svg) | ![outline (한문)](badges/5.0.1/outline-ko.svg) |
+| flat | ![flat](../badges/5.0.1/flat.svg) | ![flat (한문)](../badges/5.0.1/flat-ko.svg) |
+| flat-square | ![flat-square](../badges/5.0.1/flat-square.svg) | ![flat-square (한문)](../badges/5.0.1/flat-square-ko.svg) |
+| plastic | ![plastic](../badges/5.0.1/plastic.svg) | ![plastic (한문)](../badges/5.0.1/plastic-ko.svg) |
+| for-the-badge | ![for-the-badge](../badges/5.0.1/for-the-badge.svg) | ![for-the-badge (한문)](../badges/5.0.1/for-the-badge-ko.svg) |
+| outline | ![outline](../badges/5.0.1/outline.svg) | ![outline (한문)](../badges/5.0.1/outline-ko.svg) |
 
 ## 지원 버전
 
@@ -80,4 +87,4 @@ python3 scripts/generate.py --check
 
 ## 라이선스
 
-이 저장소의 코드(생성 스크립트, 테스트, 워크플로)는 [MIT License](LICENSE)로 배포합니다. 로고 자산(`assets/egovframe-mark.svg`) 및 그로부터 생성된 배지에 포함된 로고 이미지는 이 라이선스의 적용을 받지 않으며, 위에서 설명한 대로 원 권리자에게 귀속됩니다.
+이 저장소의 코드(생성 스크립트, 테스트, 워크플로)는 [MIT License](../LICENSE)로 배포합니다. 로고 자산(`assets/egovframe-mark.svg`) 및 그로부터 생성된 배지에 포함된 로고 이미지는 이 라이선스의 적용을 받지 않으며, 위에서 설명한 대로 원 권리자에게 귀속됩니다.

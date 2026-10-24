@@ -1,5 +1,12 @@
 # Huy hiệu eGovFrame
 
+[![English](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/en/outline.svg)](README.en.md)
+[![한국어](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ko/outline.svg)](README.ko.md)
+[![Español](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/es/outline.svg)](README.es.md)
+[![Tiếng Việt](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/vi/flat.svg)](README.vi.md)
+[![العربية](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ar/outline.svg)](README.ar.md)
+[![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/outline.svg)](README.fr.md)
+
 Một **huy hiệu SVG đơn lẻ** cho mọi dự án sử dụng eGovFrame (khung điện tử chính phủ). Thay vì nhúng logo vào từng kho, hãy tham chiếu một huy hiệu được quản lý tập trung với một URL raw. SVG tĩnh — không cần JavaScript, không cần máy chủ triển khai, không cần URL Base64 dài.
 
 ## Sử dụng trong một dòng
@@ -42,11 +49,11 @@ Tất cả các phiên bản chính từ [eGovFrame Runtime Guide](https://www.e
 
 | Kiểu dáng | Ví dụ (Tiếng Anh) | Ví dụ (Tiếng Hàn) |
 | --- | --- | --- |
-| flat | ![flat](badges/5.0.1/flat.svg) | ![flat (Tiếng Hàn)](badges/5.0.1/flat-ko.svg) |
-| flat-square | ![flat-square](badges/5.0.1/flat-square.svg) | ![flat-square (Tiếng Hàn)](badges/5.0.1/flat-square-ko.svg) |
-| plastic | ![plastic](badges/5.0.1/plastic.svg) | ![plastic (Tiếng Hàn)](badges/5.0.1/plastic-ko.svg) |
-| for-the-badge | ![for-the-badge](badges/5.0.1/for-the-badge.svg) | ![for-the-badge (Tiếng Hàn)](badges/5.0.1/for-the-badge-ko.svg) |
-| outline | ![outline](badges/5.0.1/outline.svg) | ![outline (Tiếng Hàn)](badges/5.0.1/outline-ko.svg) |
+| flat | ![flat](../badges/5.0.1/flat.svg) | ![flat (Tiếng Hàn)](../badges/5.0.1/flat-ko.svg) |
+| flat-square | ![flat-square](../badges/5.0.1/flat-square.svg) | ![flat-square (Tiếng Hàn)](../badges/5.0.1/flat-square-ko.svg) |
+| plastic | ![plastic](../badges/5.0.1/plastic.svg) | ![plastic (Tiếng Hàn)](../badges/5.0.1/plastic-ko.svg) |
+| for-the-badge | ![for-the-badge](../badges/5.0.1/for-the-badge.svg) | ![for-the-badge (Tiếng Hàn)](../badges/5.0.1/for-the-badge-ko.svg) |
+| outline | ![outline](../badges/5.0.1/outline.svg) | ![outline (Tiếng Hàn)](../badges/5.0.1/outline-ko.svg) |
 
 ## Các phiên bản được hỗ trợ
 
@@ -80,4 +87,4 @@ Logo được trích xuất từ huy hiệu README hiện có của eGovFramewor
 
 ## Giấy phép
 
-Mã (script tạo, tests, workflows) có [giấy phép MIT](LICENSE). Tài sản logo (`assets/egovframe-mark.svg`) và logo nhúng trong các huy hiệu tạo ra **không** nằm trong phạm vi giấy phép này và thuộc về chủ sở hữu gốc như đã nêu ở trên.
+Mã (script tạo, tests, workflows) có [giấy phép MIT](../LICENSE). Tài sản logo (`assets/egovframe-mark.svg`) và logo nhúng trong các huy hiệu tạo ra **không** nằm trong phạm vi giấy phép này và thuộc về chủ sở hữu gốc như đã nêu ở trên.

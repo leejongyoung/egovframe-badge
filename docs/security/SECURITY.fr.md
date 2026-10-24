@@ -1,11 +1,11 @@
 # Politique de sécurité
 
-[![English](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/en/outline.svg)](../../README.md)
-[![한국어](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ko/outline.svg)](../README.ko.md)
-[![Español](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/es/outline.svg)](../README.es.md)
-[![Tiếng Việt](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/vi/outline.svg)](../README.vi.md)
-[![العربية](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ar/outline.svg)](../README.ar.md)
-[![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/flat.svg)](../README.fr.md)
+[![English](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/en/outline.svg)](SECURITY.en.md)
+[![한국어](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ko/outline.svg)](SECURITY.ko.md)
+[![Español](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/es/outline.svg)](SECURITY.es.md)
+[![Tiếng Việt](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/vi/outline.svg)](SECURITY.vi.md)
+[![العربية](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ar/outline.svg)](SECURITY.ar.md)
+[![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/flat.svg)](SECURITY.fr.md)
 
 ## Signalement d'une vulnérabilité
 
@@ -15,7 +15,7 @@ Utilisez le signalement privé de vulnérabilités de GitHub :
 
 ➡ <https://github.com/leejongyoung/egovframe-badge/security/advisories/new>
 
-Si le signalement privé de vulnérabilités n'est pas activé sur le dépôt, signalez par email au lieu d'ouvrir un issue public.
+Si le signalement privé de vulnérabilités n'est pas activé sur le dépôt, contactez le mainteneur en privé via les moyens de contact du profil GitHub du propriétaire du dépôt au lieu d'ouvrir un issue public.
 
 Veuillez inclure :
 
@@ -29,8 +29,8 @@ Les signalements sont traités en privé jusqu'à ce qu'un correctif soit dispon
 
 Dans le périmètre :
 
-- SVGs des badges dans [`badges/`](../badges/) : contenu généré, logo embarqué, métadonnées de version
-- Automatisation : [`.github/workflows/`](../.github/workflows/) et [`scripts/`](../scripts/). Les nouveaux badges sont générés par le workflow `generate-badges` ; un moyen de faire en sorte que cette étape produise une sortie incorrecte, divulgue le token ou exécute une entrée non fiable compte comme une vulnérabilité.
+- SVGs des badges dans [`badges/`](../../badges/) : contenu généré, logo embarqué, métadonnées de version
+- Automatisation : [`.github/workflows/`](../../.github/workflows/) et [`scripts/`](../../scripts/). Les nouveaux badges sont générés par le workflow `generate-badges` ; un moyen de faire en sorte que cette étape produise une sortie incorrecte, divulgue le token ou exécute une entrée non fiable compte comme une vulnérabilité.
 
 Hors périmètre, signalez au propriétaire :
 
@@ -44,8 +44,8 @@ Seulement ce qui est dans `badges/` sur la branche par défaut est maintenu : to
 
 ## Vérifier un badge vous-même
 
-Chaque badge est un SVG autonome avec logo embarqué. Pour régénérer et vérifier une version par rapport à la source depuis CI :
+Chaque badge est un SVG autonome avec logo embarqué. Pour vérifier que chaque badge commité correspond à la sortie du générateur :
 
 ```bash
-gh workflow run generate-badges.yml -R leejongyoung/egovframe-badge -f version=5.0.2
+python3 scripts/generate.py --check
 ```

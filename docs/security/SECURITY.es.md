@@ -1,11 +1,11 @@
 # Política de seguridad
 
-[![English](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/en/outline.svg)](../../README.md)
-[![한국어](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ko/outline.svg)](../README.ko.md)
-[![Español](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/es/flat.svg)](../README.es.md)
-[![Tiếng Việt](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/vi/outline.svg)](../README.vi.md)
-[![العربية](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ar/outline.svg)](../README.ar.md)
-[![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/outline.svg)](../README.fr.md)
+[![English](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/en/outline.svg)](SECURITY.en.md)
+[![한국어](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ko/outline.svg)](SECURITY.ko.md)
+[![Español](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/es/flat.svg)](SECURITY.es.md)
+[![Tiếng Việt](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/vi/outline.svg)](SECURITY.vi.md)
+[![العربية](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ar/outline.svg)](SECURITY.ar.md)
+[![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/outline.svg)](SECURITY.fr.md)
 
 ## Notificación de vulnerabilidades
 
@@ -15,7 +15,7 @@ Utilice la notificación privada de vulnerabilidades de GitHub:
 
 ➡ <https://github.com/leejongyoung/egovframe-badge/security/advisories/new>
 
-Si la notificación privada de vulnerabilidades no está habilitada en el repositorio, notifique por correo electrónico en lugar de abrir un issue público.
+Si la notificación privada de vulnerabilidades no está habilitada en el repositorio, contacte al mantenedor en privado mediante las opciones de contacto del perfil de GitHub del propietario del repositorio en lugar de abrir un issue público.
 
 Incluya:
 
@@ -29,8 +29,8 @@ Los informes se manejan en privado hasta que hay una solución disponible; se da
 
 En alcance:
 
-- SVGs de badges en [`badges/`](../badges/): contenido generado, logo incrustado, metadatos de versión
-- Automatización: [`.github/workflows/`](../.github/workflows/) y [`scripts/`](../scripts/). Los nuevos badges se generan con el workflow `generate-badges`; una forma de hacer que ese paso produzca salida incorrecta, filtre el token, o ejecute entrada no confiable cuenta como vulnerabilidad.
+- SVGs de badges en [`badges/`](../../badges/): contenido generado, logo incrustado, metadatos de versión
+- Automatización: [`.github/workflows/`](../../.github/workflows/) y [`scripts/`](../../scripts/). Los nuevos badges se generan con el workflow `generate-badges`; una forma de hacer que ese paso produzca salida incorrecta, filtre el token, o ejecute entrada no confiable cuenta como vulnerabilidad.
 
 Fuera de alcance, notifique al propietario:
 
@@ -44,8 +44,8 @@ Solo lo que está en `badges/` en la rama por defecto se mantiene: todas las ver
 
 ## Verificar un badge usted mismo
 
-Cada badge es un SVG autónomo con logo incrustado. Para regenerar y verificar una versión contra la fuente desde CI:
+Cada badge es un SVG autónomo con logo incrustado. Para comprobar que cada badge confirmado coincide con la salida del generador:
 
 ```bash
-gh workflow run generate-badges.yml -R leejongyoung/egovframe-badge -f version=5.0.2
+python3 scripts/generate.py --check
 ```

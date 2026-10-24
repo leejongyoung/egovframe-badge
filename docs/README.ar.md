@@ -1,5 +1,12 @@
 # شارة eGovFrame
 
+[![English](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/en/outline.svg)](README.en.md)
+[![한국어](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ko/outline.svg)](README.ko.md)
+[![Español](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/es/outline.svg)](README.es.md)
+[![Tiếng Việt](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/vi/outline.svg)](README.vi.md)
+[![العربية](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ar/flat.svg)](README.ar.md)
+[![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/outline.svg)](README.fr.md)
+
 **شارة SVG واحدة** لكل مشروع يستخدم eGovFrame (إطار الحكومة الإلكترونية). بدلاً من تضمين الشعارات يدويًا في كل مستودع، يتم الرجوع إلى شارة تتم صيانتها مركزيًا عبر عنوان URL خام. صيغة SVG ثابتة — لا حاجة لـ JavaScript، ولا لخادم نشر، ولا لعناوين URL Base64 طويلة.
 
 ## الاستخدام في سطر واحد
@@ -42,11 +49,11 @@
 
 | الأسلوب | مثال (الإنجليزية) | مثال (الكورية) |
 | --- | --- | --- |
-| flat | ![flat](badges/5.0.1/flat.svg) | ![flat (الكورية)](badges/5.0.1/flat-ko.svg) |
-| flat-square | ![flat-square](badges/5.0.1/flat-square.svg) | ![flat-square (الكورية)](badges/5.0.1/flat-square-ko.svg) |
-| plastic | ![plastic](badges/5.0.1/plastic.svg) | ![plastic (الكورية)](badges/5.0.1/plastic-ko.svg) |
-| for-the-badge | ![for-the-badge](badges/5.0.1/for-the-badge.svg) | ![for-the-badge (الكورية)](badges/5.0.1/for-the-badge-ko.svg) |
-| outline | ![outline](badges/5.0.1/outline.svg) | ![outline (الكورية)](badges/5.0.1/outline-ko.svg) |
+| flat | ![flat](../badges/5.0.1/flat.svg) | ![flat (الكورية)](../badges/5.0.1/flat-ko.svg) |
+| flat-square | ![flat-square](../badges/5.0.1/flat-square.svg) | ![flat-square (الكورية)](../badges/5.0.1/flat-square-ko.svg) |
+| plastic | ![plastic](../badges/5.0.1/plastic.svg) | ![plastic (الكورية)](../badges/5.0.1/plastic-ko.svg) |
+| for-the-badge | ![for-the-badge](../badges/5.0.1/for-the-badge.svg) | ![for-the-badge (الكورية)](../badges/5.0.1/for-the-badge-ko.svg) |
+| outline | ![outline](../badges/5.0.1/outline.svg) | ![outline (الكورية)](../badges/5.0.1/outline-ko.svg) |
 
 ## الإصدارات المدعومة
 
@@ -80,4 +87,4 @@ python3 scripts/generate.py --check
 
 ## الترخيص
 
-الكود (برنامج التوليد، الاختبارات، workflows) مرخص تحت [رخصة MIT](LICENSE). أصل الشعار (`assets/egovframe-mark.svg`) والشعارات المضمنة في الشارات المولّدة **غير** مشمولة بهذه الرخصة وتعود لأصحابها الأصليين كما هو مذكور أعلاه.
+الكود (برنامج التوليد، الاختبارات، workflows) مرخص تحت [رخصة MIT](../LICENSE). أصل الشعار (`assets/egovframe-mark.svg`) والشعارات المضمنة في الشارات المولّدة **غير** مشمولة بهذه الرخصة وتعود لأصحابها الأصليين كما هو مذكور أعلاه.

@@ -1,11 +1,11 @@
 # سياسة الأمان
 
-[![English](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/en/outline.svg)](../../README.md)
-[![한국어](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ko/outline.svg)](../README.ko.md)
-[![Español](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/es/outline.svg)](../README.es.md)
-[![Tiếng Việt](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/vi/outline.svg)](../README.vi.md)
-[![العربية](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ar/flat.svg)](../README.ar.md)
-[![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/outline.svg)](../README.fr.md)
+[![English](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/en/outline.svg)](SECURITY.en.md)
+[![한국어](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ko/outline.svg)](SECURITY.ko.md)
+[![Español](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/es/outline.svg)](SECURITY.es.md)
+[![Tiếng Việt](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/vi/outline.svg)](SECURITY.vi.md)
+[![العربية](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ar/flat.svg)](SECURITY.ar.md)
+[![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/outline.svg)](SECURITY.fr.md)
 
 ## الإبلاغ عن الثغرات
 
@@ -15,7 +15,7 @@
 
 ➡ <https://github.com/leejongyoung/egovframe-badge/security/advisories/new>
 
-إذا لم يكن الإبلاغ الخاص عن الثغرات ممكّنًا في المستودع، يرجى الإبلاغ عبر البريد الإلكتروني بدلاً من فتح issue عام.
+إذا لم يكن الإبلاغ الخاص عن الثغرات ممكّنًا في المستودع، يرجى التواصل مع المشرف بشكل خاص عبر وسائل الاتصال في ملف مالك المستودع على GitHub بدلاً من فتح issue عام.
 
 يرجى تضمين:
 
@@ -29,8 +29,8 @@
 
 داخل النطاق:
 
-- SVGs الشارات في [`badges/`](../badges/): المحتوى المولّد، الشعار المضمّن، بيانات الإصدار الوصفية
-- الأتمتة: [`.github/workflows/`](../.github/workflows/) و [`scripts/`](../scripts/). يتم توليد الشارات الجديدة عبر workflow `generate-badges`؛ أي طريقة تجعل هذه الخطوة تنتج مخرجات خاطئة، أو تسرّب التوكن، أو تشغّل إدخالاً غير موثوق تُعتبر ثغرة.
+- SVGs الشارات في [`badges/`](../../badges/): المحتوى المولّد، الشعار المضمّن، بيانات الإصدار الوصفية
+- الأتمتة: [`.github/workflows/`](../../.github/workflows/) و [`scripts/`](../../scripts/). يتم توليد الشارات الجديدة عبر workflow `generate-badges`؛ أي طريقة تجعل هذه الخطوة تنتج مخرجات خاطئة، أو تسرّب التوكن، أو تشغّل إدخالاً غير موثوق تُعتبر ثغرة.
 
 خارج النطاق، يُرجى الإبلاغ للمالك:
 
@@ -44,8 +44,8 @@
 
 ## التحقق من الشارة بنفسك
 
-كل شارة هي SVG مستقل بذاته مع شعار مضمّن. لإعادة التوليد والتحقق من إصدار مقابل المصدر من CI:
+كل شارة هي SVG مستقل بذاته مع شعار مضمّن. للتحقق من أن كل شارة مثبتة تطابق مخرجات المولّد:
 
 ```bash
-gh workflow run generate-badges.yml -R leejongyoung/egovframe-badge -f version=5.0.2
+python3 scripts/generate.py --check
 ```

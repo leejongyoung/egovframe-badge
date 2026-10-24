@@ -1,16 +1,16 @@
 # Hướng dẫn đóng góp cho eGovFrame Badge
 
-[![English](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/en/outline.svg)](../../README.md)
-[![한국어](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ko/outline.svg)](../README.ko.md)
-[![Español](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/es/outline.svg)](../README.es.md)
-[![Tiếng Việt](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/vi/flat.svg)](../README.vi.md)
-[![العربية](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ar/outline.svg)](../README.ar.md)
-[![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/outline.svg)](../README.fr.md)
+[![English](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/en/outline.svg)](CONTRIBUTING.en.md)
+[![한국어](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ko/outline.svg)](CONTRIBUTING.ko.md)
+[![Español](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/es/outline.svg)](CONTRIBUTING.es.md)
+[![Tiếng Việt](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/vi/flat.svg)](CONTRIBUTING.vi.md)
+[![العربية](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ar/outline.svg)](CONTRIBUTING.ar.md)
+[![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/outline.svg)](CONTRIBUTING.fr.md)
 
 ## Trước khi mở pull request
 
 ```bash
-python3 -m pip install -r requirements.txt
+python3 -m pip install PyYAML==6.0.3
 python3 -m unittest discover -s tests -v   # kiểm tra các script
 ```
 
@@ -19,6 +19,7 @@ CI chạy các bài kiểm tra và kiểm tra tính nhất quán của việc t�
 - Thông điệp commit tuân theo phong cách hiện có: `feat(badges): add 5.1.0 badges`, `fix(generate): ...`, `docs(readme): ...`, `ci: ...`.
 - Không chỉnh sửa trực tiếp các tệp SVG đã tạo. Các phiên bản mới đến từ `scripts/generate.py` (workflow `generate-badges`); để kiểm tra lại các badge hiện có, chạy `python3 scripts/generate.py --check`.
 - Một bộ badge cho mỗi phiên bản: thêm `5.1.0` sẽ tạo ra 5 kiểu × 6 ngôn ngữ.
+- Các tệp điểm vào của tài liệu được tạo tự động: chỉnh sửa nguồn trong `docs/`, rồi chạy `python3 scripts/sync_readme.py` để cập nhật `README.md` và các tệp trong `.github/`. Nút ngôn ngữ phải trỏ tới nguồn đã bản địa hóa trong `docs/`, kể cả tiếng Anh.
 
 ## GitHub Actions và thanh toán
 
@@ -26,4 +27,4 @@ CI chạy các bài kiểm tra và kiểm tra tính nhất quán của việc t�
 
 ## Bảo mật
 
-Đừng báo cáo lỗ hổng bảo mật trong issues; hãy làm theo quy trình trong [SECURITY.md](../security/SECURITY.md).
+Đừng báo cáo lỗ hổng bảo mật trong issues; hãy làm theo quy trình trong [SECURITY.vi.md](../security/SECURITY.vi.md).
