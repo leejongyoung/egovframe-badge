@@ -1,0 +1,47 @@
+name: Sync default-language documentation
+
+# The root README.md and the .github/ community entrypoints are generated from the
+# localized sources in docs/. Runs when a source, the configuration, the generator or
+# this workflow changes, or manually.
+on:
+  push:
+    branches: [main, work, egovframework]
+    paths:
+      - 'docs/config.yml'
+      - 'docs/README.*.md'
+      - 'docs/contributing/CONTRIBUTING.*.md'
+      - 'docs/security/SECURITY.*.md'
+      - 'scripts/sync_readme.py'
+      - '.github/workflows/sync-readme.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-readme-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 -m pip install PyYAML==6.0.3
+      - name: Generate entrypoints
+        id: sync
+        run: python3 scripts/sync_readme.py
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet; then
+            echo "Entrypoints already up to date"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md .github/CONTRIBUTING.md .github/SECURITY.md
+          git commit -m "docs: sync default-language entrypoints"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
