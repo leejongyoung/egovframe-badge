@@ -1,7 +1,7 @@
 # Insignia del Marco Estándar de Gobierno Electrónico
 
 <!-- latest-badge:start -->
-[![Marco Estándar de Gobierno Electrónico 5.0.7](../badges/5.0.7/flat-es.svg)](https://www.egovframe.go.kr/)
+[![Marco Estándar de Gobierno Electrónico](../badges/unversioned/flat-es.svg)](https://www.egovframe.go.kr/)
 [![CI](https://github.com/leejongyoung/egovframe-badge/actions/workflows/verify.yml/badge.svg)](https://github.com/leejongyoung/egovframe-badge/actions/workflows/verify.yml)
 [![Generate badges](https://github.com/leejongyoung/egovframe-badge/actions/workflows/generate-badges.yml/badge.svg)](https://github.com/leejongyoung/egovframe-badge/actions/workflows/generate-badges.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](../LICENSE)
@@ -38,6 +38,58 @@ Elige la versión, el estilo y el idioma (`en`, `ko`, `es`, `vi`, `ar`, `fr`) de
 ```
 *(Todas las insignias multilingües soportan tanto las rutas `badges/5.0.2/flat-<lang>.svg` como `badges/5.0.2/<lang>/flat.svg`.)*
 
+## Detección automática de versiones
+
+Un README puede mostrar las versiones que declaran los archivos de construcción de su proyecto. `scripts/detect_version.py` las encuentra y reescribe los bloques marcados del README, y un workflow puede ejecutarlo en cada push.
+
+### Dónde se encuentran las versiones
+
+| Entorno | Componente | Declarado en |
+| --- | --- | --- |
+| Entorno de ejecución | Marco Estándar de Gobierno Electrónico | `pom.xml`: `org.egovframe.rte.version`, `egovframework.rte.version`, `<parent>` and `<dependency>` of `org.egovframe.boot`, `org.egovframe.web`, `org.egovframe.rte`<br>`build.gradle(.kts)`: `egovframeBootParentVersion`-style variables, `org.egovframe.*` coordinates<br>`settings.gradle(.kts)`, `gradle.properties`, `libs.versions.toml` |
+| Entorno de desarrollo | Java | `pom.xml`: `java.version`, `maven.compiler.release`, `maven.compiler.source`, `maven.compiler.target`<br>`build.gradle(.kts)`: `sourceCompatibility`, `JavaLanguageVersion.of(17)` |
+| Entorno de desarrollo | Spring Boot | `pom.xml`: `<parent>` `spring-boot-starter-parent`<br>`build.gradle(.kts)`: `id 'org.springframework.boot' version '3.5.6'` |
+| Entorno de desarrollo | Gradle | `gradle/wrapper/gradle-wrapper.properties`: `distributionUrl` (`gradle-8.5-bin.zip`) |
+
+- Si varios módulos declaran una versión, gana la más alta.
+- Se ignoran los comentarios y se omiten las carpetas de compilación y dependencias (`target`, `build`, `node_modules`, ...).
+- Solo se muestra lo que el proyecto declara por sí mismo: los parents de la versión 4.x/5.x traen su propio Spring Boot y Java, que no aparecen si el archivo de construcción no los indica.
+- Un proyecto que no declara ninguna versión recibe la insignia solo con el nombre; una versión declarada sin insignia publicada (que no está en `versions.json`) recibe la insignia solo con el nombre y una advertencia.
+
+### Marcadores del README
+
+Coloca los marcadores donde debe ir el contenido. Cada bloque es opcional, pero se necesita al menos uno: el primero se convierte en la insignia (la de versión, o la insignia solo con el nombre cuando no se declara ninguna) y el segundo en una tabla con las versiones detectadas y el archivo que declara cada una.
+
+```md
+<!-- egovframe-badge:start -->
+[![Marco Estándar de Gobierno Electrónico](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/unversioned/flat-es.svg)](https://www.egovframe.go.kr/)
+<!-- egovframe-badge:end -->
+
+<!-- egovframe-environment:start -->
+<!-- egovframe-environment:end -->
+```
+
+Resultado para `examples/sample-gradle-project`:
+
+| Categoría | Componente | Versión | Fuente |
+| --- | --- | --- | --- |
+| Entorno de ejecución | Marco Estándar de Gobierno Electrónico | 5.0.0 | `build.gradle` |
+| Entorno de desarrollo | Java | 17 | `build.gradle` |
+| Entorno de desarrollo | Spring Boot | 3.5.6 | `build.gradle` |
+| Entorno de desarrollo | Gradle | 8.5 | `gradle/wrapper/gradle-wrapper.properties` |
+
+### Ejecutarlo
+
+Ejecútalo en local (añade `--check` para que falle en lugar de escribir, útil en un CI que solo verifica):
+
+```bash
+python3 scripts/detect_version.py --project . --readme README.md --language es --style flat --write
+```
+
+### Ejecutarlo en CI
+
+[`.github/workflows/example-egovframe-badge.yml`](../.github/workflows/example-egovframe-badge.yml) es un ejemplo funcional: en cada push que toca los proyectos ejecuta el script y confirma de vuelta en la rama los README reescritos. Se ejecuta sobre `examples/sample-project` (Maven), `examples/sample-gradle-project` (Gradle: Java, Spring Boot, Gradle) y `examples/sample-project-unversioned` (sin declaración). Copia `scripts/detect_version.py` y el workflow a tu proyecto, establece `PROJECT_DIRS` en `.` y añade los marcadores. Para pasos propios, `--github-output` escribe `version`, `badge_version`, `source`, `java`, `spring_boot`, `gradle` y `changed` en `$GITHUB_OUTPUT`.
+
 ## Botones de insignia para selector de idioma (`badges/lang/`)
 
 Botones de insignia independientes para cambiar de idioma en `README` multilingües (`en`, `ko`, `es`, `vi`, `ar`, `fr`, `mn`, `bg`, `ne`). El idioma actual usa `flat.svg`; los demás usan `outline.svg` (o todos `flat.svg`).
@@ -51,19 +103,19 @@ Botones de insignia independientes para cambiar de idioma en `README` multiling�
 [![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/outline.svg)](docs/README.fr.md)
 ```
 
-Todas las versiones principales del [Guía del entorno de ejecución del Marco Estándar de Gobierno Electrónico](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드) — de 1.0 a 5.x (52 versiones en total) — con cinco estilos cada una: `flat`, `flat-square`, `plastic`, `for-the-badge` y el estilo personalizado `outline` (el estilo `social` de shields.io se excluye porque depende de efectos hover).
+Todas las versiones principales del [Guía del entorno de ejecución del Marco Estándar de Gobierno Electrónico](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드) — de 1.0 a 5.x (53 versiones en total) — con cinco estilos cada una: `flat`, `flat-square`, `plastic`, `for-the-badge` y el estilo personalizado `outline` (el estilo `social` de shields.io se excluye porque depende de efectos hover).
 
-| Estilo | Ejemplo (Inglés) | Ejemplo (Español) |
-| --- | --- | --- |
-| flat | ![flat](../badges/5.0.1/flat.svg) | ![flat (Español)](../badges/5.0.1/flat-es.svg) |
-| flat-square | ![flat-square](../badges/5.0.1/flat-square.svg) | ![flat-square (Español)](../badges/5.0.1/flat-square-es.svg) |
-| plastic | ![plastic](../badges/5.0.1/plastic.svg) | ![plastic (Español)](../badges/5.0.1/plastic-es.svg) |
-| for-the-badge | ![for-the-badge](../badges/5.0.1/for-the-badge.svg) | ![for-the-badge (Español)](../badges/5.0.1/for-the-badge-es.svg) |
-| outline | ![outline](../badges/5.0.1/outline.svg) | ![outline (Español)](../badges/5.0.1/outline-es.svg) |
+| Estilo | Ejemplo (Inglés) | Ejemplo (Español) | Botones de idioma |
+| --- | --- | --- | --- |
+| flat | ![flat](../badges/5.0.1/flat.svg) | ![flat (Español)](../badges/5.0.1/flat-es.svg) | ![English](../badges/lang/en/flat.svg) ![한국어](../badges/lang/ko/flat.svg) ![Español](../badges/lang/es/flat.svg) ![Tiếng Việt](../badges/lang/vi/flat.svg) ![العربية](../badges/lang/ar/flat.svg) ![Français](../badges/lang/fr/flat.svg) |
+| flat-square | ![flat-square](../badges/5.0.1/flat-square.svg) | ![flat-square (Español)](../badges/5.0.1/flat-square-es.svg) | ![English](../badges/lang/en/flat-square.svg) ![한국어](../badges/lang/ko/flat-square.svg) ![Español](../badges/lang/es/flat-square.svg) ![Tiếng Việt](../badges/lang/vi/flat-square.svg) ![العربية](../badges/lang/ar/flat-square.svg) ![Français](../badges/lang/fr/flat-square.svg) |
+| plastic | ![plastic](../badges/5.0.1/plastic.svg) | ![plastic (Español)](../badges/5.0.1/plastic-es.svg) | ![English](../badges/lang/en/plastic.svg) ![한국어](../badges/lang/ko/plastic.svg) ![Español](../badges/lang/es/plastic.svg) ![Tiếng Việt](../badges/lang/vi/plastic.svg) ![العربية](../badges/lang/ar/plastic.svg) ![Français](../badges/lang/fr/plastic.svg) |
+| for-the-badge | ![for-the-badge](../badges/5.0.1/for-the-badge.svg) | ![for-the-badge (Español)](../badges/5.0.1/for-the-badge-es.svg) | ![English](../badges/lang/en/for-the-badge.svg) ![한국어](../badges/lang/ko/for-the-badge.svg) ![Español](../badges/lang/es/for-the-badge.svg) ![Tiếng Việt](../badges/lang/vi/for-the-badge.svg) ![العربية](../badges/lang/ar/for-the-badge.svg) ![Français](../badges/lang/fr/for-the-badge.svg) |
+| outline | ![outline](../badges/5.0.1/outline.svg) | ![outline (Español)](../badges/5.0.1/outline-es.svg) | ![English](../badges/lang/en/outline.svg) ![한국어](../badges/lang/ko/outline.svg) ![Español](../badges/lang/es/outline.svg) ![Tiếng Việt](../badges/lang/vi/outline.svg) ![العربية](../badges/lang/ar/outline.svg) ![Français](../badges/lang/fr/outline.svg) |
 
 ## Versiones soportadas
 
-Todas las 52 versiones de la Guía del entorno de ejecución del Marco Estándar de Gobierno Electrónico:
+Todas las 53 versiones de la Guía del entorno de ejecución del Marco Estándar de Gobierno Electrónico:
 
 - **5.x**: `5.0`, `5.0.0`, `5.0.1`, `5.0.2`, `5.0.3`, `5.0.4`, `5.0.5`, `5.0.6`, `5.0.7`
 - **4.x**: `4.3`, `4.3.0`, `4.3.1`, `4.3.2`, `4.2`, `4.2.0`, `4.2.1`, `4.2.2`, `4.1`, `4.1.0`, `4.1.1`, `4.1.2`, `4.0`, `4.0.0`, `4.0.1`
@@ -73,7 +125,7 @@ Todas las 52 versiones de la Guía del entorno de ejecución del Marco Estándar
 
 ## Agregar versiones y generar insignias
 
-Elige la versión que coincida con tu marco. Esta insignia **no** detecta automáticamente la versión de tu proyecto. Para agregar una nueva versión, edita `versions.json` y ejecuta el generador:
+Para agregar una nueva versión, edita `versions.json` y ejecuta el generador (la versión del propio proyecto la detecta el script descrito arriba):
 
 ```sh
 python3 scripts/generate.py

@@ -1,18 +1,19 @@
 # Sample eGovFrame Project
 
-A minimal eGovFrame project demonstrating automatic badge version detection.
+A Maven project that declares its eGovFrame version. The two blocks below are rewritten by the
+[example workflow](../../.github/workflows/example-egovframe-badge.yml); do not edit them by hand.
 
 <!-- egovframe-badge:start -->
-[![eGovFrame 5.0.7](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.7/flat.svg)](https://www.egovframe.go.kr/)
+placeholder
 <!-- egovframe-badge:end -->
 
-This project declares its eGovFrame version via `<org.egovframe.rte.version>5.0.7</org.egovframe.rte.version>` in `pom.xml`.
+## Environment
 
-## Structure
+<!-- egovframe-environment:start -->
+placeholder
+<!-- egovframe-environment:end -->
 
-- `pom.xml` — declares the eGovFrame version via `org.egovframe.rte.version` property and uses the boot starter parent
-- `src/main/java/...` — application code (omitted for brevity)
+Where the versions come from, all in `pom.xml`:
 
-## Automatic badge update
-
-The badge in this README is automatically kept in sync with the declared eGovFrame version by the [example workflow](../.github/workflows/example-egovframe-badge.yml).
+- eGovFrame: the `org.egovframe.rte.version` property, the `org.egovframe.boot` parent and the `org.egovframe.rte` dependency
+- Java: the `java.version` property

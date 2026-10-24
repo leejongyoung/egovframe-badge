@@ -1,8 +1,11 @@
 """Regression tests for the localized documentation and its generated entrypoints."""
 
 import importlib.util
+import json
 import re
 import shutil
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -18,6 +21,7 @@ def load(name):
 
 
 sr = load("sync_readme")
+dv = load("detect_version")
 generate = load("generate")
 
 LANGS = ("en", "ko", "es", "vi", "ar", "fr")
@@ -63,10 +67,6 @@ def prose(text):
 
 def source_files():
     return [ROOT / pattern.format(lang=lang) for pattern in SOURCES.values() for lang in LANGS]
-
-
-def latest_version():
-    return max(generate.load_versions(), key=lambda v: tuple(int(part) for part in v.split(".")))
 
 
 class RebaseTests(unittest.TestCase):
@@ -124,18 +124,18 @@ class DocumentationTests(unittest.TestCase):
                         [code for code, style, _ in buttons if style == "flat"], [lang]
                     )
 
-    def test_readme_badge_block_shows_latest_version_ci_and_license(self):
-        latest = latest_version()
+    def test_readme_header_has_the_name_only_badge_ci_and_license(self):
+        # This repository declares no eGovFrame version, so its header shows the name-only badge.
         for lang in LANGS:
             path = ROOT / f"docs/README.{lang}.md"
             block = BADGE_BLOCK.search(path.read_text(encoding="utf-8")).group(1)
             with self.subTest(file=path.name):
-                version, ci, generation, license_badge = block.split("\n")
+                name_badge, ci, generation, license_badge = block.split("\n")
                 suffix = "" if lang == "en" else f"-{lang}"
                 label = generate.VERSION_LABELS[lang][0]
                 self.assertEqual(
-                    version,
-                    f"[![{label} {latest}](../badges/{latest}/flat{suffix}.svg)](https://www.egovframe.go.kr/)",
+                    name_badge,
+                    f"[![{label}](../badges/{generate.UNVERSIONED}/flat{suffix}.svg)](https://www.egovframe.go.kr/)",
                 )
                 for badge in (ci, generation):
                     workflow = re.search(r"/workflows/([\w.-]+)/badge\.svg", badge).group(1)
@@ -155,6 +155,64 @@ class DocumentationTests(unittest.TestCase):
                 self.assertEqual("eGovFrame" in prose(text).replace("eGovFramework", ""), lang == "en")
                 self.assertEqual("전자정부표준프레임워크" in text, lang == "ko")
 
+    def test_style_table_shows_every_language_button_in_every_style(self):
+        for lang in LANGS:
+            lines = (ROOT / f"docs/README.{lang}.md").read_text(encoding="utf-8").split("\n")
+            rows = [line for line in lines if line.startswith("| ") and "badges/5.0.1/" in line]
+            with self.subTest(lang=lang):
+                self.assertEqual([row.split("|")[1].strip() for row in rows], list(generate.STYLES))
+                for row in rows:
+                    style = row.split("|")[1].strip()
+                    buttons = re.findall(r"!\[([^\]]*)\]\(\.\./badges/lang/(\w+)/([\w-]+)\.svg\)", row)
+                    self.assertEqual([code for _, code, _ in buttons], list(generate.LANGUAGES), style)
+                    self.assertEqual({s for _, _, s in buttons}, {style})
+                    self.assertEqual([name for name, _, _ in buttons],
+                                     [generate.LANGUAGE_BUTTONS[code][1] for code in generate.LANGUAGES])
+
+    def test_every_language_documents_version_detection_with_the_same_structure(self):
+        shapes = {}
+        for lang in LANGS:
+            text = (ROOT / f"docs/README.{lang}.md").read_text(encoding="utf-8")
+            headings = [line[:3] for line in text.split("\n") if line.startswith(("## ", "### "))]
+            with self.subTest(lang=lang):
+                self.assertEqual(text.count(dv.START), 1, "exactly one example badge marker pair")
+                self.assertEqual(text.count(dv.ENV_START), 1, "exactly one example environment marker pair")
+                self.assertEqual(sum(h == "## " for h in headings), 7, "one detection section, no duplicates")
+            shapes[lang] = headings
+        self.assertEqual(len({tuple(shape) for shape in shapes.values()}), 1, "every language has the same headings")
+
+    def test_documentation_names_every_file_and_key_the_detector_reads(self):
+        needed = {name.removesuffix(".kts") for name in dv.BUILD_FILES}
+        needed |= set(dv.MAVEN_JAVA_PROPERTIES) | {dv.SPRING_BOOT_PARENT[1], "org.springframework.boot", "sourceCompatibility",
+                                                  "JavaLanguageVersion.of", "distributionUrl", ".github/workflows/example-egovframe-badge.yml",
+                                                  "--check", "--write", "--github-output", "PROJECT_DIRS"}
+        needed |= {marker for pair in ((dv.START, dv.END), (dv.ENV_START, dv.ENV_END)) for marker in pair}
+        for lang in LANGS:
+            text = (ROOT / f"docs/README.{lang}.md").read_text(encoding="utf-8")
+            with self.subTest(lang=lang):
+                self.assertEqual({item for item in needed if item not in text}, set())
+
+    def test_documented_environment_table_is_what_the_detector_produces(self):
+        project = ROOT / "examples" / "sample-gradle-project"
+        run = subprocess.run([sys.executable, str(ROOT / "scripts/detect_version.py"), "--project", str(project)],
+                             capture_output=True, text=True, check=True)
+        rows = json.loads(run.stdout)["environment"]
+        for lang in LANGS:
+            text = (ROOT / f"docs/README.{lang}.md").read_text(encoding="utf-8")
+            with self.subTest(lang=lang):
+                self.assertIn(dv.environment_markdown(rows, lang), text)
+
+    def test_no_english_leftovers_or_stale_counts_in_translations(self):
+        total = len(generate.load_versions())
+        for lang in LANGS:
+            text = (ROOT / f"docs/README.{lang}.md").read_text(encoding="utf-8")
+            with self.subTest(lang=lang):
+                if lang != "en":
+                    self.assertNotIn("versions total", text)
+                self.assertIn(str(total), text)
+                self.assertNotIn(f"{total - 1} ", text.replace("5.0.1", ""))
+                self.assertIn("`5.0.7`", next(line for line in text.split("\n") if "**5.x**" in line))
+
     def test_default_language_selects_every_entrypoint(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -170,7 +228,7 @@ class DocumentationTests(unittest.TestCase):
             self.assertTrue(readme.startswith("# 전자정부표준프레임워크 배지"))
             self.assertIn("![flat](badges/5.0.1/flat.svg)", readme)
             self.assertIn("](docs/README.en.md)", readme)
-            self.assertIn(f"](badges/{latest_version()}/flat-ko.svg)", readme)
+            self.assertIn(f"](badges/{generate.UNVERSIONED}/flat-ko.svg)", readme)
             policy = (root / ".github/SECURITY.md").read_text(encoding="utf-8")
             self.assertTrue(policy.startswith("# 보안 정책"))
             self.assertIn("](/docs/security/SECURITY.en.md)", policy)

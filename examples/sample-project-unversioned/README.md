@@ -1,9 +1,15 @@
-# Sample Non-eGovFrame Project
+# Sample Project Without an eGovFrame Version
 
-A project that does not declare any eGovFrame version.
+A project whose build files declare no eGovFrame version, so it gets the name-only badge and an environment table
+that says nothing was declared. The blocks below are rewritten by the
+[example workflow](../../.github/workflows/example-egovframe-badge.yml).
 
 <!-- egovframe-badge:start -->
-[![eGovFrame](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/unversioned/flat.svg)](https://www.egovframe.go.kr/)
+placeholder
 <!-- egovframe-badge:end -->
 
-This project uses Spring Boot parent directly and does not declare any eGovFrame version property.
+## Environment
+
+<!-- egovframe-environment:start -->
+placeholder
+<!-- egovframe-environment:end -->
