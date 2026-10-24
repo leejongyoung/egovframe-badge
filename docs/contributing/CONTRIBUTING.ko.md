@@ -1,4 +1,4 @@
-# eGovFrame 배지 기여 안내
+# 전자정부표준프레임워크 배지 기여 안내
 
 [![English](../../badges/lang/en/outline.svg)](CONTRIBUTING.en.md)
 [![한국어](../../badges/lang/ko/flat.svg)](CONTRIBUTING.ko.md)

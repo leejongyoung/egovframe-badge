@@ -1,4 +1,4 @@
-# eGovFrame 배지
+# 전자정부표준프레임워크 배지
 
 <!-- latest-badge:start -->
 [![전자정부표준프레임워크 5.0.6](../badges/5.0.6/flat-ko.svg)](https://www.egovframe.go.kr/)
@@ -14,28 +14,28 @@
 [![العربية](../badges/lang/ar/outline.svg)](README.ar.md)
 [![Français](../badges/lang/fr/outline.svg)](README.fr.md)
 
-전자정부 표준프레임워크(eGovFrame)를 사용하는 **모든 프로젝트**가 README에 가져다 쓸 수 있는 SVG 배지입니다. 저장소마다 로고를 각자 하드코딩하는 대신, 한 곳에서 관리하는 배지를 raw URL 한 줄로 참조합니다. 정적 SVG라서 JavaScript, 별도 배포 서버, 긴 Base64 URL이 필요하지 않습니다.
+전자정부표준프레임워크를 사용하는 **모든 프로젝트**가 README에 가져다 쓸 수 있는 SVG 배지입니다. 저장소마다 로고를 각자 하드코딩하는 대신, 한 곳에서 관리하는 배지를 raw URL 한 줄로 참조합니다. 정적 SVG라서 JavaScript, 별도 배포 서버, 긴 Base64 URL이 필요하지 않습니다.
 
 ## 한 줄로 사용
 
 버전과 스타일, 언어(`en`, `ko`, `es`, `vi`, `ar`, `fr`)를 URL 경로에서 선택합니다. 아래 예시는 공식 포털로 연결됩니다.
 
-**영문 (`eGovFrame`)**
+**영문**
 ```md
 [![eGovFrame 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat.svg)](https://www.egovframe.go.kr)
 ```
 
-**국문 (`전자정부표준프레임워크`)**
+**한국어**
 ```md
 [![전자정부표준프레임워크 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-ko.svg)](https://www.egovframe.go.kr)
 ```
 
 **다국어 버전 배지 (`es` 스페인어 · `vi` 베트남어 · `ar` 아랍어 · `fr` 프랑스어)**
 ```md
-[![Marco Estándar eGovFrame 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-es.svg)](https://www.egovframe.go.kr)
-[![Khung chuẩn eGovFrame 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-vi.svg)](https://www.egovframe.go.kr)
-[![إطار eGovFrame القياسي 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-ar.svg)](https://www.egovframe.go.kr)
-[![Cadre standard eGovFrame 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-fr.svg)](https://www.egovframe.go.kr)
+[![Marco Estándar de Gobierno Electrónico 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-es.svg)](https://www.egovframe.go.kr)
+[![Khung chuẩn Chính phủ điện tử 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-vi.svg)](https://www.egovframe.go.kr)
+[![الإطار القياسي للحكومة الإلكترونية 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-ar.svg)](https://www.egovframe.go.kr)
+[![Cadre standard de l'administration électronique 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-fr.svg)](https://www.egovframe.go.kr)
 ```
 *(모든 다국어 배지는 `badges/5.0.2/flat-<lang>.svg` 및 `badges/5.0.2/<lang>/flat.svg` 경로를 모두 지원합니다.)*
 
@@ -52,19 +52,19 @@
 [![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/outline.svg)](docs/README.fr.md)
 ```
 
-전자정부 표준프레임워크 [실행환경 가이드](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드)에 등재된 1.0부터 5.x까지의 모든 주요 실행환경 버전(`1.0`, `2.0`, `2.5`, `2.6`, `2.7`, `3.0`, `3.1`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `4.0`, `4.1`, `4.2`, `4.3`, `5.0`) 및 세부 릴리스 패치 버전을 제공합니다. 영문(`eGovFrame`)과 한문(`전자정부표준프레임워크`) 각각 아래 5가지 스타일을 선택할 수 있습니다 — [shields.io](https://shields.io)의 대표 스타일(`flat`, `flat-square`, `plastic`, `for-the-badge`)을 그대로 지원하고, 자체 `outline` 스타일을 더했습니다. (shields.io의 `social` 스타일은 마우스 호버 효과에 기대는 구조라 정적 `<img>` 임베드에서는 의미가 없어 제외했습니다.)
+전자정부표준프레임워크 [실행환경 가이드](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드)에 등재된 1.0부터 5.x까지의 모든 주요 실행환경 버전(`1.0`, `2.0`, `2.5`, `2.6`, `2.7`, `3.0`, `3.1`, `3.5`, `3.6`, `3.7`, `3.8`, `3.9`, `3.10`, `4.0`, `4.1`, `4.2`, `4.3`, `5.0`) 및 세부 릴리스 패치 버전을 제공합니다. 영문(`eGovFrame`)과 국문(`전자정부표준프레임워크`) 각각 아래 5가지 스타일을 선택할 수 있습니다 — [shields.io](https://shields.io)의 대표 스타일(`flat`, `flat-square`, `plastic`, `for-the-badge`)을 그대로 지원하고, 자체 `outline` 스타일을 더했습니다. (shields.io의 `social` 스타일은 마우스 호버 효과에 기대는 구조라 정적 `<img>` 임베드에서는 의미가 없어 제외했습니다.)
 
-| 스타일 | 예시(영문) | 예시(한문) |
+| 스타일 | 예시(영문) | 예시(한국어) |
 | --- | --- | --- |
-| flat | ![flat](../badges/5.0.1/flat.svg) | ![flat (한문)](../badges/5.0.1/flat-ko.svg) |
-| flat-square | ![flat-square](../badges/5.0.1/flat-square.svg) | ![flat-square (한문)](../badges/5.0.1/flat-square-ko.svg) |
-| plastic | ![plastic](../badges/5.0.1/plastic.svg) | ![plastic (한문)](../badges/5.0.1/plastic-ko.svg) |
-| for-the-badge | ![for-the-badge](../badges/5.0.1/for-the-badge.svg) | ![for-the-badge (한문)](../badges/5.0.1/for-the-badge-ko.svg) |
-| outline | ![outline](../badges/5.0.1/outline.svg) | ![outline (한문)](../badges/5.0.1/outline-ko.svg) |
+| flat | ![flat](../badges/5.0.1/flat.svg) | ![flat (한국어)](../badges/5.0.1/flat-ko.svg) |
+| flat-square | ![flat-square](../badges/5.0.1/flat-square.svg) | ![flat-square (한국어)](../badges/5.0.1/flat-square-ko.svg) |
+| plastic | ![plastic](../badges/5.0.1/plastic.svg) | ![plastic (한국어)](../badges/5.0.1/plastic-ko.svg) |
+| for-the-badge | ![for-the-badge](../badges/5.0.1/for-the-badge.svg) | ![for-the-badge (한국어)](../badges/5.0.1/for-the-badge-ko.svg) |
+| outline | ![outline](../badges/5.0.1/outline.svg) | ![outline (한국어)](../badges/5.0.1/outline-ko.svg) |
 
 ## 지원 버전
 
-전자정부 표준프레임워크 [실행환경 가이드](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드)에 등재된 1.0부터 5.x까지 총 52개 버전(주요 실행환경 및 패치 릴리스)을 지원합니다.
+전자정부표준프레임워크 [실행환경 가이드](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드)에 등재된 1.0부터 5.x까지 총 52개 버전(주요 실행환경 및 패치 릴리스)을 지원합니다.
 
 - **5.x**: `5.0`, `5.0.0`, `5.0.1`, `5.0.2`, `5.0.3`, `5.0.4`, `5.0.5`, `5.0.6`
 - **4.x**: `4.3`, `4.3.0`, `4.3.1`, `4.3.2`, `4.2`, `4.2.0`, `4.2.1`, `4.2.2`, `4.1`, `4.1.0`, `4.1.1`, `4.1.2`, `4.0`, `4.0.0`, `4.0.1`
@@ -90,7 +90,7 @@ python3 scripts/generate.py --check
 - `scripts/generate.py --check`와 CI로 생성물과 원본의 일치를 검사합니다. 스타일 변경 시 모든 버전에 일관되게 적용됩니다.
 - `plastic` 스타일의 광택 그라데이션은 [shields.io](https://shields.io)가 쓰는 것과 동일한 그라데이션 스톱 값을 사용합니다. `for-the-badge`는 shields.io와 동일하게 모서리를 각지게(`shape-rendering`이 아닌 `rx="0"`으로) 그립니다.
 
-로고는 [eGovFramework 저장소](https://github.com/eGovFramework)의 기존 README 배지에 포함된 SVG를 동일하게 추출했습니다. 로고와 eGovFrame 명칭의 권리는 해당 권리자에게 있습니다.
+로고는 [eGovFramework 저장소](https://github.com/eGovFramework)의 기존 README 배지에 포함된 SVG를 동일하게 추출했습니다. 로고와 전자정부표준프레임워크 명칭의 권리는 해당 권리자에게 있습니다.
 
 ## 라이선스
 

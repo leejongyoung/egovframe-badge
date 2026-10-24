@@ -1,4 +1,4 @@
-# Hướng dẫn đóng góp cho eGovFrame Badge
+# Hướng dẫn đóng góp cho huy hiệu Khung chuẩn Chính phủ điện tử
 
 [![English](../../badges/lang/en/outline.svg)](CONTRIBUTING.en.md)
 [![한국어](../../badges/lang/ko/outline.svg)](CONTRIBUTING.ko.md)

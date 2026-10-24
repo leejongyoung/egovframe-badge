@@ -1,4 +1,4 @@
-# Contribuer à eGovFrame Badge
+# Contribuer au badge du Cadre standard de l'administration électronique
 
 [![English](../../badges/lang/en/outline.svg)](CONTRIBUTING.en.md)
 [![한국어](../../badges/lang/ko/outline.svg)](CONTRIBUTING.ko.md)

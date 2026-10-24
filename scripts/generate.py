@@ -19,6 +19,10 @@ VERSION_PATTERN = re.compile(r"[0-9]+(?:\.[0-9]+){1,3}(?:-[A-Za-z0-9.]+)?\Z")
 SVG_NS = "{http://www.w3.org/2000/svg}"
 
 # Version-badge label metadata per language: (normal_label, prominent_label, normal_width, prominent_width, font_family)
+# Only English keeps the brand name "eGovFrame"; every other language uses its own translation of
+# "전자정부표준프레임워크" (Electronic Government Standard Framework), and the Korean name appears only in "ko".
+# Widths = icon area (29 normal / 33 prominent) + label text measured in Chromium at 11px/600 + 6% font
+# variance + 12/14 right padding, so longer translated names do not overflow the label area.
 VERSION_LABELS = {
     "en": (
         "eGovFrame",
@@ -35,31 +39,31 @@ VERSION_LABELS = {
         "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans KR', 'Malgun Gothic', Arial, sans-serif",
     ),
     "es": (
-        "Marco Estándar eGovFrame",
-        "MARCO ESTÁNDAR EGOVFRAME",
-        178,
-        196,
+        "Marco Estándar de Gobierno Electrónico",
+        "MARCO ESTÁNDAR DE GOBIERNO ELECTRÓNICO",
+        275,
+        332,
         "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Arial, sans-serif",
     ),
     "vi": (
-        "Khung chuẩn eGovFrame",
-        "KHUNG CHUẨN EGOVFRAME",
-        166,
-        182,
+        "Khung chuẩn Chính phủ điện tử",
+        "KHUNG CHUẨN CHÍNH PHỦ ĐIỆN TỬ",
+        223,
+        261,
         "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Arial, sans-serif",
     ),
     "ar": (
-        "إطار eGovFrame القياسي",
-        "إطار EGOVFRAME القياسي",
-        162,
-        174,
+        "الإطار القياسي للحكومة الإلكترونية",
+        "الإطار القياسي للحكومة الإلكترونية",
+        172,
+        178,
         "'Noto Sans Arabic', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif",
     ),
     "fr": (
-        "Cadre standard eGovFrame",
-        "CADRE STANDARD EGOVFRAME",
-        178,
-        196,
+        "Cadre standard de l'administration électronique",
+        "CADRE STANDARD DE L'ADMINISTRATION ÉLECTRONIQUE",
+        319,
+        387,
         "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Arial, sans-serif",
     ),
 }

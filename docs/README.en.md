@@ -25,17 +25,12 @@ Pick the version, style, and language (`en`, `ko`, `es`, `vi`, `ar`, `fr`) from 
 [![eGovFrame 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat.svg)](https://www.egovframe.go.kr)
 ```
 
-**Korean (`전자정부표준프레임워크`)**
-```md
-[![전자정부표준프레임워크 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-ko.svg)](https://www.egovframe.go.kr)
-```
-
 **Multilingual version badges (`es` Spanish · `vi` Vietnamese · `ar` Arabic · `fr` French)**
 ```md
-[![Marco Estándar eGovFrame 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-es.svg)](https://www.egovframe.go.kr)
-[![Khung chuẩn eGovFrame 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-vi.svg)](https://www.egovframe.go.kr)
-[![إطار eGovFrame القياسي 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-ar.svg)](https://www.egovframe.go.kr)
-[![Cadre standard eGovFrame 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-fr.svg)](https://www.egovframe.go.kr)
+[![Marco Estándar de Gobierno Electrónico 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-es.svg)](https://www.egovframe.go.kr)
+[![Khung chuẩn Chính phủ điện tử 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-vi.svg)](https://www.egovframe.go.kr)
+[![الإطار القياسي للحكومة الإلكترونية 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-ar.svg)](https://www.egovframe.go.kr)
+[![Cadre standard de l'administration électronique 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat-fr.svg)](https://www.egovframe.go.kr)
 ```
 *(All multilingual badges support both `badges/5.0.2/flat-<lang>.svg` and `badges/5.0.2/<lang>/flat.svg` paths.)*
 
@@ -54,13 +49,13 @@ Standalone badge buttons for multilingual `README` language switching (`en`, `ko
 
 All major runtime versions from the [eGovFrame Runtime Guide](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드) — 1.0 through 5.x (52 versions total) — with five styles each: `flat`, `flat-square`, `plastic`, `for-the-badge`, and the custom `outline` style (shields.io `social` style excluded as it relies on hover effects).
 
-| Style | Example (English) | Example (Korean) |
-| --- | --- | --- |
-| flat | ![flat](../badges/5.0.1/flat.svg) | ![flat (Korean)](../badges/5.0.1/flat-ko.svg) |
-| flat-square | ![flat-square](../badges/5.0.1/flat-square.svg) | ![flat-square (Korean)](../badges/5.0.1/flat-square-ko.svg) |
-| plastic | ![plastic](../badges/5.0.1/plastic.svg) | ![plastic (Korean)](../badges/5.0.1/plastic-ko.svg) |
-| for-the-badge | ![for-the-badge](../badges/5.0.1/for-the-badge.svg) | ![for-the-badge (Korean)](../badges/5.0.1/for-the-badge-ko.svg) |
-| outline | ![outline](../badges/5.0.1/outline.svg) | ![outline (Korean)](../badges/5.0.1/outline-ko.svg) |
+| Style | Example |
+| --- | --- |
+| flat | ![flat](../badges/5.0.1/flat.svg) |
+| flat-square | ![flat-square](../badges/5.0.1/flat-square.svg) |
+| plastic | ![plastic](../badges/5.0.1/plastic.svg) |
+| for-the-badge | ![for-the-badge](../badges/5.0.1/for-the-badge.svg) |
+| outline | ![outline](../badges/5.0.1/outline.svg) |
 
 ## Supported versions
 
