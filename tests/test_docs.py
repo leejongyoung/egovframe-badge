@@ -8,9 +8,17 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-spec = importlib.util.spec_from_file_location("sync_readme", ROOT / "scripts" / "sync_readme.py")
-sr = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(sr)
+
+
+def load(name):
+    spec = importlib.util.spec_from_file_location(name, ROOT / "scripts" / f"{name}.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+sr = load("sync_readme")
+generate = load("generate")
 
 LANGS = ("en", "ko", "es", "vi", "ar", "fr")
 SOURCES = {
@@ -24,6 +32,7 @@ DESTINATION = re.compile(r"\]\(\s*<?([^\s)<>]+)")
 BUTTON = re.compile(
     r"\[!\[[^\]]*\]\((?!https?:)[^)\s]*badges/lang/(\w+)/(flat|outline)\.svg\)\]\(([^)]+)\)"
 )
+BADGE_BLOCK = re.compile(r"<!-- latest-badge:start -->\n(.*?)\n<!-- latest-badge:end -->", re.S)
 
 
 def local_targets(text):
@@ -43,6 +52,10 @@ def local_targets(text):
 
 def source_files():
     return [ROOT / pattern.format(lang=lang) for pattern in SOURCES.values() for lang in LANGS]
+
+
+def latest_version():
+    return max(generate.load_versions(), key=lambda v: tuple(int(part) for part in v.split(".")))
 
 
 class RebaseTests(unittest.TestCase):
@@ -88,7 +101,8 @@ class DocumentationTests(unittest.TestCase):
             for lang in LANGS:
                 path = ROOT / pattern.format(lang=lang)
                 head = path.read_text(encoding="utf-8").split("\n## ", 1)[0]
-                buttons = BUTTON.findall(head)  # repository-relative images only: they render on any branch or fork
+                # Repository-relative images only: they render on any branch or fork.
+                buttons = BUTTON.findall(head)
                 with self.subTest(file=path.relative_to(ROOT).as_posix()):
                     self.assertEqual([code for code, _, _ in buttons], list(LANGS))
                     self.assertEqual(
@@ -98,6 +112,28 @@ class DocumentationTests(unittest.TestCase):
                     self.assertEqual(
                         [code for code, style, _ in buttons if style == "flat"], [lang]
                     )
+
+    def test_readme_badge_block_shows_latest_version_ci_and_license(self):
+        latest = latest_version()
+        for lang in LANGS:
+            path = ROOT / f"docs/README.{lang}.md"
+            block = BADGE_BLOCK.search(path.read_text(encoding="utf-8")).group(1)
+            with self.subTest(file=path.name):
+                version, ci, generation, license_badge = block.split("\n")
+                suffix = "" if lang == "en" else f"-{lang}"
+                label = generate.VERSION_LABELS[lang][0]
+                self.assertEqual(
+                    version,
+                    f"[![{label} {latest}](../badges/{latest}/flat{suffix}.svg)](https://www.egovframe.go.kr/)",
+                )
+                for badge in (ci, generation):
+                    workflow = re.search(r"/workflows/([\w.-]+)/badge\.svg", badge).group(1)
+                    self.assertTrue((ROOT / ".github/workflows" / workflow).is_file(), workflow)
+                self.assertEqual(
+                    license_badge,
+                    "[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](../LICENSE)",
+                )
+        self.assertTrue((ROOT / "LICENSE").read_text(encoding="utf-8").startswith("MIT License"))
 
     def test_default_language_selects_every_entrypoint(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -114,6 +150,7 @@ class DocumentationTests(unittest.TestCase):
             self.assertTrue(readme.startswith("# eGovFrame 배지"))
             self.assertIn("![flat](badges/5.0.1/flat.svg)", readme)
             self.assertIn("](docs/README.en.md)", readme)
+            self.assertIn(f"](badges/{latest_version()}/flat-ko.svg)", readme)
             policy = (root / ".github/SECURITY.md").read_text(encoding="utf-8")
             self.assertTrue(policy.startswith("# 보안 정책"))
             self.assertIn("](/docs/security/SECURITY.en.md)", policy)
