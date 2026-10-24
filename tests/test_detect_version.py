@@ -7,6 +7,7 @@ import json
 import re
 import tempfile
 import unittest
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -233,6 +234,27 @@ class ContractWithGeneratorTests(unittest.TestCase):
         status, out, _ = run("--project", ROOT / "examples" / "sample-project")
         self.assertEqual(status, 0)
         self.assertTrue(json.loads(out)["badge_version"])
+
+    def test_example_projects_are_valid_xml_and_their_readmes_match_the_detection(self):
+        for name, expect_version in (("sample-project", True), ("sample-project-unversioned", False)):
+            project = ROOT / "examples" / name
+            with self.subTest(project=name):
+                ET.parse(project / "pom.xml")  # real Maven rejects malformed XML; the regex scanner would not
+                status, out, _ = run("--project", project, "--readme", project / "README.md", "--check")
+                result = json.loads(out)
+                self.assertEqual(result["found"], expect_version)
+                self.assertEqual((status, result["readme"]["changed"]), (0, False), "README badge is stale")
+
+    def test_example_workflow_commits_the_rewritten_readme_and_uses_a_real_output_file(self):
+        workflow = (ROOT / ".github/workflows/example-egovframe-badge.yml").read_text(encoding="utf-8")
+        self.assertIn('--github-output "$GITHUB_OUTPUT"', workflow)
+        self.assertNotIn("github.output", workflow)  # not a GitHub Actions context
+        self.assertRegex(workflow, r"git commit")
+        self.assertRegex(workflow, r'git push origin "HEAD:\$\{GITHUB_REF_NAME\}"')
+
+    def test_no_scratch_files_are_committed(self):
+        tracked = {path.name for path in ROOT.iterdir() if path.is_file()}
+        self.assertEqual({name for name in tracked if name.startswith(("fix_", "tmp"))}, set())
 
 
 if __name__ == "__main__":

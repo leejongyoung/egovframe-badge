@@ -1,18 +1,27 @@
 name: Example eGovFrame badge update
 
-# This workflow demonstrates automatic badge version updates.
-# Consumer projects can copy this file and adjust the paths/inputs as needed.
-# The detect_version script runs from this repository at the pinned ref below.
+# Example: keep a project's README badge in sync with the eGovFrame version its build files declare.
+#
+#   1. scripts/detect_version.py scans pom.xml / build.gradle(.kts) / gradle.properties / libs.versions.toml.
+#   2. A declared version gets the version badge; no declared version gets the name-only badge.
+#   3. When the badge changed, the README is committed back to the branch.
+#
+# To use it in another project, copy scripts/detect_version.py and this file, point PROJECT_DIR at the
+# project, put the two marker comments in its README, and set --versions/--base-url if you host badges yourself.
+# This repository runs it on examples/sample-project, so the sample README always matches its pom.xml.
 
 on:
   push:
     branches: [main, work, egovframework]
     paths:
       - 'examples/sample-project/**'
+      - 'scripts/detect_version.py'
+      - 'versions.json'
+      - '.github/workflows/example-egovframe-badge.yml'
   workflow_dispatch:
     inputs:
       project-dir:
-        description: 'Directory containing the project to scan (relative to workspace root)'
+        description: 'Project directory to scan, relative to the repository root'
         required: true
         default: 'examples/sample-project'
       language:
@@ -31,28 +40,47 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: example-badge-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  # Inputs are passed through the environment, never interpolated into the shell script.
+  PROJECT_DIR: ${{ inputs.project-dir || 'examples/sample-project' }}
+  BADGE_LANGUAGE: ${{ inputs.language || 'en' }}
+  BADGE_STYLE: ${{ inputs.style || 'flat' }}
+
 jobs:
   update-badge:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout this repo (badge source and scripts)
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - uses: actions/checkout@v4
 
-      - name: Detect eGovFrame version
+      - name: Detect the eGovFrame version and rewrite the README badge
         id: detect
         run: |
           python3 scripts/detect_version.py \
-            --project "${{ github.event.inputs.project-dir || 'examples/sample-project' }}" \
-            --readme "${{ github.event.inputs.project-dir || 'examples/sample-project' }}/README.md" \
-            --language "${{ github.event.inputs.language || 'en' }}" \
-            --style "${{ github.event.inputs.style || 'flat' }}" \
+            --project "$PROJECT_DIR" \
+            --readme "$PROJECT_DIR/README.md" \
+            --language "$BADGE_LANGUAGE" \
+            --style "$BADGE_STYLE" \
             --write \
-            --github-output ${{ github.output }}
-      - name: Log result
+            --github-output "$GITHUB_OUTPUT"
+
+      - name: Summarize
         run: |
-          echo "Detected version: ${{ steps.detect.outputs.version }}"
-          echo "Badge version: ${{ steps.detect.outputs.badge_version }}"
-          echo "Source: ${{ steps.detect.outputs.source }}"
-          echo "Changed: ${{ steps.detect.outputs.changed }}"
+          {
+            echo "### eGovFrame badge"
+            echo "- Declared version: \`${{ steps.detect.outputs.version || 'none' }}\` (${{ steps.detect.outputs.source || 'no build file declares one' }})"
+            echo "- Badge used: \`${{ steps.detect.outputs.badge_version || 'name only' }}\`"
+            echo "- README rewritten: \`${{ steps.detect.outputs.changed }}\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit the updated README
+        if: steps.detect.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$PROJECT_DIR/README.md"
+          git commit -m "docs: update eGovFrame badge from build files"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
