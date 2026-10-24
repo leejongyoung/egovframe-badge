@@ -4,13 +4,16 @@ A Maven project that declares its eGovFrame version. The two blocks below are re
 [example workflow](../../.github/workflows/example-egovframe-badge.yml); do not edit them by hand.
 
 <!-- egovframe-badge:start -->
-placeholder
+[![eGovFrame 5.0.2](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.2/flat.svg)](https://www.egovframe.go.kr/)
 <!-- egovframe-badge:end -->
 
 ## Environment
 
 <!-- egovframe-environment:start -->
-placeholder
+| Category | Component | Version | Source |
+| --- | --- | --- | --- |
+| Runtime environment | eGovFrame | 5.0.2 | `pom.xml` |
+| Development environment | Java | 17 | `pom.xml` |
 <!-- egovframe-environment:end -->
 
 Where the versions come from, all in `pom.xml`:

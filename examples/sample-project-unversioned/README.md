@@ -5,11 +5,14 @@ that says nothing was declared. The blocks below are rewritten by the
 [example workflow](../../.github/workflows/example-egovframe-badge.yml).
 
 <!-- egovframe-badge:start -->
-placeholder
+[![eGovFrame](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/unversioned/flat.svg)](https://www.egovframe.go.kr/)
 <!-- egovframe-badge:end -->
 
 ## Environment
 
 <!-- egovframe-environment:start -->
-placeholder
+| Category | Component | Version | Source |
+| --- | --- | --- | --- |
+| Development environment | Java | 17 | `pom.xml` |
+| Development environment | Spring Boot | 3.2.0 | `pom.xml` |
 <!-- egovframe-environment:end -->

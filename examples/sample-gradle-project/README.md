@@ -4,13 +4,18 @@ A Gradle project that declares its eGovFrame and development environment version
 by the [example workflow](../../.github/workflows/example-egovframe-badge.yml); do not edit them by hand.
 
 <!-- egovframe-badge:start -->
-placeholder
+[![eGovFrame 5.0.0](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/5.0.0/flat.svg)](https://www.egovframe.go.kr/)
 <!-- egovframe-badge:end -->
 
 ## Environment
 
 <!-- egovframe-environment:start -->
-placeholder
+| Category | Component | Version | Source |
+| --- | --- | --- | --- |
+| Runtime environment | eGovFrame | 5.0.0 | `build.gradle` |
+| Development environment | Java | 17 | `build.gradle` |
+| Development environment | Spring Boot | 3.5.6 | `build.gradle` |
+| Development environment | Gradle | 8.5 | `gradle/wrapper/gradle-wrapper.properties` |
 <!-- egovframe-environment:end -->
 
 Where the versions come from:
