@@ -1,11 +1,11 @@
 # سياسة الأمان
 
-[![English](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/en/outline.svg)](SECURITY.en.md)
-[![한국어](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ko/outline.svg)](SECURITY.ko.md)
-[![Español](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/es/outline.svg)](SECURITY.es.md)
-[![Tiếng Việt](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/vi/outline.svg)](SECURITY.vi.md)
-[![العربية](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ar/flat.svg)](SECURITY.ar.md)
-[![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/outline.svg)](SECURITY.fr.md)
+[![English](../../badges/lang/en/outline.svg)](SECURITY.en.md)
+[![한국어](../../badges/lang/ko/outline.svg)](SECURITY.ko.md)
+[![Español](../../badges/lang/es/outline.svg)](SECURITY.es.md)
+[![Tiếng Việt](../../badges/lang/vi/outline.svg)](SECURITY.vi.md)
+[![العربية](../../badges/lang/ar/flat.svg)](SECURITY.ar.md)
+[![Français](../../badges/lang/fr/outline.svg)](SECURITY.fr.md)
 
 ## الإبلاغ عن الثغرات
 

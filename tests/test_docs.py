@@ -22,7 +22,7 @@ FENCE = re.compile(r"^\s*(```|~~~)")
 CODE_SPAN = re.compile(r"`[^`\n]*`")
 DESTINATION = re.compile(r"\]\(\s*<?([^\s)<>]+)")
 BUTTON = re.compile(
-    r"\[!\[[^\]]*\]\(https://[^)]*/badges/lang/(\w+)/(flat|outline)\.svg\)\]\(([^)]+)\)"
+    r"\[!\[[^\]]*\]\((?!https?:)[^)\s]*badges/lang/(\w+)/(flat|outline)\.svg\)\]\(([^)]+)\)"
 )
 
 
@@ -88,7 +88,7 @@ class DocumentationTests(unittest.TestCase):
             for lang in LANGS:
                 path = ROOT / pattern.format(lang=lang)
                 head = path.read_text(encoding="utf-8").split("\n## ", 1)[0]
-                buttons = BUTTON.findall(head)
+                buttons = BUTTON.findall(head)  # repository-relative images only: they render on any branch or fork
                 with self.subTest(file=path.relative_to(ROOT).as_posix()):
                     self.assertEqual([code for code, _, _ in buttons], list(LANGS))
                     self.assertEqual(
