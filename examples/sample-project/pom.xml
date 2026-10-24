@@ -7,7 +7,7 @@
     <groupId>com.example</groupId>
     <artifactId>sample-project</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <packaging>jar</version>
+    <packaging>jar</packaging>
 
     <name>Sample eGovFrame Project</name>
     <description>A minimal eGovFrame project demonstrating badge version detection</description>
