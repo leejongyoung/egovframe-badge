@@ -1,11 +1,11 @@
 # Insignia eGovFrame
 
-[![English](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/en/outline.svg)](README.en.md)
-[![한국어](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ko/outline.svg)](README.ko.md)
-[![Español](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/es/flat.svg)](README.es.md)
-[![Tiếng Việt](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/vi/outline.svg)](README.vi.md)
-[![العربية](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/ar/outline.svg)](README.ar.md)
-[![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/outline.svg)](README.fr.md)
+[![English](../badges/lang/en/outline.svg)](README.en.md)
+[![한국어](../badges/lang/ko/outline.svg)](README.ko.md)
+[![Español](../badges/lang/es/flat.svg)](README.es.md)
+[![Tiếng Việt](../badges/lang/vi/outline.svg)](README.vi.md)
+[![العربية](../badges/lang/ar/outline.svg)](README.ar.md)
+[![Français](../badges/lang/fr/outline.svg)](README.fr.md)
 
 Una **insignia SVG única** para cada proyecto que utiliza eGovFrame (marco electrónico de gobierno). En lugar de incrustar logotipos en cada repositorio, referencia una insignia mantenida centralmente con una URL raw. SVG estático — sin JavaScript, sin servidor de despliegue, sin URLs Base64 largas.
 
