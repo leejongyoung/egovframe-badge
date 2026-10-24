@@ -1,6 +1,12 @@
 name: Generate badges
 
 on:
+  push:
+    branches: [main, work]
+    paths:
+      - 'versions.json'
+      - 'scripts/generate.py'
+      - 'assets/egovframe-mark.svg'
   workflow_dispatch:
     inputs:
       version:
