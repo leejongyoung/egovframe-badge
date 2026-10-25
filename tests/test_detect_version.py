@@ -147,6 +147,36 @@ class DetectionTests(unittest.TestCase):
         self.assertEqual((status, result["version"], result["source"]), (0, "5.0.1", "b/pom.xml"))
         self.assertEqual({c["version"] for c in result["candidates"]}, {"4.3.0", "5.0.1", "5.0.0"})
 
+    def test_maven_properties_keep_each_modules_version_and_source(self):
+        for high, low in (("a", "b"), ("b", "a")):
+            with self.subTest(high=high):
+                files = {
+                    f"{high}/pom.xml": PROPERTY_4X.replace("4.3.0", "5.0.2"),
+                    f"{low}/pom.xml": PROPERTY_4X,
+                    "empty/pom.xml": "<project><artifactId>empty</artifactId></project>",
+                }
+                with make_project(files) as directory:
+                    status, out, _ = run("--project", directory)
+                result = json.loads(out)
+                self.assertEqual((status, result["version"], result["source"]),
+                                 (0, "5.0.2", f"{high}/pom.xml"))
+                self.assertEqual(
+                    {(c["version"], c["source"]) for c in result["candidates"]},
+                    {("5.0.2", f"{high}/pom.xml"), ("4.3.0", f"{low}/pom.xml")},
+                )
+
+    def test_maven_placeholders_do_not_borrow_sibling_properties(self):
+        files = {
+            "a/pom.xml": MAVEN_INDIRECT,
+            "b/pom.xml": MAVEN_INDIRECT.replace("4.2.0", "5.0.2"),
+            "missing/pom.xml": MAVEN_INDIRECT.replace(
+                "<properties><rte.release>4.2.0</rte.release></properties>", ""),
+        }
+        self.assertEqual(
+            {(c["version"], c["source"]) for c in detected(files)},
+            {("4.2.0", "a/pom.xml"), ("5.0.2", "b/pom.xml")},
+        )
+
 
 class ReadmeTests(unittest.TestCase):
     def sync(self, files, *flags, language="en", readme=README):
@@ -274,6 +304,30 @@ class DevelopmentEnvironmentTests(unittest.TestCase):
         self.assertEqual([(r["component"], r["version"], r["source"]) for r in rows], [("Java", "11", "b")])
         rows = dv.environment_rows(None, {"Java": [{"version": "1.8", "source": "a"}, {"version": "7", "source": "b"}], "Spring Boot": [], "Gradle": []})
         self.assertEqual(rows[0]["version"], "1.8")
+
+    def test_development_placeholders_stay_in_the_declaring_pom(self):
+        pom = """<project><properties>
+            <jdk.release>17</jdk.release><java.version>${jdk.release}</java.version>
+            <boot.release>3.2.0</boot.release></properties>
+            <parent><groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-parent</artifactId>
+            <version>${boot.release}</version></parent></project>"""
+        files = {
+            "a/pom.xml": pom,
+            "b/pom.xml": pom.replace(">17<", ">21<").replace("3.2.0", "3.5.6"),
+            "missing/pom.xml": pom.replace("<jdk.release>17</jdk.release>", "")
+                                  .replace("<boot.release>3.2.0</boot.release>", ""),
+        }
+        with make_project(files) as directory:
+            found = dv.detect_development(directory)
+        self.assertEqual(
+            {(c["version"], c["source"]) for c in found["Java"]},
+            {("17", "a/pom.xml"), ("21", "b/pom.xml")},
+        )
+        self.assertEqual(
+            {(c["version"], c["source"]) for c in found["Spring Boot"]},
+            {("3.2.0", "a/pom.xml"), ("3.5.6", "b/pom.xml")},
+        )
 
 
 ENVIRONMENT_README = """# Project

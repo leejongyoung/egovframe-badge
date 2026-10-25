@@ -52,6 +52,7 @@ README có thể hiển thị các phiên bản mà tệp xây dựng của dự
 | Môi trường phát triển | Gradle | `gradle/wrapper/gradle-wrapper.properties`: `distributionUrl` (`gradle-8.5-bin.zip`) |
 
 - Nếu nhiều mô-đun cùng khai báo, phiên bản cao nhất được chọn.
+- Thuộc tính Maven và tham chiếu `${...}` chỉ được phân giải trong `pom.xml` khai báo chúng, không gộp giữa các mô-đun. Không suy đoán thuộc tính kế thừa hoặc bên ngoài chưa phân giải được.
 - Bỏ qua chú thích; bỏ qua thư mục kết quả build và thư viện (`target`, `build`, `node_modules`, ...).
 - Chỉ hiển thị những gì dự án tự khai báo: parent của phiên bản 4.x/5.x mang theo Spring Boot và Java riêng, nên sẽ không xuất hiện nếu tệp build không ghi rõ.
 - Dự án không khai báo phiên bản dùng huy hiệu chỉ có tên; phiên bản đã khai báo nhưng chưa có huy hiệu (không có trong `versions.json`) dùng huy hiệu chỉ có tên kèm cảnh báo.

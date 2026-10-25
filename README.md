@@ -48,6 +48,7 @@ A README can show the versions its project's build files declare. `scripts/detec
 | Development environment | Gradle | `gradle/wrapper/gradle-wrapper.properties`: `distributionUrl` (`gradle-8.5-bin.zip`) |
 
 - The highest version wins when several modules declare one.
+- Maven properties and `${...}` references are scoped to the declaring `pom.xml`, not merged across modules. Unresolved parent or external properties are not guessed.
 - Comments are ignored, and build output and dependency folders (`target`, `build`, `node_modules`, ...) are skipped.
 - Only what the project declares itself is shown: eGovFrame 4.x/5.x parents bring their own Spring Boot and Java, which are not listed unless the build file states them.
 - A project that declares no eGovFrame version gets the name-only badge; a declared version without a published badge (not in `versions.json`) gets the name-only badge and a warning.
