@@ -52,6 +52,7 @@ Un README peut afficher les versions que déclarent les fichiers de build de son
 | Environnement de développement | Gradle | `gradle/wrapper/gradle-wrapper.properties`: `distributionUrl` (`gradle-8.5-bin.zip`) |
 
 - Si plusieurs modules déclarent une version, la plus élevée l'emporte.
+- Les propriétés Maven et les références `${...}` sont résolues dans le `pom.xml` qui les déclare, sans fusion entre modules. Les propriétés parentes ou externes non résolues ne sont pas devinées.
 - Les commentaires sont ignorés, et les dossiers de sortie de build et de dépendances (`target`, `build`, `node_modules`, ...) sont ignorés.
 - Seul ce que le projet déclare lui-même est affiché : les parents des versions 4.x/5.x apportent leur propre Spring Boot et Java, qui n'apparaissent pas si le fichier de build ne les indique pas.
 - Un projet qui ne déclare aucune version reçoit le badge du nom seul ; une version déclarée sans badge publié (absente de `versions.json`) reçoit le badge du nom seul et un avertissement.

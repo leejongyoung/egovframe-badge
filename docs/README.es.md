@@ -52,6 +52,7 @@ Un README puede mostrar las versiones que declaran los archivos de construcción
 | Entorno de desarrollo | Gradle | `gradle/wrapper/gradle-wrapper.properties`: `distributionUrl` (`gradle-8.5-bin.zip`) |
 
 - Si varios módulos declaran una versión, gana la más alta.
+- Las propiedades de Maven y las referencias `${...}` se resuelven en el `pom.xml` que las declara, sin mezclar módulos. No se adivinan propiedades del padre o externas que no se puedan resolver.
 - Se ignoran los comentarios y se omiten las carpetas de compilación y dependencias (`target`, `build`, `node_modules`, ...).
 - Solo se muestra lo que el proyecto declara por sí mismo: los parents de la versión 4.x/5.x traen su propio Spring Boot y Java, que no aparecen si el archivo de construcción no los indica.
 - Un proyecto que no declara ninguna versión recibe la insignia solo con el nombre; una versión declarada sin insignia publicada (que no está en `versions.json`) recibe la insignia solo con el nombre y una advertencia.
