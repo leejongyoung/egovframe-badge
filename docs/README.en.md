@@ -48,6 +48,7 @@ A README can show the versions its project's build files declare. `scripts/detec
 | Development environment | Gradle | `gradle/wrapper/gradle-wrapper.properties`: `distributionUrl` (`gradle-8.5-bin.zip`) |
 
 - The highest version wins when several modules declare one.
+- Maven properties and `${...}` references are scoped to the declaring `pom.xml`, not merged across modules. Unresolved parent or external properties are not guessed.
 - Comments are ignored, and build output and dependency folders (`target`, `build`, `node_modules`, ...) are skipped.
 - Only what the project declares itself is shown: eGovFrame 4.x/5.x parents bring their own Spring Boot and Java, which are not listed unless the build file states them.
 - A project that declares no eGovFrame version gets the name-only badge; a declared version without a published badge (not in `versions.json`) gets the name-only badge and a warning.
@@ -84,7 +85,7 @@ python3 scripts/detect_version.py --project . --readme README.md --language en -
 
 ### Run it in CI
 
-[`.github/workflows/example-egovframe-badge.yml`](../.github/workflows/example-egovframe-badge.yml) is a working example: on every push that touches the projects it runs the script and commits the rewritten READMEs back to the branch. It runs on `examples/sample-project` (Maven), `examples/sample-gradle-project` (Gradle: Java, Spring Boot, Gradle) and `examples/sample-project-unversioned` (no declaration). Copy `scripts/detect_version.py` and the workflow into your own project, set `PROJECT_DIRS` to `.` and add the markers. For custom steps, `--github-output` writes `version`, `badge_version`, `source`, `java`, `spring_boot`, `gradle` and `changed` to `$GITHUB_OUTPUT`.
+[`.github/workflows/example-egovframe-badge.yml`](../.github/workflows/example-egovframe-badge.yml) is a working example: on every push that touches the projects it runs the script and commits the rewritten READMEs back to the branch. It runs on `examples/sample-project` (Maven), `examples/sample-gradle-project` (Gradle: Java, Spring Boot, Gradle) and `examples/sample-project-unversioned` (no declaration). Copy `scripts/detect_version.py`, the root `versions.json`, and the workflow into the same paths in your own repository. Keep `versions.json` at the repository root, including for projects with no version declaration; for another location, pass `--versions path/to/versions.json`. Set `PROJECT_DIRS` to `.` and add the markers to your README. For custom steps, `--github-output` writes `version`, `badge_version`, `source`, `java`, `spring_boot`, `gradle` and `changed` to `$GITHUB_OUTPUT`.
 
 ## Language selector badge buttons (`badges/lang/`)
 

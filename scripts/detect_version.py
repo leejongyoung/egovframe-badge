@@ -141,7 +141,7 @@ def java_key(version):
 
 
 def resolve(value, properties, depth=0):
-    """Resolve ${placeholders} through the collected Maven properties."""
+    """Resolve ${placeholders} through properties declared in the same Maven file."""
     match = PLACEHOLDER.fullmatch(value or "")
     if not match:
         return value
@@ -159,13 +159,15 @@ def build_files(project):
 
 
 def read_project(project):
-    """Read the build files once: [(path, text)], {pom path: text without comments}, merged Maven properties."""
+    """Read build files once, retaining comment-free Maven text and properties per file."""
     files = [(path, path.read_text(encoding="utf-8", errors="replace")) for path in build_files(Path(project))]
     maven = {path: MAVEN_COMMENT.sub("", text) for path, text in files if path.name == "pom.xml"}
     properties = {}
-    for text in maven.values():
+    for path, text in maven.items():
+        local = {}
         for block in MAVEN_PROPERTIES.findall(text):
-            properties.update({name: value for name, value in MAVEN_PROPERTY.findall(block)})
+            local.update({name: value for name, value in MAVEN_PROPERTY.findall(block)})
+        properties[path] = local
     return files, maven, properties
 
 
@@ -208,16 +210,14 @@ def development_candidates(project, files, maven, properties):
         relative = path.relative_to(project).as_posix()
         if path in maven:
             body = maven[path]
-            local = {}
-            for block in MAVEN_PROPERTIES.findall(body):
-                local.update({name: value for name, value in MAVEN_PROPERTY.findall(block)})
+            local = properties[path]
             for name in MAVEN_JAVA_PROPERTIES:
                 if name in local:
-                    add("Java", java_number(resolve(local[name], properties)), relative, f"property <{name}>")
+                    add("Java", java_number(resolve(local[name], local)), relative, f"property <{name}>")
             for kind, block in MAVEN_BLOCK.findall(body):
                 group, artifact, version = MAVEN_GROUP.search(block), MAVEN_ARTIFACT.search(block), MAVEN_VERSION.search(block)
                 if kind == "parent" and group and artifact and version and (group.group(1), artifact.group(1)) == SPRING_BOOT_PARENT:
-                    add("Spring Boot", number(resolve(version.group(1), properties)), relative, "<parent> spring-boot-starter-parent")
+                    add("Spring Boot", number(resolve(version.group(1), local)), relative, "<parent> spring-boot-starter-parent")
         elif path.name == "gradle-wrapper.properties":
             for line in text.splitlines():
                 match = None if line.lstrip().startswith("#") else GRADLE_WRAPPER.search(line)
@@ -242,7 +242,7 @@ def detect(project):
     for path, text in files:
         relative = path.relative_to(project).as_posix()
         if path in maven:
-            pairs = maven_candidates(maven[path], properties)
+            pairs = maven_candidates(maven[path], properties[path])
         else:
             pairs = gradle_candidates(path.name, strip_gradle_comments(text))
         for version, rule in pairs:
@@ -354,7 +354,7 @@ def main(argv=None):
         candidates = []
         for path, text in files:
             relative = path.relative_to(project).as_posix()
-            pairs = (maven_candidates(maven[path], properties) if path in maven
+            pairs = (maven_candidates(maven[path], properties[path]) if path in maven
                      else gradle_candidates(path.name, strip_gradle_comments(text)))
             for found_version, rule in pairs:
                 entry = {"version": number(found_version), "source": relative, "rule": rule}

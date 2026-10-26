@@ -52,6 +52,7 @@ README có thể hiển thị các phiên bản mà tệp xây dựng của dự
 | Môi trường phát triển | Gradle | `gradle/wrapper/gradle-wrapper.properties`: `distributionUrl` (`gradle-8.5-bin.zip`) |
 
 - Nếu nhiều mô-đun cùng khai báo, phiên bản cao nhất được chọn.
+- Thuộc tính Maven và tham chiếu `${...}` chỉ được phân giải trong `pom.xml` khai báo chúng, không gộp giữa các mô-đun. Không suy đoán thuộc tính kế thừa hoặc bên ngoài chưa phân giải được.
 - Bỏ qua chú thích; bỏ qua thư mục kết quả build và thư viện (`target`, `build`, `node_modules`, ...).
 - Chỉ hiển thị những gì dự án tự khai báo: parent của phiên bản 4.x/5.x mang theo Spring Boot và Java riêng, nên sẽ không xuất hiện nếu tệp build không ghi rõ.
 - Dự án không khai báo phiên bản dùng huy hiệu chỉ có tên; phiên bản đã khai báo nhưng chưa có huy hiệu (không có trong `versions.json`) dùng huy hiệu chỉ có tên kèm cảnh báo.
@@ -88,7 +89,7 @@ python3 scripts/detect_version.py --project . --readme README.md --language vi -
 
 ### Chạy trong CI
 
-[`.github/workflows/example-egovframe-badge.yml`](../.github/workflows/example-egovframe-badge.yml) là một ví dụ hoạt động: ở mỗi lần push chạm vào các dự án, nó chạy script và commit các README đã viết lại vào nhánh. Nó chạy trên `examples/sample-project` (Maven), `examples/sample-gradle-project` (Gradle: Java, Spring Boot, Gradle) và `examples/sample-project-unversioned` (không khai báo). Hãy sao chép `scripts/detect_version.py` và workflow vào dự án của bạn, đặt `PROJECT_DIRS` thành `.` và thêm các dấu đánh dấu. Với các bước tùy chỉnh, `--github-output` ghi `version`, `badge_version`, `source`, `java`, `spring_boot`, `gradle` và `changed` vào `$GITHUB_OUTPUT`.
+[`.github/workflows/example-egovframe-badge.yml`](../.github/workflows/example-egovframe-badge.yml) là một ví dụ hoạt động: ở mỗi lần push chạm vào các dự án, nó chạy script và commit các README đã viết lại vào nhánh. Nó chạy trên `examples/sample-project` (Maven), `examples/sample-gradle-project` (Gradle: Java, Spring Boot, Gradle) và `examples/sample-project-unversioned` (không khai báo). Hãy sao chép `scripts/detect_version.py`, tệp `versions.json` ở thư mục gốc và workflow vào cùng các đường dẫn trong kho của bạn. Giữ `versions.json` ở thư mục gốc, kể cả khi dự án không khai báo phiên bản; nếu đặt ở nơi khác, truyền `--versions path/to/versions.json`. Đặt `PROJECT_DIRS` thành `.` và thêm các dấu đánh dấu vào README. Với các bước tùy chỉnh, `--github-output` ghi `version`, `badge_version`, `source`, `java`, `spring_boot`, `gradle` và `changed` vào `$GITHUB_OUTPUT`.
 
 ## Nút huy hiệu chọn ngôn ngữ (`badges/lang/`)
 

@@ -53,6 +53,7 @@ README에 프로젝트 빌드 파일이 선언한 버전을 보여 줄 수 있�
 | 개발환경 | Gradle | `gradle/wrapper/gradle-wrapper.properties`: `distributionUrl` (`gradle-8.5-bin.zip`) |
 
 - 여러 모듈이 선언하면 가장 높은 버전을 씁니다.
+- Maven 속성과 `${...}` 참조는 이를 선언한 `pom.xml` 안에서만 해석하며 모듈 사이에 합치지 않습니다. 해결되지 않은 부모·외부 속성은 추측하지 않습니다.
 - 주석은 무시하고, 빌드 산출물·의존성 폴더(`target`, `build`, `node_modules` 등)는 건너뜁니다.
 - 프로젝트가 직접 선언한 값만 표시합니다. 4.x/5.x 부모는 자체 Spring Boot와 Java를 가져오므로, 빌드 파일에 적혀 있지 않으면 표에 나오지 않습니다.
 - 버전을 선언하지 않은 프로젝트는 이름만 있는 배지를, 선언했지만 배지가 없는 버전(`versions.json`에 없음)은 경고와 함께 이름만 있는 배지를 씁니다.
@@ -89,7 +90,7 @@ python3 scripts/detect_version.py --project . --readme README.md --language ko -
 
 ### CI에서 실행
 
-[`.github/workflows/example-egovframe-badge.yml`](../.github/workflows/example-egovframe-badge.yml)은 동작하는 예시입니다. 프로젝트를 건드리는 푸시마다 스크립트를 실행하고 다시 쓴 README를 브랜치에 커밋합니다. `examples/sample-project`(Maven), `examples/sample-gradle-project`(Gradle: Java, Spring Boot, Gradle), `examples/sample-project-unversioned`(선언 없음)에서 실행됩니다. `scripts/detect_version.py`와 워크플로를 자신의 프로젝트에 복사하고 `PROJECT_DIRS`를 `.`로 바꾼 뒤 표식을 추가하세요. 직접 단계를 만들 때는 `--github-output`이 `version`, `badge_version`, `source`, `java`, `spring_boot`, `gradle`, `changed`를 `$GITHUB_OUTPUT`에 기록합니다.
+[`.github/workflows/example-egovframe-badge.yml`](../.github/workflows/example-egovframe-badge.yml)은 동작하는 예시입니다. 프로젝트를 건드리는 푸시마다 스크립트를 실행하고 다시 쓴 README를 브랜치에 커밋합니다. `examples/sample-project`(Maven), `examples/sample-gradle-project`(Gradle: Java, Spring Boot, Gradle), `examples/sample-project-unversioned`(선언 없음)에서 실행됩니다. `scripts/detect_version.py`, 루트의 `versions.json`, 워크플로를 자신의 저장소의 같은 경로에 복사하세요. 버전 선언이 없는 프로젝트도 `versions.json`이 저장소 루트에 필요하며, 다른 위치에 두면 `--versions path/to/versions.json`을 전달하세요. `PROJECT_DIRS`를 `.`로 바꾸고 README에 표식을 추가하세요. 직접 단계를 만들 때는 `--github-output`이 `version`, `badge_version`, `source`, `java`, `spring_boot`, `gradle`, `changed`를 `$GITHUB_OUTPUT`에 기록합니다.
 
 ## 다국어 문서 전환 배지 버튼 (`badges/lang/`)
 

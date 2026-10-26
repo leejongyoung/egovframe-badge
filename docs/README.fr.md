@@ -52,6 +52,7 @@ Un README peut afficher les versions que déclarent les fichiers de build de son
 | Environnement de développement | Gradle | `gradle/wrapper/gradle-wrapper.properties`: `distributionUrl` (`gradle-8.5-bin.zip`) |
 
 - Si plusieurs modules déclarent une version, la plus élevée l'emporte.
+- Les propriétés Maven et les références `${...}` sont résolues dans le `pom.xml` qui les déclare, sans fusion entre modules. Les propriétés parentes ou externes non résolues ne sont pas devinées.
 - Les commentaires sont ignorés, et les dossiers de sortie de build et de dépendances (`target`, `build`, `node_modules`, ...) sont ignorés.
 - Seul ce que le projet déclare lui-même est affiché : les parents des versions 4.x/5.x apportent leur propre Spring Boot et Java, qui n'apparaissent pas si le fichier de build ne les indique pas.
 - Un projet qui ne déclare aucune version reçoit le badge du nom seul ; une version déclarée sans badge publié (absente de `versions.json`) reçoit le badge du nom seul et un avertissement.
@@ -88,7 +89,7 @@ python3 scripts/detect_version.py --project . --readme README.md --language fr -
 
 ### L'exécuter en CI
 
-[`.github/workflows/example-egovframe-badge.yml`](../.github/workflows/example-egovframe-badge.yml) est un exemple fonctionnel : à chaque push qui touche les projets, il exécute le script et commite les README réécrits sur la branche. Il tourne sur `examples/sample-project` (Maven), `examples/sample-gradle-project` (Gradle : Java, Spring Boot, Gradle) et `examples/sample-project-unversioned` (sans déclaration). Copiez `scripts/detect_version.py` et le workflow dans votre projet, mettez `PROJECT_DIRS` à `.` et ajoutez les balises. Pour des étapes personnalisées, `--github-output` écrit `version`, `badge_version`, `source`, `java`, `spring_boot`, `gradle` et `changed` dans `$GITHUB_OUTPUT`.
+[`.github/workflows/example-egovframe-badge.yml`](../.github/workflows/example-egovframe-badge.yml) est un exemple fonctionnel : à chaque push qui touche les projets, il exécute le script et commite les README réécrits sur la branche. Il tourne sur `examples/sample-project` (Maven), `examples/sample-gradle-project` (Gradle : Java, Spring Boot, Gradle) et `examples/sample-project-unversioned` (sans déclaration). Copiez `scripts/detect_version.py`, le fichier racine `versions.json` et le workflow aux mêmes chemins dans votre dépôt. Gardez `versions.json` à la racine, même pour les projets sans déclaration de version ; pour un autre emplacement, passez `--versions path/to/versions.json`. Mettez `PROJECT_DIRS` à `.` et ajoutez les balises au README. Pour des étapes personnalisées, `--github-output` écrit `version`, `badge_version`, `source`, `java`, `spring_boot`, `gradle` et `changed` dans `$GITHUB_OUTPUT`.
 
 ## Boutons de badge pour sélecteur de langue (`badges/lang/`)
 

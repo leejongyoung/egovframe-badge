@@ -52,6 +52,7 @@
 | بيئة التطوير | Gradle | `gradle/wrapper/gradle-wrapper.properties`: `distributionUrl` (`gradle-8.5-bin.zip`) |
 
 - إذا أعلنت عدة وحدات عن إصدار، يُختار الأعلى.
+- تُحل خصائص Maven والمراجع `${...}` داخل ملف `pom.xml` الذي يعلنها فقط، دون دمج الوحدات. لا تُخمّن خصائص الأصل أو الخصائص الخارجية التي يتعذر حلها.
 - تُتجاهل التعليقات، وتُتخطى مجلدات مخرجات البناء والاعتماديات (`target` و`build` و`node_modules` ...).
 - يُعرض فقط ما يعلنه المشروع بنفسه: تأتي الأصول (parent) في الإصدارات 4.x/5.x بنسخها الخاصة من Spring Boot وJava، فلا تظهر ما لم يذكرها ملف البناء.
 - المشروع الذي لا يعلن عن أي إصدار يحصل على الشارة الاسمية فقط؛ والإصدار المعلن دون شارة منشورة (غير موجود في `versions.json`) يحصل على الشارة الاسمية مع تحذير.
@@ -88,7 +89,7 @@ python3 scripts/detect_version.py --project . --readme README.md --language ar -
 
 ### التشغيل في CI
 
-[`.github/workflows/example-egovframe-badge.yml`](../.github/workflows/example-egovframe-badge.yml) مثال عملي: عند كل push يمس المشاريع يشغّل السكربت ويثبّت ملفات README المعاد كتابتها في الفرع. يعمل على `examples/sample-project` (Maven) و`examples/sample-gradle-project` (Gradle: Java وSpring Boot وGradle) و`examples/sample-project-unversioned` (بلا إعلان). انسخ `scripts/detect_version.py` وملف workflow إلى مشروعك، واضبط `PROJECT_DIRS` على `.` وأضف العلامات. للخطوات المخصصة يكتب `--github-output` القيم `version` و`badge_version` و`source` و`java` و`spring_boot` و`gradle` و`changed` في `$GITHUB_OUTPUT`.
+[`.github/workflows/example-egovframe-badge.yml`](../.github/workflows/example-egovframe-badge.yml) مثال عملي: عند كل push يمس المشاريع يشغّل السكربت ويثبّت ملفات README المعاد كتابتها في الفرع. يعمل على `examples/sample-project` (Maven) و`examples/sample-gradle-project` (Gradle: Java وSpring Boot وGradle) و`examples/sample-project-unversioned` (بلا إعلان). انسخ `scripts/detect_version.py` وملف `versions.json` الموجود في الجذر وملف workflow إلى المسارات نفسها في مستودعك. احتفظ بملف `versions.json` في جذر المستودع حتى للمشاريع التي لا تعلن عن إصدار؛ ولموقع آخر مرّر `--versions path/to/versions.json`. اضبط `PROJECT_DIRS` على `.` وأضف العلامات إلى README. للخطوات المخصصة يكتب `--github-output` القيم `version` و`badge_version` و`source` و`java` و`spring_boot` و`gradle` و`changed` في `$GITHUB_OUTPUT`.
 
 ## أزرار شارة محدد اللغة (`badges/lang/`)
 
