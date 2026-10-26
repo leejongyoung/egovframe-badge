@@ -13,9 +13,11 @@ name: Example eGovFrame badge update
 #   <!-- egovframe-badge:start -->        <!-- egovframe-badge:end -->
 #   <!-- egovframe-environment:start -->  <!-- egovframe-environment:end -->
 #
-# To use it in another project, copy scripts/detect_version.py and this file, set PROJECT_DIRS to the project
-# directories (a single "." is the usual choice), and add the markers to each README. Pass --versions and
-# --base-url when you host the badges yourself.
+# To use it in another repository, copy scripts/detect_version.py, the root versions.json, and this workflow
+# to the same paths. versions.json is required at the repository root even without a version declaration;
+# for another location, pass --versions path/to/versions.json to the detector command below.
+# Set PROJECT_DIRS to the project directories (a single "." is usual), and add the markers to each README.
+# Pass --base-url when you host the badges yourself.
 
 on:
   push:

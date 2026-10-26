@@ -5,6 +5,9 @@ import importlib.util
 import io
 import json
 import re
+import shutil
+import subprocess
+import sys
 import tempfile
 import unittest
 import xml.etree.ElementTree as ET
@@ -456,6 +459,38 @@ class ContractWithGeneratorTests(unittest.TestCase):
     def test_no_scratch_files_are_committed(self):
         tracked = {path.name for path in ROOT.iterdir() if path.is_file()}
         self.assertEqual({name for name in tracked if name.startswith(("fix_", "tmp"))}, set())
+
+
+class ExternalCopyTests(unittest.TestCase):
+    def test_minimal_external_repository_with_and_without_version(self):
+        for declared in (True, False):
+            with self.subTest(declared=declared), tempfile.TemporaryDirectory() as directory:
+                project = Path(directory)
+                (project / "scripts").mkdir()
+                shutil.copyfile(ROOT / "scripts/detect_version.py", project / "scripts/detect_version.py")
+                shutil.copyfile(ROOT / "versions.json", project / "versions.json")
+                readme = project / "README.md"
+                readme.write_text(README, encoding="utf-8")
+                (project / "pom.xml").write_text(
+                    PROPERTY_4X if declared else "<project><artifactId>plain</artifactId></project>",
+                    encoding="utf-8",
+                )
+                self.assertEqual(
+                    {p.relative_to(project).as_posix() for p in project.rglob("*") if p.is_file()},
+                    {"scripts/detect_version.py", "versions.json", "README.md", "pom.xml"},
+                )
+                command = [sys.executable, "scripts/detect_version.py", "--project", ".",
+                           "--readme", "README.md", "--write"]
+                completed = subprocess.run(command, cwd=project, capture_output=True, text=True)
+                self.assertEqual(completed.returncode, 0, completed.stderr)
+                result = json.loads(completed.stdout)
+                self.assertEqual(result["found"], declared)
+                self.assertEqual(result["badge_version"], "4.3.0" if declared else None)
+                self.assertTrue(result["readme"]["written"])
+                self.assertIn("4.3.0/" if declared else "unversioned/", readme.read_text())
+                checked = subprocess.run(command[:-1] + ["--check"], cwd=project,
+                                         capture_output=True, text=True)
+                self.assertEqual(checked.returncode, 0, checked.stderr)
 
 
 if __name__ == "__main__":

@@ -85,7 +85,7 @@ python3 scripts/detect_version.py --project . --readme README.md --language en -
 
 ### Run it in CI
 
-[`.github/workflows/example-egovframe-badge.yml`](../.github/workflows/example-egovframe-badge.yml) is a working example: on every push that touches the projects it runs the script and commits the rewritten READMEs back to the branch. It runs on `examples/sample-project` (Maven), `examples/sample-gradle-project` (Gradle: Java, Spring Boot, Gradle) and `examples/sample-project-unversioned` (no declaration). Copy `scripts/detect_version.py` and the workflow into your own project, set `PROJECT_DIRS` to `.` and add the markers. For custom steps, `--github-output` writes `version`, `badge_version`, `source`, `java`, `spring_boot`, `gradle` and `changed` to `$GITHUB_OUTPUT`.
+[`.github/workflows/example-egovframe-badge.yml`](../.github/workflows/example-egovframe-badge.yml) is a working example: on every push that touches the projects it runs the script and commits the rewritten READMEs back to the branch. It runs on `examples/sample-project` (Maven), `examples/sample-gradle-project` (Gradle: Java, Spring Boot, Gradle) and `examples/sample-project-unversioned` (no declaration). Copy `scripts/detect_version.py`, the root `versions.json`, and the workflow into the same paths in your own repository. Keep `versions.json` at the repository root, including for projects with no version declaration; for another location, pass `--versions path/to/versions.json`. Set `PROJECT_DIRS` to `.` and add the markers to your README. For custom steps, `--github-output` writes `version`, `badge_version`, `source`, `java`, `spring_boot`, `gradle` and `changed` to `$GITHUB_OUTPUT`.
 
 ## Language selector badge buttons (`badges/lang/`)
 

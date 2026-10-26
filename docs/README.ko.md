@@ -90,7 +90,7 @@ python3 scripts/detect_version.py --project . --readme README.md --language ko -
 
 ### CI에서 실행
 
-[`.github/workflows/example-egovframe-badge.yml`](../.github/workflows/example-egovframe-badge.yml)은 동작하는 예시입니다. 프로젝트를 건드리는 푸시마다 스크립트를 실행하고 다시 쓴 README를 브랜치에 커밋합니다. `examples/sample-project`(Maven), `examples/sample-gradle-project`(Gradle: Java, Spring Boot, Gradle), `examples/sample-project-unversioned`(선언 없음)에서 실행됩니다. `scripts/detect_version.py`와 워크플로를 자신의 프로젝트에 복사하고 `PROJECT_DIRS`를 `.`로 바꾼 뒤 표식을 추가하세요. 직접 단계를 만들 때는 `--github-output`이 `version`, `badge_version`, `source`, `java`, `spring_boot`, `gradle`, `changed`를 `$GITHUB_OUTPUT`에 기록합니다.
+[`.github/workflows/example-egovframe-badge.yml`](../.github/workflows/example-egovframe-badge.yml)은 동작하는 예시입니다. 프로젝트를 건드리는 푸시마다 스크립트를 실행하고 다시 쓴 README를 브랜치에 커밋합니다. `examples/sample-project`(Maven), `examples/sample-gradle-project`(Gradle: Java, Spring Boot, Gradle), `examples/sample-project-unversioned`(선언 없음)에서 실행됩니다. `scripts/detect_version.py`, 루트의 `versions.json`, 워크플로를 자신의 저장소의 같은 경로에 복사하세요. 버전 선언이 없는 프로젝트도 `versions.json`이 저장소 루트에 필요하며, 다른 위치에 두면 `--versions path/to/versions.json`을 전달하세요. `PROJECT_DIRS`를 `.`로 바꾸고 README에 표식을 추가하세요. 직접 단계를 만들 때는 `--github-output`이 `version`, `badge_version`, `source`, `java`, `spring_boot`, `gradle`, `changed`를 `$GITHUB_OUTPUT`에 기록합니다.
 
 ## 다국어 문서 전환 배지 버튼 (`badges/lang/`)
 
