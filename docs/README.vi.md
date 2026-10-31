@@ -7,10 +7,10 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](../LICENSE)
 <!-- latest-badge:end -->
 
+[![Tiếng Việt](../badges/lang/vi/flat.svg)](README.vi.md)
 [![English](../badges/lang/en/outline.svg)](README.en.md)
 [![한국어](../badges/lang/ko/outline.svg)](README.ko.md)
 [![Español](../badges/lang/es/outline.svg)](README.es.md)
-[![Tiếng Việt](../badges/lang/vi/flat.svg)](README.vi.md)
 [![العربية](../badges/lang/ar/outline.svg)](README.ar.md)
 [![Français](../badges/lang/fr/outline.svg)](README.fr.md)
 
@@ -46,7 +46,7 @@ README có thể hiển thị các phiên bản mà tệp xây dựng của dự
 
 | Môi trường | Thành phần | Khai báo tại |
 | --- | --- | --- |
-| Môi trường thực thi | Khung chuẩn Chính phủ điện tử | `pom.xml`: `org.egovframe.rte.version`, `egovframework.rte.version`, `<parent>` · `<dependency>`: `org.egovframe.boot`, `org.egovframe.web`, `org.egovframe.rte`<br>`build.gradle(.kts)`: `egovframeBootParentVersion`, `org.egovframe.*:artifact:version`<br>`settings.gradle(.kts)`, `gradle.properties`, `libs.versions.toml` |
+| Môi trường thực thi | Khung chuẩn Chính phủ điện tử | `pom.xml`: `org.egovframe.rte.version`, `egovframework.rte.version`, `<parent>` · `<dependency>`: `org.egovframe.boot`, `org.egovframe.web`, `org.egovframe.rte`<br>`build.gradle(.kts)`: `egovframeBootParentVersion`, `org.egovframe.*:artifact:version`, `by extra("...")`<br>`settings.gradle(.kts)`, `gradle.properties`, `libs.versions.toml` |
 | Môi trường phát triển | Java | `pom.xml`: `java.version`, `maven.compiler.release`, `maven.compiler.source`, `maven.compiler.target`<br>`build.gradle(.kts)`: `sourceCompatibility`, `JavaLanguageVersion.of(17)` |
 | Môi trường phát triển | Spring Boot | `pom.xml`: `<parent>` `spring-boot-starter-parent`<br>`build.gradle(.kts)`: `id 'org.springframework.boot' version '3.5.6'` |
 | Môi trường phát triển | Gradle | `gradle/wrapper/gradle-wrapper.properties`: `distributionUrl` (`gradle-8.5-bin.zip`) |
@@ -104,7 +104,7 @@ Các nút huy hiệu độc lập để chuyển đổi ngôn ngữ trong `READM
 [![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/outline.svg)](docs/README.fr.md)
 ```
 
-Tất cả các phiên bản chính từ [Hướng dẫn môi trường thực thi của Khung chuẩn Chính phủ điện tử](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드) — từ 1.0 đến 5.x (tổng cộng 53 phiên bản) — với năm kiểu dáng mỗi loại: `flat`, `flat-square`, `plastic`, `for-the-badge` và kiểu tùy chỉnh `outline` (kiểu `social` của shields.io bị loại vì phụ thuộc vào hiệu ứng hover).
+Tất cả các phiên bản chính từ [Hướng dẫn môi trường thực thi của Khung chuẩn Chính phủ điện tử](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드) — từ 1.0 đến 5.x (tổng cộng 55 phiên bản) — với năm kiểu dáng mỗi loại: `flat`, `flat-square`, `plastic`, `for-the-badge` và kiểu tùy chỉnh `outline` (kiểu `social` của shields.io bị loại vì phụ thuộc vào hiệu ứng hover).
 
 | Kiểu dáng | Ví dụ (Tiếng Anh) | Ví dụ (Tiếng Việt) | Nút ngôn ngữ |
 | --- | --- | --- | --- |
@@ -116,10 +116,10 @@ Tất cả các phiên bản chính từ [Hướng dẫn môi trường thực t
 
 ## Các phiên bản được hỗ trợ
 
-Tất cả 53 phiên bản từ Hướng dẫn môi trường thực thi của Khung chuẩn Chính phủ điện tử:
+Tất cả 55 phiên bản từ Hướng dẫn môi trường thực thi của Khung chuẩn Chính phủ điện tử:
 
 - **5.x**: `5.0`, `5.0.0`, `5.0.1`, `5.0.2`, `5.0.3`, `5.0.4`, `5.0.5`, `5.0.6`, `5.0.7`
-- **4.x**: `4.3`, `4.3.0`, `4.3.1`, `4.3.2`, `4.2`, `4.2.0`, `4.2.1`, `4.2.2`, `4.1`, `4.1.0`, `4.1.1`, `4.1.2`, `4.0`, `4.0.0`, `4.0.1`
+- **4.x**: `4.3`, `4.3.0`, `4.3.1`, `4.3.2`, `4.2`, `4.2.0`, `4.2.1`, `4.2.2`, `4.2.4`, `4.1`, `4.1.0`, `4.1.1`, `4.1.2`, `4.1.3`, `4.0`, `4.0.0`, `4.0.1`
 - **3.x**: `3.10`, `3.10.0`, `3.10.1`, `3.10.2`, `3.9`, `3.9.0`, `3.8`, `3.8.0`, `3.7`, `3.7.0`, `3.6`, `3.6.0`, `3.5`, `3.5.0`, `3.5.1`, `3.1`, `3.1.0`, `3.0`, `3.0.0`
 - **2.x**: `2.7`, `2.7.0`, `2.6`, `2.6.0`, `2.5`, `2.5.0`, `2.0`, `2.0.0`
 - **1.x**: `1.0`, `1.0.0`

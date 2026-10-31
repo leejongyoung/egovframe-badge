@@ -7,11 +7,11 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](../LICENSE)
 <!-- latest-badge:end -->
 
+[![العربية](../badges/lang/ar/flat.svg)](README.ar.md)
 [![English](../badges/lang/en/outline.svg)](README.en.md)
 [![한국어](../badges/lang/ko/outline.svg)](README.ko.md)
 [![Español](../badges/lang/es/outline.svg)](README.es.md)
 [![Tiếng Việt](../badges/lang/vi/outline.svg)](README.vi.md)
-[![العربية](../badges/lang/ar/flat.svg)](README.ar.md)
 [![Français](../badges/lang/fr/outline.svg)](README.fr.md)
 
 **شارة SVG واحدة** لكل مشروع يستخدم الإطار القياسي للحكومة الإلكترونية. بدلاً من تضمين الشعارات يدويًا في كل مستودع، يتم الرجوع إلى شارة تتم صيانتها مركزيًا عبر عنوان URL خام. صيغة SVG ثابتة — لا حاجة لـ JavaScript، ولا لخادم نشر، ولا لعناوين URL Base64 طويلة.
@@ -46,7 +46,7 @@
 
 | البيئة | المكوّن | مُعلَن في |
 | --- | --- | --- |
-| بيئة التشغيل | الإطار القياسي للحكومة الإلكترونية | `pom.xml`: `org.egovframe.rte.version`, `egovframework.rte.version`, `<parent>` · `<dependency>`: `org.egovframe.boot`, `org.egovframe.web`, `org.egovframe.rte`<br>`build.gradle(.kts)`: `egovframeBootParentVersion`, `org.egovframe.*:artifact:version`<br>`settings.gradle(.kts)`, `gradle.properties`, `libs.versions.toml` |
+| بيئة التشغيل | الإطار القياسي للحكومة الإلكترونية | `pom.xml`: `org.egovframe.rte.version`, `egovframework.rte.version`, `<parent>` · `<dependency>`: `org.egovframe.boot`, `org.egovframe.web`, `org.egovframe.rte`<br>`build.gradle(.kts)`: `egovframeBootParentVersion`, `org.egovframe.*:artifact:version`, `by extra("...")`<br>`settings.gradle(.kts)`, `gradle.properties`, `libs.versions.toml` |
 | بيئة التطوير | Java | `pom.xml`: `java.version`, `maven.compiler.release`, `maven.compiler.source`, `maven.compiler.target`<br>`build.gradle(.kts)`: `sourceCompatibility`, `JavaLanguageVersion.of(17)` |
 | بيئة التطوير | Spring Boot | `pom.xml`: `<parent>` `spring-boot-starter-parent`<br>`build.gradle(.kts)`: `id 'org.springframework.boot' version '3.5.6'` |
 | بيئة التطوير | Gradle | `gradle/wrapper/gradle-wrapper.properties`: `distributionUrl` (`gradle-8.5-bin.zip`) |
@@ -104,7 +104,7 @@ python3 scripts/detect_version.py --project . --readme README.md --language ar -
 [![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/outline.svg)](docs/README.fr.md)
 ```
 
-جميع إصدارات وقت التشغيل الرئيسية من [دليل بيئة التشغيل للإطار القياسي للحكومة الإلكترونية](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드) — من 1.0 إلى 5.x (إجمالي 53 إصدار) — مع خمسة أنماط لكل منها: `flat`، `flat-square`، `plastic`، `for-the-badge`، والأسلوب المخصص `outline` (تم استبعاد أسلوب `social` من shields.io لأنه يعتمد على تأثيرات hover).
+جميع إصدارات وقت التشغيل الرئيسية من [دليل بيئة التشغيل للإطار القياسي للحكومة الإلكترونية](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드) — من 1.0 إلى 5.x (إجمالي 55 إصدار) — مع خمسة أنماط لكل منها: `flat`، `flat-square`، `plastic`، `for-the-badge`، والأسلوب المخصص `outline` (تم استبعاد أسلوب `social` من shields.io لأنه يعتمد على تأثيرات hover).
 
 | الأسلوب | مثال (الإنجليزية) | مثال (العربية) | زر اللغة |
 | --- | --- | --- | --- |
@@ -116,10 +116,10 @@ python3 scripts/detect_version.py --project . --readme README.md --language ar -
 
 ## الإصدارات المدعومة
 
-جميع إصدارات دليل بيئة التشغيل للإطار القياسي للحكومة الإلكترونية الـ 53:
+جميع إصدارات دليل بيئة التشغيل للإطار القياسي للحكومة الإلكترونية الـ 55:
 
 - **5.x**: `5.0`, `5.0.0`, `5.0.1`, `5.0.2`, `5.0.3`, `5.0.4`, `5.0.5`, `5.0.6`, `5.0.7`
-- **4.x**: `4.3`، `4.3.0`، `4.3.1`، `4.3.2`، `4.2`، `4.2.0`، `4.2.1`، `4.2.2`، `4.1`، `4.1.0`، `4.1.1`، `4.1.2`، `4.0`، `4.0.0`، `4.0.1`
+- **4.x**: `4.3`، `4.3.0`، `4.3.1`، `4.3.2`، `4.2`، `4.2.0`، `4.2.1`، `4.2.2`، `4.2.4`، `4.1`، `4.1.0`، `4.1.1`، `4.1.2`، `4.1.3`، `4.0`، `4.0.0`، `4.0.1`
 - **3.x**: `3.10`، `3.10.0`، `3.10.1`، `3.10.2`، `3.9`، `3.9.0`، `3.8`، `3.8.0`، `3.7`، `3.7.0`، `3.6`، `3.6.0`، `3.5`، `3.5.0`، `3.5.1`، `3.1`، `3.1.0`، `3.0`، `3.0.0`
 - **2.x**: `2.7`، `2.7.0`، `2.6`، `2.6.0`، `2.5`، `2.5.0`، `2.0`، `2.0.0`
 - **1.x**: `1.0`، `1.0.0`

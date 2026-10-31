@@ -1,11 +1,11 @@
 # Contribuer au badge du Cadre standard de l'administration électronique
 
+[![Français](../../badges/lang/fr/flat.svg)](CONTRIBUTING.fr.md)
 [![English](../../badges/lang/en/outline.svg)](CONTRIBUTING.en.md)
 [![한국어](../../badges/lang/ko/outline.svg)](CONTRIBUTING.ko.md)
 [![Español](../../badges/lang/es/outline.svg)](CONTRIBUTING.es.md)
 [![Tiếng Việt](../../badges/lang/vi/outline.svg)](CONTRIBUTING.vi.md)
 [![العربية](../../badges/lang/ar/outline.svg)](CONTRIBUTING.ar.md)
-[![Français](../../badges/lang/fr/flat.svg)](CONTRIBUTING.fr.md)
 
 ## Avant d'ouvrir une pull request
 

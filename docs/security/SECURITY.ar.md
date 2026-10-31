@@ -1,10 +1,10 @@
 # سياسة الأمان
 
+[![العربية](../../badges/lang/ar/flat.svg)](SECURITY.ar.md)
 [![English](../../badges/lang/en/outline.svg)](SECURITY.en.md)
 [![한국어](../../badges/lang/ko/outline.svg)](SECURITY.ko.md)
 [![Español](../../badges/lang/es/outline.svg)](SECURITY.es.md)
 [![Tiếng Việt](../../badges/lang/vi/outline.svg)](SECURITY.vi.md)
-[![العربية](../../badges/lang/ar/flat.svg)](SECURITY.ar.md)
 [![Français](../../badges/lang/fr/outline.svg)](SECURITY.fr.md)
 
 ## الإبلاغ عن الثغرات

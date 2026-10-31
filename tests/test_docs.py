@@ -115,10 +115,13 @@ class DocumentationTests(unittest.TestCase):
                 # Repository-relative images only: they render on any branch or fork.
                 buttons = BUTTON.findall(head)
                 with self.subTest(file=path.relative_to(ROOT).as_posix()):
-                    self.assertEqual([code for code, _, _ in buttons], list(LANGS))
+                    # The page's own language comes first so the order stays sensible
+                    # no matter which language is the default.
+                    expected = [lang] + [other for other in LANGS if other != lang]
+                    self.assertEqual([code for code, _, _ in buttons], expected)
                     self.assertEqual(
                         [target for _, _, target in buttons],
-                        [Path(pattern.format(lang=other)).name for other in LANGS],
+                        [Path(pattern.format(lang=other)).name for other in expected],
                     )
                     self.assertEqual(
                         [code for code, style, _ in buttons if style == "flat"], [lang]
