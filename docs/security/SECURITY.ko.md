@@ -1,7 +1,7 @@
 # 보안 정책
 
-[![English](../../badges/lang/en/outline.svg)](SECURITY.en.md)
 [![한국어](../../badges/lang/ko/flat.svg)](SECURITY.ko.md)
+[![English](../../badges/lang/en/outline.svg)](SECURITY.en.md)
 [![Español](../../badges/lang/es/outline.svg)](SECURITY.es.md)
 [![Tiếng Việt](../../badges/lang/vi/outline.svg)](SECURITY.vi.md)
 [![العربية](../../badges/lang/ar/outline.svg)](SECURITY.ar.md)

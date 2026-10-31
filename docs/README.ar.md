@@ -7,11 +7,11 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](../LICENSE)
 <!-- latest-badge:end -->
 
+[![العربية](../badges/lang/ar/flat.svg)](README.ar.md)
 [![English](../badges/lang/en/outline.svg)](README.en.md)
 [![한국어](../badges/lang/ko/outline.svg)](README.ko.md)
 [![Español](../badges/lang/es/outline.svg)](README.es.md)
 [![Tiếng Việt](../badges/lang/vi/outline.svg)](README.vi.md)
-[![العربية](../badges/lang/ar/flat.svg)](README.ar.md)
 [![Français](../badges/lang/fr/outline.svg)](README.fr.md)
 
 **شارة SVG واحدة** لكل مشروع يستخدم الإطار القياسي للحكومة الإلكترونية. بدلاً من تضمين الشعارات يدويًا في كل مستودع، يتم الرجوع إلى شارة تتم صيانتها مركزيًا عبر عنوان URL خام. صيغة SVG ثابتة — لا حاجة لـ JavaScript، ولا لخادم نشر، ولا لعناوين URL Base64 طويلة.

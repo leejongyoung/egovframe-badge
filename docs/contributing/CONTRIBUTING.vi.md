@@ -1,9 +1,9 @@
 # Hướng dẫn đóng góp cho huy hiệu Khung chuẩn Chính phủ điện tử
 
+[![Tiếng Việt](../../badges/lang/vi/flat.svg)](CONTRIBUTING.vi.md)
 [![English](../../badges/lang/en/outline.svg)](CONTRIBUTING.en.md)
 [![한국어](../../badges/lang/ko/outline.svg)](CONTRIBUTING.ko.md)
 [![Español](../../badges/lang/es/outline.svg)](CONTRIBUTING.es.md)
-[![Tiếng Việt](../../badges/lang/vi/flat.svg)](CONTRIBUTING.vi.md)
 [![العربية](../../badges/lang/ar/outline.svg)](CONTRIBUTING.ar.md)
 [![Français](../../badges/lang/fr/outline.svg)](CONTRIBUTING.fr.md)
 

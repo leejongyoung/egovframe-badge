@@ -1,11 +1,11 @@
 # Politique de sécurité
 
+[![Français](../../badges/lang/fr/flat.svg)](SECURITY.fr.md)
 [![English](../../badges/lang/en/outline.svg)](SECURITY.en.md)
 [![한국어](../../badges/lang/ko/outline.svg)](SECURITY.ko.md)
 [![Español](../../badges/lang/es/outline.svg)](SECURITY.es.md)
 [![Tiếng Việt](../../badges/lang/vi/outline.svg)](SECURITY.vi.md)
 [![العربية](../../badges/lang/ar/outline.svg)](SECURITY.ar.md)
-[![Français](../../badges/lang/fr/flat.svg)](SECURITY.fr.md)
 
 ## Signalement d'une vulnérabilité
 

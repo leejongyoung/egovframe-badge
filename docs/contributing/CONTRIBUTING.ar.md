@@ -1,10 +1,10 @@
 # دليل المساهمة في شارة الإطار القياسي للحكومة الإلكترونية
 
+[![العربية](../../badges/lang/ar/flat.svg)](CONTRIBUTING.ar.md)
 [![English](../../badges/lang/en/outline.svg)](CONTRIBUTING.en.md)
 [![한국어](../../badges/lang/ko/outline.svg)](CONTRIBUTING.ko.md)
 [![Español](../../badges/lang/es/outline.svg)](CONTRIBUTING.es.md)
 [![Tiếng Việt](../../badges/lang/vi/outline.svg)](CONTRIBUTING.vi.md)
-[![العربية](../../badges/lang/ar/flat.svg)](CONTRIBUTING.ar.md)
 [![Français](../../badges/lang/fr/outline.svg)](CONTRIBUTING.fr.md)
 
 ## قبل فتح طلب سحب

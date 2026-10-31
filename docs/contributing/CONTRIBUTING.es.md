@@ -1,8 +1,8 @@
 # Guía de contribución a la insignia del Marco Estándar de Gobierno Electrónico
 
+[![Español](../../badges/lang/es/flat.svg)](CONTRIBUTING.es.md)
 [![English](../../badges/lang/en/outline.svg)](CONTRIBUTING.en.md)
 [![한국어](../../badges/lang/ko/outline.svg)](CONTRIBUTING.ko.md)
-[![Español](../../badges/lang/es/flat.svg)](CONTRIBUTING.es.md)
 [![Tiếng Việt](../../badges/lang/vi/outline.svg)](CONTRIBUTING.vi.md)
 [![العربية](../../badges/lang/ar/outline.svg)](CONTRIBUTING.ar.md)
 [![Français](../../badges/lang/fr/outline.svg)](CONTRIBUTING.fr.md)

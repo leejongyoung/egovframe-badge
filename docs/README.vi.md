@@ -7,10 +7,10 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](../LICENSE)
 <!-- latest-badge:end -->
 
+[![Tiếng Việt](../badges/lang/vi/flat.svg)](README.vi.md)
 [![English](../badges/lang/en/outline.svg)](README.en.md)
 [![한국어](../badges/lang/ko/outline.svg)](README.ko.md)
 [![Español](../badges/lang/es/outline.svg)](README.es.md)
-[![Tiếng Việt](../badges/lang/vi/flat.svg)](README.vi.md)
 [![العربية](../badges/lang/ar/outline.svg)](README.ar.md)
 [![Français](../badges/lang/fr/outline.svg)](README.fr.md)
 

@@ -7,12 +7,12 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](../LICENSE)
 <!-- latest-badge:end -->
 
+[![Français](../badges/lang/fr/flat.svg)](README.fr.md)
 [![English](../badges/lang/en/outline.svg)](README.en.md)
 [![한국어](../badges/lang/ko/outline.svg)](README.ko.md)
 [![Español](../badges/lang/es/outline.svg)](README.es.md)
 [![Tiếng Việt](../badges/lang/vi/outline.svg)](README.vi.md)
 [![العربية](../badges/lang/ar/outline.svg)](README.ar.md)
-[![Français](../badges/lang/fr/flat.svg)](README.fr.md)
 
 Un **seul badge SVG** pour chaque projet utilisant le Cadre standard de l'administration électronique. Au lieu d'incruster les logos dans chaque dépôt, référencez un badge maintenu centralement via une URL raw. SVG statique — pas de JavaScript, pas de serveur de déploiement, pas d'URLs Base64 longues.
 
