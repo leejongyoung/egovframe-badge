@@ -99,6 +99,12 @@ GRADLE_LINE_COMMENT = re.compile(r"(?m)(?<![:\w\"'])//.*$")
 GRADLE_VARIABLE = re.compile(
     r"(?i)\b(?:egovframe|egovframework)[\w.\-]*version\b['\"]?\s*[,=:(]\s*['\"]?(" + NUMBER + ")"
 )
+GRADLE_KOTLIN_EXTRA_VAL = re.compile(
+    r'\bval\s+(\w+)(?:\s*:\s*\w+)?\s+by\s+extra\s*\(\s*["\']([^"\']+)["\']\s*\)'
+)
+GRADLE_KOTLIN_EXTRA_MAP = re.compile(
+    r'\bextra\s*\[\s*["\'](\w+)["\']\s*\]\s*=\s*["\'](' + NUMBER + r')["\']'
+)
 GRADLE_COORDINATE = re.compile(r"['\"]" + FRAMEWORK_GROUP + r":[\w.\-]+:(" + NUMBER + r")[^'\"]*['\"]")
 GRADLE_MAP_NOTATION = re.compile(
     r"group\s*[:=]\s*['\"]" + FRAMEWORK_GROUP + r"['\"][^)\n]*?version\s*[:=]\s*['\"](" + NUMBER + ")"
@@ -185,11 +191,10 @@ def maven_candidates(text, properties):
             resolved = number(resolve(version.group(1), properties))
             if resolved:
                 yield resolved, f"<{kind}> {group.group(1)}"
-
-
 def gradle_candidates(name, text):
     for pattern, rule in ((GRADLE_VARIABLE, "version variable"), (GRADLE_COORDINATE, "dependency coordinate"),
-                          (GRADLE_MAP_NOTATION, "dependency map")):
+                          (GRADLE_MAP_NOTATION, "dependency map"), (GRADLE_KOTLIN_EXTRA_VAL, "kotlin extra by value"),
+                          (GRADLE_KOTLIN_EXTRA_MAP, "kotlin extra map")):
         for match in pattern.finditer(text):
             yield match.group(1), rule
     if name == "libs.versions.toml":
