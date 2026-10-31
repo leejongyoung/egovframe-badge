@@ -7,9 +7,9 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](../LICENSE)
 <!-- latest-badge:end -->
 
+[![Español](../badges/lang/es/flat.svg)](README.es.md)
 [![English](../badges/lang/en/outline.svg)](README.en.md)
 [![한국어](../badges/lang/ko/outline.svg)](README.ko.md)
-[![Español](../badges/lang/es/flat.svg)](README.es.md)
 [![Tiếng Việt](../badges/lang/vi/outline.svg)](README.vi.md)
 [![العربية](../badges/lang/ar/outline.svg)](README.ar.md)
 [![Français](../badges/lang/fr/outline.svg)](README.fr.md)
@@ -104,7 +104,7 @@ Botones de insignia independientes para cambiar de idioma en `README` multiling�
 [![Français](https://raw.githubusercontent.com/leejongyoung/egovframe-badge/main/badges/lang/fr/outline.svg)](docs/README.fr.md)
 ```
 
-Todas las versiones principales del [Guía del entorno de ejecución del Marco Estándar de Gobierno Electrónico](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드) — de 1.0 a 5.x (53 versiones en total) — con cinco estilos cada una: `flat`, `flat-square`, `plastic`, `for-the-badge` y el estilo personalizado `outline` (el estilo `social` de shields.io se excluye porque depende de efectos hover).
+Todas las versiones principales del [Guía del entorno de ejecución del Marco Estándar de Gobierno Electrónico](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드) — de 1.0 a 5.x (55 versiones en total) — con cinco estilos cada una: `flat`, `flat-square`, `plastic`, `for-the-badge` y el estilo personalizado `outline` (el estilo `social` de shields.io se excluye porque depende de efectos hover).
 
 | Estilo | Ejemplo (Inglés) | Ejemplo (Español) | Botón de idioma |
 | --- | --- | --- | --- |
@@ -116,10 +116,10 @@ Todas las versiones principales del [Guía del entorno de ejecución del Marco E
 
 ## Versiones soportadas
 
-Todas las 53 versiones de la Guía del entorno de ejecución del Marco Estándar de Gobierno Electrónico:
+Todas las 55 versiones de la Guía del entorno de ejecución del Marco Estándar de Gobierno Electrónico:
 
 - **5.x**: `5.0`, `5.0.0`, `5.0.1`, `5.0.2`, `5.0.3`, `5.0.4`, `5.0.5`, `5.0.6`, `5.0.7`
-- **4.x**: `4.3`, `4.3.0`, `4.3.1`, `4.3.2`, `4.2`, `4.2.0`, `4.2.1`, `4.2.2`, `4.1`, `4.1.0`, `4.1.1`, `4.1.2`, `4.0`, `4.0.0`, `4.0.1`
+- **4.x**: `4.3`, `4.3.0`, `4.3.1`, `4.3.2`, `4.2`, `4.2.0`, `4.2.1`, `4.2.2`, `4.2.4`, `4.1`, `4.1.0`, `4.1.1`, `4.1.2`, `4.1.3`, `4.0`, `4.0.0`, `4.0.1`
 - **3.x**: `3.10`, `3.10.0`, `3.10.1`, `3.10.2`, `3.9`, `3.9.0`, `3.8`, `3.8.0`, `3.7`, `3.7.0`, `3.6`, `3.6.0`, `3.5`, `3.5.0`, `3.5.1`, `3.1`, `3.1.0`, `3.0`, `3.0.0`
 - **2.x**: `2.7`, `2.7.0`, `2.6`, `2.6.0`, `2.5`, `2.5.0`, `2.0`, `2.0.0`
 - **1.x**: `1.0`, `1.0.0`

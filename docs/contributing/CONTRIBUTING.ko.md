@@ -1,7 +1,7 @@
 # 전자정부표준프레임워크 배지 기여 안내
 
-[![English](../../badges/lang/en/outline.svg)](CONTRIBUTING.en.md)
 [![한국어](../../badges/lang/ko/flat.svg)](CONTRIBUTING.ko.md)
+[![English](../../badges/lang/en/outline.svg)](CONTRIBUTING.en.md)
 [![Español](../../badges/lang/es/outline.svg)](CONTRIBUTING.es.md)
 [![Tiếng Việt](../../badges/lang/vi/outline.svg)](CONTRIBUTING.vi.md)
 [![العربية](../../badges/lang/ar/outline.svg)](CONTRIBUTING.ar.md)

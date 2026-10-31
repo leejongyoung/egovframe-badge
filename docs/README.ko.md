@@ -7,8 +7,8 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](../LICENSE)
 <!-- latest-badge:end -->
 
-[![English](../badges/lang/en/outline.svg)](README.en.md)
 [![한국어](../badges/lang/ko/flat.svg)](README.ko.md)
+[![English](../badges/lang/en/outline.svg)](README.en.md)
 [![Español](../badges/lang/es/outline.svg)](README.es.md)
 [![Tiếng Việt](../badges/lang/vi/outline.svg)](README.vi.md)
 [![العربية](../badges/lang/ar/outline.svg)](README.ar.md)
@@ -117,10 +117,10 @@ python3 scripts/detect_version.py --project . --readme README.md --language ko -
 
 ## 지원 버전
 
-전자정부표준프레임워크 [실행환경 가이드](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드)에 등재된 1.0부터 5.x까지 총 53개 버전(주요 실행환경 및 패치 릴리스)을 지원합니다.
+전자정부표준프레임워크 [실행환경 가이드](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:실행환경가이드)에 등재된 1.0부터 5.x까지 총 55개 버전(주요 실행환경 및 패치 릴리스)을 지원합니다.
 
 - **5.x**: `5.0`, `5.0.0`, `5.0.1`, `5.0.2`, `5.0.3`, `5.0.4`, `5.0.5`, `5.0.6`, `5.0.7`
-- **4.x**: `4.3`, `4.3.0`, `4.3.1`, `4.3.2`, `4.2`, `4.2.0`, `4.2.1`, `4.2.2`, `4.1`, `4.1.0`, `4.1.1`, `4.1.2`, `4.0`, `4.0.0`, `4.0.1`
+- **4.x**: `4.3`, `4.3.0`, `4.3.1`, `4.3.2`, `4.2`, `4.2.0`, `4.2.1`, `4.2.2`, `4.2.4`, `4.1`, `4.1.0`, `4.1.1`, `4.1.2`, `4.1.3`, `4.0`, `4.0.0`, `4.0.1`
 - **3.x**: `3.10`, `3.10.0`, `3.10.1`, `3.10.2`, `3.9`, `3.9.0`, `3.8`, `3.8.0`, `3.7`, `3.7.0`, `3.6`, `3.6.0`, `3.5`, `3.5.0`, `3.5.1`, `3.1`, `3.1.0`, `3.0`, `3.0.0`
 - **2.x**: `2.7`, `2.7.0`, `2.6`, `2.6.0`, `2.5`, `2.5.0`, `2.0`, `2.0.0`
 - **1.x**: `1.0`, `1.0.0`

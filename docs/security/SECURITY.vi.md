@@ -1,9 +1,9 @@
 # Chính sách bảo mật
 
+[![Tiếng Việt](../../badges/lang/vi/flat.svg)](SECURITY.vi.md)
 [![English](../../badges/lang/en/outline.svg)](SECURITY.en.md)
 [![한국어](../../badges/lang/ko/outline.svg)](SECURITY.ko.md)
 [![Español](../../badges/lang/es/outline.svg)](SECURITY.es.md)
-[![Tiếng Việt](../../badges/lang/vi/flat.svg)](SECURITY.vi.md)
 [![العربية](../../badges/lang/ar/outline.svg)](SECURITY.ar.md)
 [![Français](../../badges/lang/fr/outline.svg)](SECURITY.fr.md)
 
